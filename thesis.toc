@@ -1,0 +1,2 @@
+\contentsline {chapter}{Lista figurilor}{iii}
+\contentsline {chapter}{Lista tabelelor}{iv}
