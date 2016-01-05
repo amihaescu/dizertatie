@@ -2,3 +2,4 @@
 \contentsline {chapter}{Lista figurilor}{iii}{chapter*.2}
 \contentsline {chapter}{Lista tabelelor}{iv}{chapter*.3}
 \contentsline {chapter}{\numberline {1}Introducere}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Ce este o arhitectura software?}{1}{section.1.1}

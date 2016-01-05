@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.1.1)  1 JAN 2016 22:36
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.1.1)  5 JAN 2016 23:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -290,37 +290,37 @@ LaTeX Info: Redefining \nameref on input line 13.
 File: uni-2.def 2013/05/13 UCS: Unicode data U+0200..U+02FF
 )
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 33.
+(Font)              <14.4> on input line 31.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 33.
+(Font)              <7> on input line 31.
 
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-1.def
 File: uni-1.def 2013/05/13 UCS: Unicode data U+0100..U+01FF
 )
 Title
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <24.88> on input line 33.
+(Font)              <24.88> on input line 31.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <20.74> on input line 33.
+(Font)              <20.74> on input line 31.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <17.28> on input line 33.
+(Font)              <17.28> on input line 31.
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-0.def
 File: uni-0.def 2013/05/13 UCS: Unicode data U+0000..U+00FF
 )
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 33.
+(Font)              <12> on input line 31.
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-32.def
 File: uni-32.def 2013/05/13 UCS: Unicode data U+2000..U+20FF
 )
-Underfull \hbox (badness 10000) in paragraph at lines 33--33
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 33--33
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
 
  []
 
@@ -337,7 +337,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.ii}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.34 \listoffigures
+l.32 \listoffigures
                     [2
 
 ] (./thesis.lof)
@@ -362,37 +362,31 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 42.
  (./thesis.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 42.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 42.
-
-
-Package rerunfilecheck Warning: File `thesis.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `thesis.out':
-(rerunfilecheck)             Before: 078EBD81EA9768E2957BE0BA34BCBB2C;148
-(rerunfilecheck)             After:  0DEB2F859539DADE7608E62C86A78EA5;147.
+Package rerunfilecheck Info: File `thesis.out' has not changed.
+(rerunfilecheck)             Checksum: 78998EE78A3449D5AFA6656601664345;227.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 42.
  ) 
 Here is how much of TeX's memory you used:
- 7576 strings out of 494424
- 105373 string characters out of 6165347
- 186988 words of memory out of 5000000
- 10739 multiletter control sequences out of 15000+600000
+ 7578 strings out of 494424
+ 105397 string characters out of 6165347
+ 186986 words of memory out of 5000000
+ 10740 multiletter control sequences out of 15000+600000
  12920 words of font info for 44 fonts, out of 8000000 for 9000
  372 hyphenation exceptions out of 8191
- 30i,15n,27p,358b,545s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 30i,15n,28p,501b,545s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmti7.pfb>
-Output written on thesis.pdf (6 pages, 83889 bytes).
+/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmti7.pfb>
+Output written on thesis.pdf (6 pages, 92464 bytes).
 PDF statistics:
- 83 PDF objects out of 1000 (max. 8388607)
- 66 compressed objects within 1 object stream
- 10 named destinations out of 1000 (max. 500000)
- 25 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 92 PDF objects out of 1000 (max. 8388607)
+ 74 compressed objects within 1 object stream
+ 11 named destinations out of 1000 (max. 500000)
+ 33 words of extra memory for PDF output out of 10000 (max. 10000000)
 
