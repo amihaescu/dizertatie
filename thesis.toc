@@ -9,3 +9,4 @@
 \contentsline {chapter}{\numberline {2}Principii fundamentale ale arhitecturii software}{4}{chapter.2}
 \contentsline {section}{\numberline {2.1}Principii de proiectare}{5}{section.2.1}
 \contentsline {subsection}{\numberline {2.1.1}Standarde de proiectare}{6}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Nivelele aplica\IeC {{\textcommabelow t}}iei}{6}{subsection.2.1.2}

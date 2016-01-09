@@ -114,5 +114,17 @@ Funcționalitatea nu trebuie duplicată în cadrul aceleași aplicații; o singu
 
 Atunci cand este posibil, compoziția este preferată în defavoarea moștenirii pentru refolosirea funcționalității deoarecere moștenirea crește depedența între părinte și clase care moștenesc. Aceasta de asemenea reduce ierarhiile de moștenire, ceea ce poate deveni dificil de gestionat.
 
+Stabilirea unui stil de codare și a unei convenții de denumire pentru dezvoltare va oferi un model consisten care va facilita revizuirea codului de către membrii ai echipei care nu l-au scris, ceea ce duce la o administrare imbunătățită.
+
+Menținerea calității sistemului se poate face folosind tehnici automatizate de QA pe parcursul dezvoltării, precum scrierea de teste unitare, analiza de dependențe și analiza statică a codului pe parcursul dezvoltării.
+Define clear behavioral and performance metrics for components and sub-systems, and use automated QA tools during the build process to ensure that local design or implementation decisions do not adversely affect the overall system quality.
+
+Proiectarea componentelor aplicației și a sub-sistemelor cu o ințelegere clară a nevoilor operaționale specifice fiecăreia va ușura seminificativ instalarea și mentenanța acesteia. În vederea eficientizării acestor două operațiuni metrici și date operaționale sunt necesare echipei responsabile de infrastructură. Pentru aceasta folosirea unetelor automitizate pentru asigurarea calității pot fi folosite.
+
+\subsection{Nivelele aplicației}
+Pentru a pune în practica principiul "ariilor de responsabilitate" aplicația este împărțită în blocuri funcționale a căror funcționalitate se suprapune cât mai puțin. Mare avantaj al acestei abordări este că fiecare bloc funcțional va putea fi optimizat independent față de restul aplicației. În plus, dacă unul încetează să funcționeze, acesta nu va cauza și defectarea altora, iar procesele pot rula independent unul față de celălalt. Această abordare contribuie și la facilitarea înțelegerii și proiectării aplicațiilor și simplifică administrarea sistemelor complexe interdependente.
+
+Permițând fiecărui nivel să comunice cu celălalte sau să fie dependent de alte nivele va crește gradul de complexitate al aplicației și o va face mai greu de înțeles și administrat, așadar regulile de interacțiune între acestea trebuie foarte bine explicitate, astfel încât fluxul datelor în aplicație să fie foarte limpede.
+
 
 \end{document}
