@@ -32,6 +32,15 @@
 \beforepreface
 \listoffigures
 \listoftables
+\abbreviations{ 
+BDFU - Big Design Upfront
+DRY - Don't repeat yourself \\
+SOA - Service Oriented Architecture \\
+QA - Quality Assurance \\ 
+YAGNI - You ain't gonna need it \\
+UML - Unified Modelling Language
+
+}
 
 %\preface{}
 \afterpreface 
@@ -67,7 +76,7 @@ Arhitectura software urmărește să găsească un compromis între specificați
 Pentru proiectarea unei arhitecturii următoarele principii cheie ar trebui luate în calcul:
 \begin{itemize}
 	\item \textbf{Arhitectura trebuie sa fie concepută pentru a suporta schimbări, nu pentru a rămâne neschimbătă.} Întotdeauna trebuie luat în calcul cum aplicația s-ar putea modifica de-a lungul timpului pentru a putea răspunde noilor cerințe și provocări.
-	\item \textbf{Modelarea trebuie facută pentru reduce riscul.} Este indicată folosirea uneltelor de proiectare, a sistemelor de modelare precum \textbf{UML -} \emph{Unified Modeling Language} și a vizualizare unde este cazul pentru a putea evidenția cerințele și a deciziile arhitecturale și de proiectare, analizându-le impactul.
+	\item \textbf{Modelarea trebuie facută pentru reduce riscul.} Este indicată folosirea uneltelor de proiectare, a sistemelor de modelare precum \textbf{UML -} \emph{Unified Modelling Language} și a vizualizare unde este cazul pentru a putea evidenția cerințele și a deciziile arhitecturale și de proiectare, analizându-le impactul.
 	\item \textbf{Folosirea modelelor și a uneltelor de vizualizare pentru comunicare si colaborare.} Comunicarea eficientă a designului, a deciziilor luate și schimbărilor necesare este necesară unei arhitecturi bune. Este recomandată folosirea modelelor, a vederilor și a altor mijloace de vizualire a arhitecturii pentru a comunica și impărtăși eficient ideile cu clienții, rezultând astfel într-o comunicare rapidă a schimbărilor de proiectare.
 	\item \textbf{Identificarea deciziilor tehnice cheie.} Este esențiala înțelegerea deciziilor tehnice cheie pentru evitarea greșelilor comune. Investirea în luarea acestor decizii bine de prima dată este importantă pentru a obține un design flexibil și foarte puțin expus riscului de a fi afectat de viitoare schimbări.
 \end{itemize}
@@ -126,5 +135,75 @@ Pentru a pune în practica principiul "ariilor de responsabilitate" aplicația e
 
 Permițând fiecărui nivel să comunice cu celălalte sau să fie dependent de alte nivele va crește gradul de complexitate al aplicației și o va face mai greu de înțeles și administrat, așadar regulile de interacțiune între acestea trebuie foarte bine explicitate, astfel încât fluxul datelor în aplicație să fie foarte limpede.
 
+Implementarea couplării slabe între nivele se poate implementa prin folosirea abstractizării, definindu-se astfel componente-interfața precum "façade" cu intrări și ieșiri bine cunoscute care se traduc prin cereri într-un format cunoscut înțeles de nivelul respectiv. În plus, se pot folosi tipurile Interface sau clase de bază abstracte pentru a implement o interfață comună.
+
+Separarea tipurilor de component în cadrul aceluiași nivel logic se poate obține prin identificarea diferitelor arii de responsabilitate și apoi prin gruparea componentelor asociate fiecăruia pe nivele logice. De exemplu, interfața grafică nu ar trebui să conțină componente legate de procesare business, însă ar trebui sa conțină elemente care permit utilizatorului să introducă date.
+
+Amestecând formatele datelor în cadrul unui nivel sau a unei component va face ca aplicația să devină mai dificl de implementat, extins și administrat, așadar formatul trebuie să fie consistent. În caz contrar, de fiecare dată când este necesară trecerea de la un format la atul, o operație de traducere trebuie efectuată ceea ce atrage după sine efort suplimentar.
+
+\subsection{Componente, module și funcții}
+O componentă sau un obiect nu trebuie să depindă de detaliile interne ale unie alte componente sau obiect. Fiecare componentă sau obiect ar trebuie sa apeleze o metodă a unui alt obiect sau component, iar aceasta să aibaă informații despre cum să proceseze cererea și eventual cum să o redirecționeze către altele.
+
+Funcționalitatea unei componente nu trebuie supraincărcată. De exemplu, o componentă a interfeței grafice nu va conține cod specific accesului datelor și nici nu va încerca să ofere o funcționalitate suplimentară. Adesea componentele supraîncărcate au multe funcțiiși proprietăți care furnizeaza funcționalități de business amestecate cu functionalități transverse precum logare și tratarea excepțiilor. Resultatul este un design foarte predispus erorilor și dificil de menținut. Aplicarea principiului responsabilității unice și a separării ariilor de responsabilitate contribuie la evitarea acestui lucru.
+
+Înțelegerea felului în care componentele comunică între ele presupune înțelegerea cazurilor de utilizare pentru care aplicația a fost concepută. Trebuie stabilit dacă toate componentele vor rula în cadrul aceluiași proces sau dacă comunicarea dincolo de barierele fizice sau de proces este necesară, implementând interfețe de comunicare.
+
+Codul functionalităților auxiliare trebuie separat de logica de business. Acest cod este cel responsabil pentru securitate, comunicare și manangement operațional precum logare și instrumentație. Amestecarea codului care implementează aceste funcții cu logica de business poate duce la un design dificil de extins și menținut. Schimbările acestui cod necesită implică alterarea logicii de business. Pentru a rezolva această problemă se recomandă folosirea librăriilor și tehnicilor, precum programarea orientate pe aspecte.
+
+Componentele, modulele și funcțiile ar trebui să defineăscă un contratct  sau o interfață care descrie în mod explicit utilizare și comportamentul acestora. Un contract conține o descriere explicând cum celălalte component funcționalitațile componentei, modulului sau funcției alături de comportamentul acesteia înainte de apelare, după apelare, efecte adverse ales acesteia, excepții, caracteristici de perfomanță și alți factori.
+
+
+\chapter{Tipare și stiluri arhitecturale}
+
+În acest capitol voi prezenta tipare și principii de nivel înalt des întâlnit în aplicațille. Acestea sunt adesea numite stiluri arhitecturale și includ tipare cum ar fi client/server, arhitectura stratificată, arhitectură bazată pe componente, arhitectură cu bus de mesaje și arhitectura orientată pe obiecte (SOA). Pentru fiecare stil, voi prezenta o imagine de ansamblu, caractersiticiile principale, advantajele și informații legate de ce stil se potrivește cărei aplicații. Este important de înțeles că stilurile descriu diferite aspecte ale aplicațiilor. De exemplu, unele stiluri ahitecturale descriu tipare de instalare, altele descriu probleme legate de structuri și design, iar altele descriu soluții de comunicare. Prin urmare o aplicație tipică va folosi o combinație a mai mult de un stil din cele descrise.
+
+\section{Ce este un stil arhitectural?}
+
+Un stil arhitectural, adesea numit și tipar arhitectural, reprezintă un set de principii care crează un cadru abstract pentru o familie de sisteme. Un stil arhiteectural îmbunătățeste partiționarea și încurajează reutilizarea designului oferind soluții la probleme recurente. Tiparele și stiluri ahitecturale pot fi privite ca și principii care conturează forma unei aplicații. Garlan și Shaw definesc un stil arhitectural : \emph{"...o familie de sisteme în termenii unui tipar de organizare structurală. Mai exact, un stil arhitecetural determină vocabularul de componente și conectori care pot fi utilizați în cadrul său, împreuna cu un set de constrângeri care explică cum acestea pot fi combinate. Acestea pot include constrângeri legate de topologie (ex. fără cicluri). Alte constrângeri ar putea face parte din definiția stilului."}
+
+Înțelegerea stilurilor arhitecturale oferă mai multe avantaje. Cel mai important ar fi că oferă un limbaj comun. Oferă de asemenea posibilitate unor discuții agnostice cu privire la tehnologie, care facilitează discuții la nivel înalt incluzând tipare și principii, fară a intra în detalii. De exemplu, folosind stiluri arhitecturale, se poate discuta despre client/server versus n-niveluri. Stilurile arhitecturale pot fi organizate în funcție de aria lor cheie. Următoarea lista enumeră zonele majore de interes alături de stilul lor corespunzător.
+\begin{table}[ht]
+\centering
+    \begin{tabular}{| p{3cm} | p{10cm} |}
+    \hline
+    Categorie & Stil arhitectural \\ \hline
+    Comunicare & Arhitectură orientată pe servicii, Bus de mesaje\\ \hline
+    Instalare & Client/Server, N-Niveluri \\ \hline
+    Structură & Arhitectură stratificată \\ \hline
+    \end{tabular}
+    \label{altebasme}
+\caption{Categorii și stiluri arhitecturale}
+\end{table}
+
+\newpage
+\section{Sumar al stilurilor arhitecturale}
+Următorul table enumeră stilurile arhitecturale descrise în cadrul acestei lucrări, împreună cu o scurtă descriere a fiecăruia.
+\begin{table}[ht]
+\centering
+    \begin{tabular}{| p{3cm} | p{10cm} |}
+    \hline  
+    Stil arhitectural & Descriere \\ \hline
+    	Client/server & 
+    	Împarte sistemul în două aplicații, în care clientu lansează cereri către server. În multe cazuri, serverul este o bază de date cu logică implementată în proceduri stocate. \\ \hline
+    Arhitectură bazată pe componente &
+    Împarte aplicația în componente funcționale sau logice reutilizabile care expun interfețe de comunicare bine cunoscute. \\ \hline
+	Arhitectură stratificată &
+	Partiționează aplicația în grupuri funcționale numite niveluri. \\ \hline
+	Bus de mesaje & 
+	Un stil arhitectural care implică folosirea unui sistem software care poate primi și trimite mesaje folosind unu sau mai multe canale de comunicare, astfel încât applicațiile să poată interacționa fără a cunoaște detalii specifice. \\\hline
+	N-niveluri/3-niveluri &
+	Împarte	aplicația în blocuri funcționale la fel ca arhitectura stratificată însă fiecare segment este localizat pe o mașină fizică diferită.
+	\\ \hline
+	Obiect orientată &
+	O paradigmă bazată pe împărțirea responsabilităților unei aplicații sau sistem în componente individuale reutilizabile și obiecte, fiecare conținând datele și comportamentul relevante. \\ \hline
+	Arhitectură orientată pe servicii (SOA) &
+ 	Se referă la aplicații care expun și consumă functionalități prin intermediul serviciilor folosind contracte și mesaje. \\ \hline
+    \end{tabular}
+    \label{altebasme}
+\caption{Sumar al stiluri arhitecturale}
+\end{table}
+
+\section{Combinarea stilurilor arhitecturale}
+Arhitectura unui sistem software nu este aproape niciodată limitată la doar un stil arhitectural, însă este adesea o combinație a mai multor stiluri care formează un sistem complet. De exemplu am putea avea un sistem cu design SOA a cărui servicii au fost dezvoltate folosind o arhitectura stratificată și una orientată pe obiecte.
 
 \end{document}
