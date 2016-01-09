@@ -6,3 +6,4 @@
 \contentsline {section}{\numberline {1.2}De ce este arhitectura important\IeC {\u a} ?}{2}{section.1.2}
 \contentsline {section}{\numberline {1.3}Obiectivele arhitecturii software}{2}{section.1.3}
 \contentsline {section}{\numberline {1.4}Principii arhitecturale cheie}{3}{section.1.4}
+\contentsline {chapter}{\numberline {2}Principii fundamentale ale arhitecturii software}{4}{chapter.2}
