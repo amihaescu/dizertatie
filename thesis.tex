@@ -3,6 +3,7 @@
 \setcounter{tocdepth}{3}
 \usepackage{babel}
 \usepackage{graphicx}
+\usepackage{float}
 \usepackage[
   bookmarksnumbered,
   bookmarks,
@@ -74,5 +75,44 @@ Pentru proiectarea unei arhitecturii următoarele principii cheie ar trebui luat
 Pentru rafinarea arhitecturii este recomandată o abordare incrementală și iterativă. Se pornește de la o arhitectură de bază pentru a avea o imagine de ansamblu, după care crează arhitecturii derivate pe măsură ce aceasta este testată și îmbunătațită. Modelul incipient nu trebuie să acopere toate nevoiele, ci ar trebui să reprezinte un prim design pe care să poată fii testate cerințele de business. In mod iterativ vor fi adăugate detaliile care vor putea o primă imagine de ansamblu corectă, pentru ca mai târziu să fie adăugate și detaliile de finețe. O greșeală foarte des întâlnită este aceea de a se concentra pe detaliile neesențiale încă din faze incipiente și de a urma direcții greșite făcând presupuneri incorecte sau eșuând în a evalua eficient arhitectura. 
 
 \chapter{Principii fundamentale ale arhitecturii software}
+Acest capitol va aborda principiile fundamentale de proiectare ale unei arhitecturii software. Aceasta este adesea descrisă ca organizarea sau structura unui sistem, care reprezintă o colecție de componente ce îndeplinesc o funcție sau un set de funcții specifice. Cu alte cuvinte, arhitectura se concentrează pe organizarea componenteleor ce vor oferi o anumită funcționalitate. Organizarea funcțională a componentelor implică grupare acestora în "arii de interes", după cum se poate vedea in schemă de mai jos.
+
+\begin{figure}[ht]
+\centering
+\includegraphics*[scale=0.5]{img/IC351032.png}
+\caption{Organizarea pe "arii de responsabilitate"}
+\label{fig:arii_de_int}
+\end{figure}
+
+Pe lângă gruparea pe componente, alte arii de interes se concentrează pe interacțiunea între acestea și pe cum ele funcționează împreună. 
+\newpage
+\section{Principii de proiectare}
+La începerea procesului de proiectare trebuie avute în vedere principiile care vor contribui la crearea unei arhitecturii care aderă la practici consacrate, reduce costurile și care încurajează ușurința de folosire și posibilitățile de extindere. Acestea sunt:
+\begin{itemize}
+\item \textbf{Separarea atribuțiilor.} Aplicația trebuie divizată în funcționalități distincte cu o suprapunere cât mai mică între acestea. Factori importanți pentru a obține aceasta o reprezintă un nivel mare de coeziune și o cuplare slabă între componente, însă separarea greșită funcționalitaților poate duce la o cuplare strânsă între acestea chiar dacă fiecare atribuțiile fiecărei componente nu se suprapun.
+
+\item \textbf{Principiul responsabilității unice.} Fiecare componentă sau modul ar trebui să indeplinească o singură funcționalitate sau o agregare coerentă de funcționalități. 
+
+\item \textbf{Principiul cunoașterii minime (cunoscut și sub numele de Legea lui Demeter).} O componentă sau un obiect nu ar trebui să cunoască detaliile interne de implementare ale altor componente sau obiecte.
+
+\item \textbf{Nu te repeta (eng. Don't repeat yourself - DRY)}
+Funcționalitatea ar trebui sa fie implementată într-un singur loc. De exemplu, în cadrul proiectării unei aplicații, funcționalitate ar trebui implementată într-o singură componentă și nu ar mai trebui duplicată și în alta.
+
+\item \textbf{Minimizarea proiectării anticipate.} Proiectarea ar trebui să se rezume doar la ceea ce este necesar. În unele cazuri însă, atunci când costurile de dezvoltare sau al uni eșec în design sunt foarte mari, proiectarea anticipată este necesară. În altele, în special în cadrul dezvoltării agile, aceasta (eng. \textbf{BDUF - big design upfront}) poate fii evitată. Dacă cerințele aplicației sunt neclare sau există posibilitate unor evoluții a designului în viitorul apropiat, evitarea eforturilor de proiectare prematură este indicată. Acest principiu se mai numește si \textbf{YAGNI (eng. "You ain’t gonna need it").}
+\end{itemize}
+
+În cadrul proiectării unuei aplicații sau a unui sistem, obiectivul unui arhitect este să minimizeze complexitatea separând designul în mai multe arii de responsabilitate. De exemplu, interfața grafică, procesele de business și accesul la date reprezintă arii diferinte. În cadrul fiecăreia, componentele proiectate ar trebui să fie focusate pe responsabilități diferite, fără a conține cod din cadrul alteia. De exemplu, interfața grafică nu va conține cod care accesează direct sursele de date; în schimb va folosi componente specializate pentru obținerea datelor. 
+
+O evaluare cost/beneficiu va fi folosită pentru determinarea investiției necesare. In unele cazuri poate fii necesară o simplificare a structurii, permițând legarea interfeței grafice la un set de date. În general, separarea funcționalităților va fii făcută ținând cont și de partea de business. Cele ce urmează vor prezenta factori care afecteaza ușurința de design, implementare, testare și mentenanță a aplicației.
+
+\newpage
+\subsection{Standarde de proiectare}
+
+La nivelul fiecărui nivel logic, acolo unde este posibil, proiectare componentelor ar trebui sa fie consitentă în cadrul unei operații. De exemplu, dacă se folosește tiparul "Table Data Gateway" pentru a crea un obiect care să reprezintă punctul de acces al tabelelor dintr-o bază de date, nu ar mai trebui folosit un altul (ex. "Repository") care folosește o altă paradigmă pentru accesarea datelor și inițializarea entităților de business. Însă, este posibilă folosirea altor tipare pentru operațiuni al unui alt modul care are o varietate mai large de cerințe, cum ar fi o aplicație care necesită tranzacții  business și rapoarte.
+
+Funcționalitatea nu trebuie duplicată în cadrul aceleași aplicații; o singură componentă va oferi această funcționalitate, care nu va mai exista într-o alta. Aceasta va duce la componente coerente și va ușura optimizarea acestora dacă o anumită funcționalitate va suferi modificări. În caz contrar, duplicarea funcționalității va îngreuna implementarea schimbărilor, scădea claritatea și va introduce potențiale inconsistențe.
+
+Atunci cand este posibil, compoziția este preferată în defavoarea moștenirii pentru refolosirea funcționalității deoarecere moștenirea crește depedența între părinte și clase care moștenesc. Aceasta de asemenea reduce ierarhiile de moștenire, ceea ce poate deveni dificil de gestionat.
+
 
 \end{document}
