@@ -33,12 +33,21 @@
 \listoffigures
 \listoftables
 \abbreviations{ 
-BDFU - Big Design Upfront
+BDFU - Big Design Upfront \\
+COBRA - Common Object Request Broker Architecture \\
+COM - Common Object Model \\
+DCOM - Distributed Common Object Model  \\
 DRY - Don't repeat yourself \\
-SOA - Service Oriented Architecture \\
+EJB - Enterprise Java Beans \\ 
+JIT - Just in time \\
+LOB - Line-of-business \\
+MVC - Model View Controller \\
+P2P - Peer-to-Peer \\
 QA - Quality Assurance \\ 
+SOA - Service Oriented Architecture \\
+UML - Unified Modelling Language \\
 YAGNI - You ain't gonna need it \\
-UML - Unified Modelling Language
+
 
 }
 
@@ -205,5 +214,98 @@ Următorul table enumeră stilurile arhitecturale descrise în cadrul acestei lu
 
 \section{Combinarea stilurilor arhitecturale}
 Arhitectura unui sistem software nu este aproape niciodată limitată la doar un stil arhitectural, însă este adesea o combinație a mai multor stiluri care formează un sistem complet. De exemplu am putea avea un sistem cu design SOA a cărui servicii au fost dezvoltate folosind o arhitectura stratificată și una orientată pe obiecte.
+
+O combinație de stiluri este de asemenea utilă dacă se dorește construirea unei aplicații web, unde se poate obține o separare eficientă a funcționalității folosind arhitectura stratificată. Aceasta va separa logica de afișare de logica de business și de cea de acces la date. Din motive de securitate poate fi impusă o instalare a aplicației pe 3 niveluri sau chiar pe mai multe.
+Nivelul de prezentare poate fi instalat în partea demilitarizată a rețelei companiei. In cadrul acestui nivel se poate folosi un tipar separat pentru presentare, cum ar fi Model-View-Contoller (MVC), pentru modelul de interacțiune.  
+Se poate folosi și SOA pentru implementarea unei comunicații orientată pe mesaje între serverul web și serverul aplicativ.
+
+In cazul unei aplicații desktop, clientul va trimite cereri către server. Ceea ce se pretează în acest caz este arhitectura client/server împreună cu abordarea orientată pe componente pentru a descompune mai departe designul în module care expun intefețele adecvate de comunicare. Folosirea designul orientat pe obiecte ar îmbunătății reutilizabilitate, testarea și flexibilitatea.
+
+Mulți factori pot influența alegerea stilului. Aceștia includ și capacitatea de design și implementare a organizației; capacitatea și experiența dezvoltatorilor; infrastructura și constrângerile organizaționale. 
+
+\section{Arhitectura client/server}
+Arhitectura client/server descrie sistemele distribuite care implică separarea clientului și serverului și conectarea acestora prin rețea. Cea mai simplă implementare a unui sistem client/server implică un server care este accesat direct de mai mulți client, adesea numit stil arhitectural pe 2 niveluri.
+
+In mod tradițional, arhitectura client/server era implementată printr-o aplicație desktop cu interfață grafică ce comunica cu un server de baze date conținândn majoritatea logicii de business în proceduri stocate. Mai generic, însă, arhitectura client/server descrie relația între un client și unul sau mai multe server, clientul inițiând una sau mai multe cereri folosind interfața grafică, asteaptă raspunsuri și execută procesarile la recepție. Serverul în mod tipic autorizează utilizatorul și apoi declanșează procesele necesare pentru generarea rezultatului. Serverul poate sa trimită răspunsurile folosind o varietate de protocoale și formate de date pentru a comunica informația clientului.
+
+Astăzi exemple ale arhitecturii client/server includ programele bazate browserele Web ce rulează pe Internet sau intranet; aplicații ale sistemului de operare care accesează servicii de date prin intermediul rețelei; aplicații care accesează surse de date distante; unelte si utilitare pentru manipularea sistemelor la distanță.
+
+Alte variațiuni ale stilului client/server includ:
+
+\begin{itemize}
+ \item Sisteme client-coadă-client. Această abordare permite clienților să comunice cu alți clienți printr-o coadă aflată pe un server.Clienții pot citi și pot trimite date către un server care se comportă precum o simplă coadă pentru stocarea informațiilor. Asta permite clienților sa distribuie și să sincronizeze fișiere și informații. Aceasta se mai numesțe uneori și arhitectura cozii pasive.
+ \item Aplicații peer-to-peer (P2P). Dezolvat plecând de la stilul precedent, P2P permite clientului și serverului să-și inverseze rolurile cu scopul de a distribui și sincroniza informații și fisiere pe mai mulți clienți. Extinde stilul client/server prin generarea mai multor răspunsuri la cereri, date partajate, descoperirea resurselor și redundanță față de pierderea unor noduri.
+ \item Servere aplicative. Un stil arhtectural în care serverul găzduiește și execută aplicații și servicii pe care un client lejer le accesează prin intermediul unui browser sau a unui program specializat. Un astfel de exemplu este un client care execută o aplicație care rulează bazându-se pe servicii terminal.
+\end{itemize}
+
+Principalele beneficii ale acestui stil sunt:
+\begin{itemize}
+	\item Securitate sporită. Toate datele sunt stocate pe server, ceea ce în general oferă un control al securității mai bun decât mașinile client.
+	\item Acces centralizat la date. Deoarece datele sunt stocate numai pe server, accesul și actualizările datelor sunt mult mai ușor de administrat decât în orice alt stil arhitectural.
+	\item Mentenanță facilă. Rolurile și responsabilitățile unui sistem de calcul sunt distribuite între mai multe servere care sunt cunoscute prin intermediul rețelei. Aceasta presupune trasparență pentru client vizavi de posibile reparații, actualizări sau relocări ale unui server.
+\end{itemize}
+
+Acest stil se pretează foarte bine daca aplicația ce se dorește a fi dezvoltată este: un server care va deservi mulți client, o aplicație Web, aplicația conține procese de business care vor fi utilizate în interiorul organizației sau se dorește crearea unor servicii care vor fi consumate de alte aplicații. Stilul arhitectural client/server este deasemenea adecvat atunci când se dorește centralizarea datelor, crearea redundanței și a funcțiilor de administrare sau când aplicația trebuie să deservească diverse tipuri de clienți și dispozitive. 
+
+Totuși, tradiționalul stil client/server pe 2-Niveluri are numeroase dezavantaje cum ar fi tendința de corelarea strânsă a datelor aplicației și a logicii de business pe server, ceea ce poate impacta în mod negativ scalabilitatea și dependența de serverul central, ceea ce afectează și fiabilitatea sistemului. Pentru a rezolva această problemă stilul arhitectural a evoluat într-unul ceva mai generic pe 3-Nivele (N-Nivele), descris în cele ce urmează și care reușește să înlăture dezavantajele inerente ale modelului pe 2 nivele, dar păstrează avantajele acestuia.
+
+\section{Arhitectura bazată pe componente}
+Ahitectura bazată pe componente descrie o abordare a inginerii software pentru proiectare și dezvoltarea sistemelor. Se concentrează pe descompunerea designul pe componente funcțional individuale sau logice care expun interfețe de comunicare bine definite conținând metode, eveniment și proprietăți. Aceasta crează un nivel mai înalt de abstractizare decât principiile obiect orientării și nu se axează pe probleme cum ar fi protocoale de comunicare și partajarea stărilor.
+
+Principalele trăsături ale acestui stil sunt:
+\begin{itemize}
+ \item Reutilizarea. Componentele sunt deobicei proiectate pentru a fi reutilizate în diferite scenarii în aplicații diferite. Totuși, unele sunt proiectate pentru sarcini specifice.
+ \item Substituția. Componentele poate fi subsituite cu componente similare. 
+ \item Nespecifice contextului. Componentele sunt proiectate pentru a funcționa în medii și contexte diferite. Informații specifice, cum ar fi datele de stare, ar trebui transmise componentei în loc sa fi incluse sau accesate de către aceasta.
+ \item Extensibilitatea. O componente poate fi extinsă pornind de la componente existente pentru a oferi noi funcționalități.
+ \item Encapsularea. Componentele expun diferinte interfețe care permit apelantului să-i acceseze funcționalitatea și care nu divulga detalii legate de procesele sau variabilele interne.
+ \item Independența. Componentele sunt proiectate pentru a avea dependențe minime față de alte componente. Prin urmare acestea pot fi instalate în orice mediu fără a afecta alte componente sau sisteme.
+\end{itemize}
+
+Tipuri comune de componente utilizate în aplicații includ componente grafice cum ar fi butoane și grile și componente ajutătoare sau utilitare care expun un set de funcții specifice folosite de către alte componente. Alte tipuri de componente sunt acelea care sunt strâns legate de resurse, nu așa de des accesate și care trebui activate folosind abordarea \emph{just-in-time (JIT)} - des întâlnită în cadrul componentelor comandate la distanță ; și componente bazate pe cozi ale căror apeluri de metode pot fi executate asincron folosind mesaje de asteptare.
+
+Componentele depind de un mecanism din cadrul platformei care oferă un mediu în care ele să poate fi executate. Exemplele includ : \emph{component object model (COM)} și \emph{ distributed component object model (DCOM)} pentru Windows; și \emph{Common Object Request Broker Architecture (CORBA)} și \emph{Enterprise Java 	Beans (EJB)} pentru alte platforme. Aceste mecanisme administrează localizarea componentelor și a interfețelor acestora, transmiterea mesajelor și a comenzilor între componente și în unele cazuri menținerea stării.
+
+Principalele avantaje ale acestui stil sunt:
+\begin{itemize}
+ \item Ușurința instalării. Pe măsură ce noi versiuni devin disponibile, acestea pot înlocui versiunile existent fără a impacta vreo alta componentă sau sistemul ca un întreg.
+ \item Cost redus. Utilizare componentelor terțe perminte reducerea costurilor de dezvoltare și administrare.
+ \item Ușurința dezvoltării. Componentele implementează interfețe bine cunoscute pentru a oferit funcționalitate definită, permițând dezvoltarea fără a impacta alte parți ale sistemului.
+ \item Reutilizarea. Folosirea componentelor reutilzabile înseamnă că acestea pot împarți costul de dezvoltare pe mai multe aplicații și sisteme.
+ \item Atenuarea complexității tehnice. Componentele reduc complexitatea prin folosirea cadrului componentei și a serviciilor. Exmple de servicii includ activarea, gestionare timpului de viață, metode de așteptare, eveniment și tranzacții.
+\end{itemize}
+
+Tipare de proiectare cum ar fi Dependency Injection sau Service Locator pot fi utilizate pentru gestionare dependințelor între componente și pentru a încuraja slaba cuplare și reutilizarea. Aceste tipare sunt adesea folosite pentru a construi aplicații compozite ce combină și reutilizează componente în cadrul mai multor aplicații.
+
+Se dorește folosirea acestei arhitecturii dacă: există deja componente adecvate sua dacă există acces la componente terțe; aplicația va conține predominant funcții procedurale, sau poate puține date; se folosesc mai multe limbaje de programare. Deasemenea, acest stil se pretează a fi folosit în cazul în care se dorește crearea unei arhitecturii modulare sau compozite care să permită schimbarea și actualizarea facila a componentelor individuale.
+
+\section{Arhitectura stratificată}
+
+Arhitectura straficată se concentrează pe gruparea funcționalităților conexe din cadrul unei aplicații pe niveluri diferite care sunt grupate orizontal unele deasupra celorlalte.Funcționalitate în cadrul fiecarui nivel este dominată de un rol sau o responsabilitate comună. Comunicarea între niveluri este explicită și slab corelată. Stratificarea corectă ajută la separarea responsabilității care sporește flexibilitate și ușurința administrării.
+
+Acest stil a fost descris ca fiind o piramidă întoarsă în care fiecare nivel agregă responsabilitățile și abstractizările nivelului imediat inferior. Folosind stratificarea strictă, componentele din cadrul unui nivel pot interacționa doar cu componente din cadrul aceluiași nivel sau cu componente din nivelul imediat inferior. O stratificare mai lejeră permite componentelor dintr-un nivel să interacționeze cu componente din același nivel sau orice componente aparținând nivelurilor inferioare.
+
+Straturile aplicației pot fi aceeși mașină fizică (pe acelasi nivel) sau pot fi distribuite pe masini diferite (N-Nivele) și componentele din același nivel comunica cu componente din alte nivele prin interfețe bine definite. De exemplu o aplicație web tipică este alcătuită dintr-un nivel de prezentare (tot ceea ce ține de interfața grafică), un nivel de logică business și un nivel de acces de date. 
+
+Principalele trăsături ale acestui stil includ:
+\begin{itemize}
+ \item Abstractizarea. Arhitectura stratificată abstractizează imaginea de ansamblu a sistemului ca și întreg în vreme ce oferă destule detalii pentru a înțelege rolurile și responsabilitățile fiecărui nivel individual și relația între ele.
+ \item Encapsularea. Nici o presupune nu trebuie facută cu privire la tipurile de date, metode și proprietăți sau implementare în timpul proiectării, deoarece acestea nu vor fi expuse public.
+ \item Nivele funcționale clar definite. Separarea funcționalității pe fiecare nivel este clară. Nivele superioare cum ar fi cel de prezentare trimit comenzi celor inferioare, cum ar fi cele de business și acces de date și poate reacționa la evenimente din aceste nivele, permițând fluxuri de date în ambele sensuri.
+ \item Nivel ridicat de coeziune. Limitele bine definite ale responsabilității fiecărui nivel și asigurarea faptului ca fiecare nivel conține funcționalitatea strict legată de sarcinile acelui nivel contribuie  la maximizare nivelului de coeziune din acel nivel.
+ \item Reutilizarea. Nivele inferioare nu depinde de cele superioare, permitând o posibilă reutilizare a acestora în cadrul altor scenarii.
+ \item Cuplare slabă. Comunicarea între nivele este bazată pe abstractizare și evenimente pentru a oferi o cuplare slabă între acestea.
+\end{itemize}
+
+Exemple de aplicații stratificate includ aplicații de tip line-of-business (LOB) precum sisteme de contabilitate și administrarea clienților; aplicații web de tip enterprise și site-uri web și aplicații desktop sau agenți inteligenți cu un serer central pentru logica de business.
+
+Tiparele de proiectare care susțin acest stil arhitectural sunt numeroase. De exemplu  tiparele "Separated Presentation" conțin a varietate large de tipare pentru manipularea interacțiunilor cu interfața grafică, logica de prezentare și business și datele aplicației cu care utilizatorul lucrează. Acesta permite designerilor sa lucreze la interfața grafica în vreme ce dezvoltatorii lucrează la codul care va orchestra totul. Împărțind funcționalitatea astfel crește sanșele de a test comportamentul individual al rolurilor. Principiile cheie ale acestui tipar sunt :
+
+\begin{itemize}
+	\item Separare responsabilității. Acest tipar împarte procesare interfeței grafice în roluri distincte; de exemplu MVC are 3 roluri diferite: modelul, view-ul și controller-ul. Modelul reprezintă datele; View-ul reprezintă interfața grafică; Controller manipulează cererile, modelul și efectuează alte operații.
+	\item Notificării bazate pe evenimente. Tiparul observator este folosit pentru a trimite notificări View-ului când datele administrate de model se schimbă.
+	\item Precesare delegată a evenimentelor. Controller-ul procesează evenimente lansate din interfața grafică.
+\end{itemize}
+
 
 \end{document}
