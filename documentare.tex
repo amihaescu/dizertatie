@@ -1,0 +1,92 @@
+\documentclass[12pt, a4paper, oneside, romanian]{teza-upb}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\usepackage{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[
+  bookmarksnumbered,
+  bookmarks,
+  bookmarksopen=true,
+  pdftitle={Dizertatie},
+  linktocpage]{hyperref}
+\singlespacing
+\begin{document}
+\begin{titlepage}
+	\centering
+	\includegraphics[width=0.15\textwidth]{img/UPB-logo.png}\par\vspace{1cm}
+	{\scshape\LARGE Facultatea de Electronică, Telecomunicații și Tehnologia Informației \par}
+	\vspace{1cm}
+	{\huge\bfseries Documentare proiect Java\par}
+	\vspace{2cm}
+	{\Large\bfseries Andrei Mihăescu\par}
+
+% Bottom of the page
+\end{titlepage}
+\newpage
+
+\chapter{Descriere aplicație}	
+Această aplicație reprezintă scheletul unuei platforme de video la cerere (eng. Video on Demand) care va constitui lucrarea mea de dizertație. Aplicația se află în fază incipientă și reprezintă mai degrabă un "proof of concept" și o validare a faptului că un astfel de proiect este fezabil în cadrul unei lucrării de dizertație, folosind tehnlogii open-source.
+
+Parțea cheie a unei astfel de aplicații o reprezintă transmiterea fluxurilor video către clienți. Așadar o prima problemă de rezolvat a fost găsirea unei soluții în acest sens. În urma consultării site-urilor de specialitate și având în minte dorința de a crea o aplicație modern, care să utilizeze ultimele tehnologii, am ales să folosesc o arhitectură client-server pentru a realiza o aplicație web. 
+
+Motivul pentru care am optat pentru o aplicație web este că pentru a avea un astfel de produs de succes, o platformă de video la cerere trebuie să deservească un număr cât mai mare de clienți. Pe baza acestor considerente alegerea aplicației web a fost una foarte simplă, deoarece majoritatea terminalelor dispun de un browser. În plus, tehnologiile recente permit creare de pagini web de tip "responsive" capabile sa se adapteze la rezoluția dispozitivul pe care este afișată pagina și deci experiența unui utilizator care folosesțe un dispozitiv mobil să fie la fel de plăcută ca cea a unuia care folosește un terminal fix.
+
+Soluția aleasă pentru a crea o aplicație modernă a fost să creez un serviciu web de tip REST care să fie consumat de o parte front-end realizată în HTML5. Utilizând HTML5 și mai exact redarea unui clip video se face foarte simplu tag-ul dedicat \texttt{<video>}. Acesta permite specificare căi ce va conține fișierul video. Această cale urmează să fie cea pe care o va expune serviciul web.
+
+Partea server a aplicației asa cum am spus este constituită dintr-un serviciu web de tip REST. Alegerea folosirii acestui tip de serviciu se datorează în principiu simplității cu care acestea se pot realiza folosind framework-uri. Un alt motiv este de asemenea și usurința cu care acestea se pot testa, fiind disponibile foarte multe unelte gratuite. Serviciile REST sunt apelabile prin intermediul link-urilor de tip \texttt{http://hostname:port/path/to/resource}.
+
+O altă parte la fel de importantă pentru acest tip de aplicație este aspectul securitate, deoarece nu se dorește accesul utilizatorilor neautorizați la conținutul video. Securitatea este asigurată de un filtru web care scanează toate cererile care vin către server și verifică dacă acestea sosesc de la un utilizator autentificat.
+
+\newpage
+\chapter{Tehnologii folosite}
+În materie de tehnologii folosite aplicația le utilizează pe cele mai recente, atât pe parte de client, cât și pe cea de server.
+
+Partea de client, după cum am menționat și mai sus este scrisă în HTML5 și CSS3 și folosește javascript pentru a adăuga o conponentă dinamică paginilor. Însă aceste limbaje nu sunt folosite pentru ca atare ci prin intermediul librăriilor deja dezvoltate. 
+
+Una din caracteristicile moderne ale acestei aplicații este faptul că este una de tip single-page, ceea ce înseamnă ca întreaga aplicație este de fapt o singură pagină al cărei conținut este schimbat în mod dinamic. Acest fapt face ca aceasta să fie mult mai puțin consumatoare de bandă deoarece la o acțiune a utilizatorului ceea ce este transmis de la server nu sunt decât schimbările necesare și nu întreagă pagină cum este cazul multora aplicații vechi.
+
+Acestă funcționalitate este realizată cu ajutorul librariei javascript AngularJS. Acesta permite compoziția paginilor web și astfel la acțiunele utilizatorului AngularJS dispune de un ruter de URL-uri care va incercepta aceste acțiuni și va incărca pagină specificată pentru URL-ul respectiv. Unul din altele funcționalități pentru care am preferat să folosesc această bibliotecă a fost datorită "data binding" ceea ce permite o legare foarte simplă a elementelor ce permit introducerea de date de către utilizator de variabile javascript care pot fi mai departe transimise către serviciul web.
+
+Pe partea de client am folosit librăriile puse la dispoziție de Spring și prin intermediul anotărilor am reușit să creez foarte simplu un serviciu REST. Pentru rularea aplicației am ales să nu folosesc un server separat așa cum este cazul majorității aplicațiilor, ci unul integrat în aplicație. Aceasta este de dorit în defavoarea folosirii unui server dedicat deoarece elimină probeleme legate de compatibilitate ce pot apărea între aplicație și mediile pe care aceasta rulează. Folosirea unui server integrat în aplicație presupune de asemenea și unele particularități în materie de configurarea. Aceasta se va face prin intermediul unei de clase de configurare și nu printr-un fisier, din moment ce intreaga aplicație va fi livrate ca o arhiva de tip jar.
+
+Folosirea unui astfel de server este foarte mult facilitată de folosirea librăriilor Spring, deoarece acestea oferă o soluție numită Springboot care se bazează pe Apache Tomcat, un server foarte des folosit pentru rularea aplicațiilor web create în Java. Pentru obținerea acestor librării am folosit \texttt{maven}, o unealtă care permite gestiune depedențelor unui proiect Java, dar care și gestionează aspecte cum ar fi compilare și împachetarea arhivelor. În plus Spring pune la dispoziție librăriile prin intermediul maven și include chiar pachete complete legate de anumite arii tipice ale unei aplicații cum ar fi : web, securitate, acces la o bază de date.
+
+\chapter{Funcționarea aplicației}
+Aplicația este accesibilă la urmatoarea adresă \texttt{http://localhost:8080}. Utilizatorul accesând acest URL va ajunge pe pagina de mai jos: 
+
+\begin{figure}[h]
+\centering
+\includegraphics*[scale=0.2]{img/poza1.png}
+\end{figure}
+Apăsând pe butonul de login se observă faptul de URL-ul este schimbat și că ruterul se URL al librăriei AngularJS a interceptat schimbarea și a schimbat conținutul paginii.	
+
+\begin{figure}[h]
+\centering
+\includegraphics*[scale=0.2]{img/poza2.png}
+\end{figure}
+
+În momentul de față singurul utilizator existent este unul generic denumit \texttt{user} și care face parte din setările implicite pe care le oferă pachetul de librării springboot-security, care a fost folosit pentru realizarea parții de securitate.
+\newpage
+După authentificare se poate observa că butonul "Login" a dispărut și că în locul acestuia a apărut "Logout". Mai jos se poate vedea chenarul în care va fi redat clipul video.
+
+\begin{figure}[h]
+\centering
+\includegraphics*[scale=0.2]{img/poza3.png}
+\end{figure}
+
+La click pe butonul play videoclipul va incepe rularea. 
+
+Una din problemele care a necesitat un pic de investigare a fost faptul ca în starea actuală nu era permis saltul la alt momente al clipului. Altfel spus utilizatorul nu putea să deruleze videoclipul acolo unde dorea. Aceasta se datora faptului că octeții erau transmiși secvențial, iar în momentul saltului acestia nu erau disponibili. Această problemă a fost remediată analizând cererile trimise de browser în momentul saltului și folosirea acelor informații pentru trimiterea octeților de informație utili.
+
+\begin{figure}[h]
+\centering
+\includegraphics*[scale=0.2]{img/poza4.png}
+\end{figure}
+
+După cum se poate vedea în screenshot-ul de mai sus browser-ul lansează o cerere către server, iar printre antetele transmise se numără și unul \texttt{range}.
+\newpage
+\chapter{Concluzii}
+În urma acestui experiment am putut constata că tehnologiile disponibile oferă posibilitatea dezvoltării facile a unei asemenea aplicații prin intermediul folosirii librăriilor. Deasemenea alegerea unei soluții adecvate este foarte importantă pentru că mai apoi eforturile dezvoltare să meargă în direcția bună. În cazul de față consider că am optat pentru o soluție scălabilă deoarece întreaga aplcație va fi instalabilă pe orice mediu care dispune de versiune adecvată de Java, fără niciun altfel de cerințe suplimentare.
+
+\end{document}

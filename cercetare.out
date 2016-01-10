@@ -1,0 +1,23 @@
+\BOOKMARK [0][]{chapter*.2}{Lista figurilor}{}% 1
+\BOOKMARK [0][]{chapter*.3}{Lista tabelelor}{}% 2
+\BOOKMARK [0][]{chapter*.4}{Lista acronimelor}{}% 3
+\BOOKMARK [0][]{chapter.1}{1 Introducere}{}% 4
+\BOOKMARK [1][]{section.1.1}{1.1 Ce este o arhitectura software?}{chapter.1}% 5
+\BOOKMARK [1][]{section.1.2}{1.2 De ce este arhitectura importanta ?}{chapter.1}% 6
+\BOOKMARK [1][]{section.1.3}{1.3 Obiectivele arhitecturii software}{chapter.1}% 7
+\BOOKMARK [1][]{section.1.4}{1.4 Principii arhitecturale cheie}{chapter.1}% 8
+\BOOKMARK [0][]{chapter.2}{2 Principii fundamentale ale arhitecturii software}{}% 9
+\BOOKMARK [1][]{section.2.1}{2.1 Principii de proiectare}{chapter.2}% 10
+\BOOKMARK [2][]{subsection.2.1.1}{2.1.1 Standarde de proiectare}{section.2.1}% 11
+\BOOKMARK [2][]{subsection.2.1.2}{2.1.2 Nivelele aplicatiei}{section.2.1}% 12
+\BOOKMARK [2][]{subsection.2.1.3}{2.1.3 Componente, module si functii}{section.2.1}% 13
+\BOOKMARK [0][]{chapter.3}{3 Tipare si stiluri arhitecturale}{}% 14
+\BOOKMARK [1][]{section.3.1}{3.1 Ce este un stil arhitectural?}{chapter.3}% 15
+\BOOKMARK [2][]{subsection.3.1.1}{3.1.1 Sumar al stilurilor arhitecturale}{section.3.1}% 16
+\BOOKMARK [2][]{subsection.3.1.2}{3.1.2 Combinarea stilurilor arhitecturale}{section.3.1}% 17
+\BOOKMARK [1][]{section.3.2}{3.2 Arhitectura client/server}{chapter.3}% 18
+\BOOKMARK [1][]{section.3.3}{3.3 Arhitectura bazata pe componente}{chapter.3}% 19
+\BOOKMARK [1][]{section.3.4}{3.4 Arhitectura stratificata}{chapter.3}% 20
+\BOOKMARK [1][]{section.3.5}{3.5 Arhitectura bazata pe bus de mesaje}{chapter.3}% 21
+\BOOKMARK [1][]{section.3.6}{3.6 Arhitectura orientata pe obiecte}{chapter.3}% 22
+\BOOKMARK [1][]{section.3.7}{3.7 Arhitectura orientata pe servicii}{chapter.3}% 23
