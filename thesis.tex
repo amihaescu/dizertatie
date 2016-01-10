@@ -211,7 +211,6 @@ Următorul table enumeră stilurile arhitecturale descrise în cadrul acestei lu
 	Arhitectură orientată pe servicii (SOA) &
  	Se referă la aplicații care expun și consumă functionalități prin intermediul serviciilor folosind contracte și mesaje. \\ \hline
     \end{tabular}
-    \label{altebasme}
 \caption{Sumar al stiluri arhitecturale}
 \end{table}
 
@@ -228,6 +227,13 @@ Mulți factori pot influența alegerea stilului. Aceștia includ și capacitatea
 
 \section{Arhitectura client/server}
 Arhitectura client/server descrie sistemele distribuite care implică separarea clientului și serverului și conectarea acestora prin rețea. Cea mai simplă implementare a unui sistem client/server implică un server care este accesat direct de mai mulți client, adesea numit stil arhitectural pe 2 niveluri.
+
+\begin{figure}[ht]
+\centering
+\includegraphics*[scale=0.8]{img/clientserver.png}
+\caption{Client/server}
+\label{fig:client_server}
+\end{figure}
 
 In mod tradițional, arhitectura client/server era implementată printr-o aplicație desktop cu interfață grafică ce comunica cu un server de baze date conținândn majoritatea logicii de business în proceduri stocate. Mai generic, însă, arhitectura client/server descrie relația între un client și unul sau mai multe server, clientul inițiând una sau mai multe cereri folosind interfața grafică, asteaptă raspunsuri și execută procesarile la recepție. Serverul în mod tipic autorizează utilizatorul și apoi declanșează procesele necesare pentru generarea rezultatului. Serverul poate sa trimită răspunsurile folosind o varietate de protocoale și formate de date pentru a comunica informația clientului.
 
@@ -265,6 +271,12 @@ Principalele trăsături ale acestui stil sunt:
  \item Independența. Componentele sunt proiectate pentru a avea dependențe minime față de alte componente. Prin urmare acestea pot fi instalate în orice mediu fără a afecta alte componente sau sisteme.
 \end{itemize}
 
+\begin{figure}[ht]
+\centering
+\includegraphics*[scale=0.8]{img/component-based.png}
+\caption{Arhitectură bazată pe componente}
+\label{fig:arhi_componente}
+\end{figure}
 Tipuri comune de componente utilizate în aplicații includ componente grafice cum ar fi butoane și grile și componente ajutătoare sau utilitare care expun un set de funcții specifice folosite de către alte componente. Alte tipuri de componente sunt acelea care sunt strâns legate de resurse, nu așa de des accesate și care trebui activate folosind abordarea \emph{just-in-time (JIT)} - des întâlnită în cadrul componentelor comandate la distanță ; și componente bazate pe cozi ale căror apeluri de metode pot fi executate asincron folosind mesaje de asteptare.
 
 Componentele depind de un mecanism din cadrul platformei care oferă un mediu în care ele să poate fi executate. Exemplele includ : \emph{component object model (COM)} și \emph{ distributed component object model (DCOM)} pentru Windows; și \emph{Common Object Request Broker Architecture (CORBA)} și \emph{Enterprise Java 	Beans (EJB)} pentru alte platforme. Aceste mecanisme administrează localizarea componentelor și a interfețelor acestora, transmiterea mesajelor și a comenzilor între componente și în unele cazuri menținerea stării.
@@ -287,6 +299,13 @@ Se dorește folosirea acestei arhitecturii dacă: există deja componente adecva
 Arhitectura straficată se concentrează pe gruparea funcționalităților conexe din cadrul unei aplicații pe niveluri diferite care sunt grupate orizontal unele deasupra celorlalte.Funcționalitate în cadrul fiecarui nivel este dominată de un rol sau o responsabilitate comună. Comunicarea între niveluri este explicită și slab corelată. Stratificarea corectă ajută la separarea responsabilității care sporește flexibilitate și ușurința administrării.
 
 Acest stil a fost descris ca fiind o piramidă întoarsă în care fiecare nivel agregă responsabilitățile și abstractizările nivelului imediat inferior. Folosind stratificarea strictă, componentele din cadrul unui nivel pot interacționa doar cu componente din cadrul aceluiași nivel sau cu componente din nivelul imediat inferior. O stratificare mai lejeră permite componentelor dintr-un nivel să interacționeze cu componente din același nivel sau orice componente aparținând nivelurilor inferioare.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.5]{img/layered-arch.PNG}
+\caption{Arhitectură stratificată}
+\label{fig:arhi_componente}
+\end{figure}
 
 Straturile aplicației pot fi aceeși mașină fizică (pe acelasi nivel) sau pot fi distribuite pe masini diferite (N-Nivele) și componentele din același nivel comunica cu componente din alte nivele prin interfețe bine definite. De exemplu o aplicație web tipică este alcătuită dintr-un nivel de prezentare (tot ceea ce ține de interfața grafică), un nivel de logică business și un nivel de acces de date. 
 
@@ -333,6 +352,13 @@ Arhitectura bazată pe bus de mesaje descrie principiul folosirii unui sistem so
 	\item Integrarea cu diverse medii. Folosind comunicarea orientată pe mesaje bazate pe standarde comune se pot crea interacțiuni între medii diferite cum ar fii Microsoft .Net și Java.
 \end{itemize}
 
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.9]{img/message-bus.png}
+\caption{Arhitectură bazată pe bus de mesaje}
+\label{fig:arhi_componente}
+\end{figure}
+
 Arhitecturile bazate pe bus de mesaje au fost folosite in cadrul procesărilor complexe. Acest design oferă o arhitectuă ce permite inserarea aplicațiilor în proces și îmbunătățeste scalabilitatea prin posibilitatea de a atașa numeroase instanțe alea aceleași aplicații în bus. Variații ale acestui stil sunt: 
 \begin{itemize}
  \item Enterprise Service Bus (ESB). Bazată pe design cu bus de mesaje, ESB folosește servicii pentru comunicarea între bus și componentele atașate la bus. De obicei oferă servicii pentru convertirea mesaje între diferite formate, permițând clienților să folosească mesaje incompotabilie pentru a comunica între ei.
@@ -350,5 +376,65 @@ Principalele avantaje ale acestui stil sunt:
 \end{itemize}
 
 Acest stil arhitectural este potrivit cazurilor în care deja există aplicații care funcționează împreună pentru a realiza anumite funcții sau care combină mai multe sarcini într-o singură operație. Acest stil este adecvat dacă se dorește implementarea unei sarcini care necesită interacțiune cu aplicații externe sau aplicații găzduite pe medii diverse.
+
+\section{Arhitectura orientată pe obiecte}
+Arhitectura orientată pe obiecte este o pardigmă bazată pe divizarea responsabilităților dintr-o aplicație sau sistem pe obiecte individuale reutilizabile, fiecare conținând datele și comportamentul relevant obiectului. Un design orientat pe obiecte privește un sistem ca o serie de obiecte cooperând , în loc de un set de rutine sau instrucțiuni procedurale. Obiectele sunt discrete, independente și slab couplate; ele comunică prin interfețe, apelând metode sau accesând proprietăți ale obiectelor, sau trimițând si primind mesaje.
+Principiile cheie ale stilui arhitectural obiect orientat sunt următoarele:
+
+\begin{itemize}
+ \item Abstractizare. Aceasta permite reducerea unei operațiuni complexe într-o generalizare ce reține caracteristicile de bază ale acesteia. De exemplu, o interfață abstractă poate fi o definiție bine cunoscută ce expune operațiuni legate de accesul la date folosind metode simple cum ar fi "get" sau "update". O altă formă de abstractizare ar putea fi metadatele folosite pentru a crea o mapare între două formate ce conțin date structurate.
+ \item Compoziție. Obiectele pot asamblate pornind de la alte obiecte și pot ascunde obiectele interne din alte clase sau să le expună ca simple intefețe.
+ \item Moștenire. Obiectele pot moșteni alte obiecte și folosi funcționalitatea din obiectul de bază sau sa o suprascrie pentru a implementa un nou comportament. În plus, moștenirea facilitează mentenanța și actualizările, deoarece schimbările în obiectul de bază propagă schimbările și în obiectele care îl moștenesc.
+ \item Encapsularea. Obiectele expun funcționalitate numai prin metode, proprietăți și eveniment, dar ascund detalii interne cum ar fi starea sau variabile din alte obiecte. Aceasta ușureazp actualizarea și înlocuirea obiectelor, atât timp cât interfețele lor sunt compatibile, fără a afecta celălalte obiecte.
+ \item Polimorfism. Aceasta permite suprascrierea comportamentului din tipul de bază care susține operații din cadrul aplicației implementând tipuri de noi care sunt interschimbabile cu obiectul existent.
+ \item Decuplare. Obiectele pot fi decuplate de la consumator prin definirea unui interfețe abstracte pe care obiectele o pot implementa și pe care consumatorul o poate înțelege. Aceasta permite oferirea implementărilor alternative fără afectare consumatorilor interfeței.
+\end{itemize}
+Utilizări tipice ale acestui stil includ definirea unui obiect model care realizează operatii științifice comeplexe sau financiare, și a obiectelor care reprezintă artefacte din lumea reala dintr-un domeniu de business.
+
+Beneficiile majore ale stilului orientat pe obiecte ar fi:
+\begin{itemize}
+ \item Inteligibilitatea. Mapează aplicația la obiecte mult mai apropiate de lumea reală, ceea ce o face mai inteligibilă.
+ \item Reutilizarea. Oferă posibilitatea reutilizării codului prin intermediul polimorfismului și a abstractizării.
+ \item Testarea. Posibilități sporite de testare prin intermediul encapsulării.
+ \item Extensibilitatea. Folosirea encapsulării, a polimorfismului și a abstractizării izolează interfețele pe care obiectul le expun de schimbările asupra datelor.
+ \item Nivel înalt de coeziune. Punând în obiect doar metode și funcționalități corelate și folosind diferite obiecte pentru diferite funcții se obține un nivel înalt de coeziune.
+\end{itemize}
+
+Acest stil se potrivește în cazul în care se dorește modelarea unui aplicații bazatî pe obiecte și acțiuni din lumea reală, sau dacă există deja obiectele și acțiunile care să se potrivească cu cerințele de design și operaționale.
+El mai este adecvat și în cazul în cazre logica de business trebuie encapsulată alături de date în componente reutilizabile sau există logică de business complexă ce necesită abstractizare și comportament dinamic.
+
+\section{Arhitectura orientată pe servicii}
+Arhitectura orientată pe servicii crează posibilitatea expunerii funcționalității unei aplicații ca un set de servicii și crearea de aplicații care să folosească aceste servicii. Serviciile sunt slab cuplate deoarecere ele folosesc interfețe standard ce pot fi invocate, publicate și descoperite. Serviciile din cadrul SOA (Service Orientated Architecture) se concentrează pe oferirea unei interacțiuni bazate pe scheme și mesaje cu o aplicație prin interfețe care au scopul restrâns la aceasta și care nu sunt orientate pe componente sau obiecte. Un serviciu care respectă SOA nu ar trebuie sa fie considerat precum o componentă a unui furnizor de servicii. 
+
+Stilul SOA poate să includă procese de business în servicii interoperabile folosind o gamă largă de protocoale și formate de date pentru comunicareaa informațiilor. Clienții și alte servicii pot accesa servicii local rulând la același nivel, sau pot accesa serviciile la distanță prin intermediul rețelei.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.7]{img/soa.png}
+\caption{Arhitectură orientată pe servicii}
+\label{fig:arhi_componente}
+\end{figure}
+
+Principiile cheie ale stilului SOA sunt:
+\begin{itemize}
+ \item Serviciile sunt autonome. Fiecare serviciu este menținut, dezvoltat, instalat și versionat în mod independent.
+ \item Serviciile pot fi distribuite. Serviciile pot fi localizate oriunde pe rețea, local sau la distanță, atât timp cat rețeaua dispune de protocoalele necesare de comunicare.
+ \item Serviciile sunt slab cuplate. Fiecare serviciu este independent față de celălalte și poate fi înlocuit și actualizat fără a întrerupe celălalte aplicații care îl folosesc atât timp cât interfețele sunt compatibile.
+ \item Serviciile împarte schema și contractul, nu clasa. Serviciile partajează contracte și scheme atunci când comunică, și nu clase interne.
+ \item Compatibilitatea se bazează pe politici. Politici în acest caz înseamnă definirea caracteristicilor precum transport, protocol și securitate.
+\end{itemize}
+
+Exemple tipice de aplicații orientate pe servicii includ cele legate de partajarea informației, manipularea proceselor multi-etapă precum sisteme de rezervare sau magazine online, ce expun date sau servicii specifice industriei prin intermediul unei rețele, creând colecții de informații din mai multe surse.
+
+Beneficiile principale ale stilului SOA sunt:
+\begin{itemize}
+	\item Alinierea la domeniu. Reutilizarea serviciilor comune cu interfețe standard crește oportunitățile de business și tehnologice și reduce costurile.
+	\item Abstractizarea. Serviciile sunt autonome și accesate printr-un contract formal, ce oferă cuplare slabă și abstactizare.
+	\item Detectabilitatea. Serviciile pot expune descrieri care să permită altor aplicații și servicii să le localizeze și să construiască automat interfața.
+	\item Interoperabilitatea. Deoarece protocoalele și formatele datelor sunt baze pe standarde din industrie, furnizorul și consumatorul servicilui pot fi construiți și instalați pe platforme diferite.
+	\item Raționalizarea. Serviciile pot fi granulare pentru a oferi o funcționalitate specifică, mai degrabă decât să duplice funcționalitatea în cadrul mai multor aplicații.
+\end{itemize}
+
+Acest stil merită luat în considerare atunci când este diposnibil accesul la serviciile care se doresc a fi reutilizate; când serviciile pot fi cumpărate de la o companii terțe; când se dorește construirea aplicațiilor compuse dintr-o serie de servicii cu o singură interfață grafică; sau când se dorește crearea unei aplicații de tipul Software plus Services (S+S), Software as a Service (SaaS), sau bazate pe cloud. Stilul SOA este adecvat atunci trebuie asigurată comunicarea între segmentele unei aplicații și expuse funcționalități într-o manieră independentă de platformă, când se dorește utilizarea serviciilor centralizate precum autentificare sau expunerea serviciilor detectabile prin registre sau care pot fi utilizate de clienți care nu cunosc în prealabil interfețele.
 
 \end{document}
