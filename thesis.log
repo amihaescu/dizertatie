@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.1.1)  10 JAN 2016 14:54
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.1.1)  10 JAN 2016 16:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -371,7 +371,7 @@ Package hyperref Warning: bookmark level for unknown unnumberedsection defaults
 
 Lista acronimelor
 
-Underfull \hbox (badness 10000) in paragraph at lines 55--55
+Underfull \hbox (badness 10000) in paragraph at lines 58--58
 
  []
 
@@ -384,21 +384,21 @@ Capitolul 1.
 ]
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\u' on input line 70.
+(hyperref)                removing `\u' on input line 73.
 
 [2]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 87.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 90.
  (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 87.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 90.
  [3]
 Capitolul 2.
-<img/IC351032.png, id=159, 510.90875pt x 528.97626pt>
+<img/IC351032.png, id=165, 510.90875pt x 528.97626pt>
 File: img/IC351032.png Graphic file (type png)
  <use img/IC351032.png>
-Package pdftex.def Info: img/IC351032.png used on input line 100.
+Package pdftex.def Info: img/IC351032.png used on input line 103.
 (pdftex.def)             Requested size: 255.45375pt x 264.48747pt.
 
 [4
@@ -406,86 +406,102 @@ Package pdftex.def Info: img/IC351032.png used on input line 100.
  <./img/IC351032.png>] [5]
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\textcommabelow' on input line 142.
+(hyperref)                removing `\textcommabelow' on input line 145.
 
 [6]
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\textcommabelow' on input line 153.
+(hyperref)                removing `\textcommabelow' on input line 156.
 
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\textcommabelow' on input line 153.
+(hyperref)                removing `\textcommabelow' on input line 156.
 
 [7]
 Capitolul 3.
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\textcommabelow' on input line 165.
+(hyperref)                removing `\textcommabelow' on input line 168.
 
 [8
 
 ]
-Underfull \hbox (badness 1019) in paragraph at lines 196--196
+Underfull \hbox (badness 1019) in paragraph at lines 199--199
 []|[]\OT1/cmr/m/n/12 Imparte sis-te-mul ^^^Pn dou^^Ua aplica[]ii, ^^^Pn care cl
 i-entu
  []
 
 
-Underfull \hbox (badness 2088) in paragraph at lines 197--197
+Underfull \hbox (badness 2088) in paragraph at lines 200--200
 []|\OT1/cmr/m/n/12 Arhitectur^^Ua ba-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 199--199
+Underfull \hbox (badness 10000) in paragraph at lines 202--202
 []|\OT1/cmr/m/n/12 Arhitectur^^Ua
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 203--203
+Underfull \hbox (badness 10000) in paragraph at lines 206--206
 []|\OT1/cmr/m/n/12 N-niveluri/3-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 208--208
+Underfull \hbox (badness 10000) in paragraph at lines 211--211
 []|\OT1/cmr/m/n/12 Arhitectur^^Ua
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 208--208
+Underfull \hbox (badness 10000) in paragraph at lines 211--211
 \OT1/cmr/m/n/12 orien-tat^^Ua pe
  []
 
 [9] [10]
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\u' on input line 252.
+(hyperref)                removing `\u' on input line 255.
 
 [11]
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\u' on input line 282.
+(hyperref)                removing `\u' on input line 285.
 
-[12]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 311.
- [13]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 311.
+[12] [13]
+Overfull \hbox (6.86215pt too wide) in paragraph at lines 325--326
+[]\OT1/cmr/m/n/12 Tiparul pre-zen-tat mai sus spore[]te po-si-bi-li-ta-tea de t
+es-tare a aplica[]iei []i sim-pli-fic^^Ua mentenan[]a
+ []
+
+
+Overfull \hbox (0.26758pt too wide) in paragraph at lines 325--326
+\OT1/cmr/m/n/12 func[]ionalit^^Ua[]ii interfe[]ei gra-fice []i ofer^^Ua po-si-b
+i-li-ta-tea se-par^^Uarii sar-ci-ni-lor de con-ce-pere a interfe[]ei
+ []
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\u' on input line 327.
+
+[14]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 354.
+ [15]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 354.
  (./thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 311.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 311.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 354.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 354.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: E6397958B8AB07EDFB57F14569E90DE9;1474.
+(rerunfilecheck)             Checksum: F3FF7495B7B70FC9C933DC833DA464D1;1577.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 311.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 354.
  ) 
 Here is how much of TeX's memory you used:
- 7715 strings out of 494424
- 107161 string characters out of 6165347
- 198505 words of memory out of 5000000
- 10834 multiletter control sequences out of 15000+600000
+ 7719 strings out of 494424
+ 107219 string characters out of 6165347
+ 198512 words of memory out of 5000000
+ 10835 multiletter control sequences out of 15000+600000
  13581 words of font info for 46 fonts, out of 8000000 for 9000
  372 hyphenation exceptions out of 8191
  30i,16n,38p,907b,545s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -500,10 +516,10 @@ blic/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
 fonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
 i7.pfb>
-Output written on thesis.pdf (19 pages, 195834 bytes).
+Output written on thesis.pdf (21 pages, 202948 bytes).
 PDF statistics:
- 257 PDF objects out of 1000 (max. 8388607)
- 219 compressed objects within 3 object streams
- 43 named destinations out of 1000 (max. 500000)
- 172 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 270 PDF objects out of 1000 (max. 8388607)
+ 230 compressed objects within 3 object streams
+ 46 named destinations out of 1000 (max. 500000)
+ 180 words of extra memory for PDF output out of 10000 (max. 10000000)
 

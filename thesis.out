@@ -13,8 +13,9 @@
 \BOOKMARK [2][]{subsection.2.1.3}{2.1.3 Componente, module si functii}{section.2.1}% 13
 \BOOKMARK [0][]{chapter.3}{3 Tipare si stiluri arhitecturale}{}% 14
 \BOOKMARK [1][]{section.3.1}{3.1 Ce este un stil arhitectural?}{chapter.3}% 15
-\BOOKMARK [1][]{section.3.2}{3.2 Sumar al stilurilor arhitecturale}{chapter.3}% 16
-\BOOKMARK [1][]{section.3.3}{3.3 Combinarea stilurilor arhitecturale}{chapter.3}% 17
-\BOOKMARK [1][]{section.3.4}{3.4 Arhitectura client/server}{chapter.3}% 18
-\BOOKMARK [1][]{section.3.5}{3.5 Arhitectura bazata pe componente}{chapter.3}% 19
-\BOOKMARK [1][]{section.3.6}{3.6 Arhitectura stratificata}{chapter.3}% 20
+\BOOKMARK [2][]{subsection.3.1.1}{3.1.1 Sumar al stilurilor arhitecturale}{section.3.1}% 16
+\BOOKMARK [2][]{subsection.3.1.2}{3.1.2 Combinarea stilurilor arhitecturale}{section.3.1}% 17
+\BOOKMARK [1][]{section.3.2}{3.2 Arhitectura client/server}{chapter.3}% 18
+\BOOKMARK [1][]{section.3.3}{3.3 Arhitectura bazata pe componente}{chapter.3}% 19
+\BOOKMARK [1][]{section.3.4}{3.4 Arhitectura stratificata}{chapter.3}% 20
+\BOOKMARK [1][]{section.3.5}{3.5 Arhitectura bazata pe bus de mesaje}{chapter.3}% 21

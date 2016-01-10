@@ -39,6 +39,8 @@ COM - Common Object Model \\
 DCOM - Distributed Common Object Model  \\
 DRY - Don't repeat yourself \\
 EJB - Enterprise Java Beans \\ 
+ESB - Enterprise Service Bus \\
+ISB - Internet Service Bus \\ 
 JIT - Just in time \\
 LOB - Line-of-business \\
 MVC - Model View Controller \\
@@ -46,6 +48,7 @@ P2P - Peer-to-Peer \\
 QA - Quality Assurance \\ 
 SOA - Service Oriented Architecture \\
 UML - Unified Modelling Language \\
+URI - Uniform Resource Identifiers \\
 YAGNI - You ain't gonna need it \\
 
 
@@ -185,7 +188,7 @@ Un stil arhitectural, adesea numit și tipar arhitectural, reprezintă un set de
 \end{table}
 
 \newpage
-\section{Sumar al stilurilor arhitecturale}
+\subsection{Sumar al stilurilor arhitecturale}
 Următorul table enumeră stilurile arhitecturale descrise în cadrul acestei lucrări, împreună cu o scurtă descriere a fiecăruia.
 \begin{table}[ht]
 \centering
@@ -212,7 +215,7 @@ Următorul table enumeră stilurile arhitecturale descrise în cadrul acestei lu
 \caption{Sumar al stiluri arhitecturale}
 \end{table}
 
-\section{Combinarea stilurilor arhitecturale}
+\subsection{Combinarea stilurilor arhitecturale}
 Arhitectura unui sistem software nu este aproape niciodată limitată la doar un stil arhitectural, însă este adesea o combinație a mai multor stiluri care formează un sistem complet. De exemplu am putea avea un sistem cu design SOA a cărui servicii au fost dezvoltate folosind o arhitectura stratificată și una orientată pe obiecte.
 
 O combinație de stiluri este de asemenea utilă dacă se dorește construirea unei aplicații web, unde se poate obține o separare eficientă a funcționalității folosind arhitectura stratificată. Aceasta va separa logica de afișare de logica de business și de cea de acces la date. Din motive de securitate poate fi impusă o instalare a aplicației pe 3 niveluri sau chiar pe mai multe.
@@ -307,5 +310,45 @@ Tiparele de proiectare care susțin acest stil arhitectural sunt numeroase. De e
 	\item Precesare delegată a evenimentelor. Controller-ul procesează evenimente lansate din interfața grafică.
 \end{itemize}
 
+Principalele beneficii ale acestui stil și tipar sunt :
+\begin{itemize}
+	\item Abstractizarea. Nivelele permit schimbări la nivel abstract. Se poate crește sau scădea nivelul de abstractizare al fiecărui nivel din stivă.
+	\item Izolarea. Permite izolarea actualizărilor la nivele individuale pentru a reduce riscul și a minimiza impactul asupra sistemul ca și întreg.
+	\item Administrarea. Separarea responsabilităților cheie ajută la identificarea depedențelor și organiează codul în blocuri mult mai gestionabile.
+	\item Perfomanța. Distribuirea nivelelor pe mai multe mașini fizice poate crește scalabilitatea, fiabilitatea și performanța. 
+	\item Reutilizarea. Rolurile promovează reutilizarea. De exemplu, în MVC, Controller-ul poate adesea fii refolosit de către alte View-uri pentru a crea un role specific sau un view personalizat bazat pe aceeași funcționalitate și date.
+	\item Testarea. Posibilitatea sporită de testare rezultă din interfețe bine definite, cât și din posibilitatea de a trece de la o implementare la alta a interfeței nivelului.Tiparele de tip "Separated Presentation" permit construirea obiectelor de test pentru a simula comportamentul obiectelor concrete cum ar fi modelul, controller-ul sau view-ul în timpul testării.
+\end{itemize}
+
+Acest stil este adecvat cazului în care există nivele care poate fi reutilizate în alte aplicații, dacă există deja aplicații care expun procese de business prin interfețe de serviciu sau dacă aplicația este complexă și design-ul de nivel înalt impune o separare astfel încât echipele să se poată concentra pe arii diferite. Acest stil este potrivit și în cazul în care aplicația trebuie să fie diposnibilă pe tipuri diferite de clienți sau dispozitive sau dacă se dorește implementarea unor reguli și procese business complexe și configurabile.
+
+Tiparul prezentat mai sus sporește posibilitatea de testare a aplicației și simplifică mentenanța funcționalității interfeței grafice și oferă posibilitatea separării sarcinilor de concepere a interfeței grafice de dezvoltarea logicii de business.
+
+\section{Arhitectura bazată pe bus de mesaje}
+Arhitectura bazată pe bus de mesaje descrie principiul folosirii unui sistem software care primește și trimite mesaje folosind unul sau mai multe canale de comunicare, astfel încât aplicațiile pot interacționa fără a fi nevoite să cunoască detalii. Este un stil de proiectare a aplicațiilor a caror interacțiune se realizează prin transmitere de mesaje (de obice asincron) prin intermediul unui bus comun. Implementările tipice ale acestui stil folosesc fie un ruter de mesaje fie tiparul "Publish/Subscribe" și sunt adesea implementate folosind sisteme de mesagerie de tip "cozi de mesaje". Multe implementări sunt alcătuite din aplicații individuale care comunică folosind o schemă comună și o infrastructură partajată pentru primirea și trimiterea de mesaje. Un bus de mesaje oferă posibilitatea de a gestiona :
+\begin{itemize}
+	\item Comunicații orientate pe mesaje.  Toate comunicațiile între aplicații se bazează pe mesaje care folosesc scheme cunoscute.
+	\item Logică complexă de procesare. Operațiile complexe poate fi executate folosind un set de operațiuni mai mici, fiecare realizează o sarcină specifică, ca parte a unui proces cu mai multe etape.
+	\item Modificări ale logicii de procesare. Deoarece interacțiunea cu bus-ul se bazează pe scheme și comenzi comune, se pot insera și scoate aplicații din bus pentru a schimba logica care este folosită pentru a procesa mesajele.
+	\item Integrarea cu diverse medii. Folosind comunicarea orientată pe mesaje bazate pe standarde comune se pot crea interacțiuni între medii diferite cum ar fii Microsoft .Net și Java.
+\end{itemize}
+
+Arhitecturile bazate pe bus de mesaje au fost folosite in cadrul procesărilor complexe. Acest design oferă o arhitectuă ce permite inserarea aplicațiilor în proces și îmbunătățeste scalabilitatea prin posibilitatea de a atașa numeroase instanțe alea aceleași aplicații în bus. Variații ale acestui stil sunt: 
+\begin{itemize}
+ \item Enterprise Service Bus (ESB). Bazată pe design cu bus de mesaje, ESB folosește servicii pentru comunicarea între bus și componentele atașate la bus. De obicei oferă servicii pentru convertirea mesaje între diferite formate, permițând clienților să folosească mesaje incompotabilie pentru a comunica între ei.
+ \item Internet Service Bus (ISB). Similar cu precentul doar că în acest caz aplicațiile se află în cloud și nu pe rețeaua companiei. Un concept esențial al ISB reprezintă folosirea URI-urilor (Uniform Resource Identifiers) și a politicilor pentru controlarea rutării informației din cadrul proceselor aplicațiilor și serviciilor din cloud.
+\end{itemize}
+
+Principalele avantaje ale acestui stil sunt:
+\begin{itemize}
+ \item Extensibilitate. Aplicațiile pot fi adaugate sau înlăturate de pe bus fără a avea impact asupra aplicațiilor existente.
+ \item Complexitate redusă. Complexitatea aplicațiilor este redusă, deoarece fiecare aplicație nu trebuie să cunoscă decât modul de interacțiune cu busul.
+ \item Flexibilitate. Setul de aplicații care alcătuiesc un proces complex sau tiparele de comunicare între aplicații, pot fi ușor schimbate pentru a răspunde nevoilor de business, pur și simplu prin modificarea configurării sau a parametrilor care controlează rutarea.
+ \item Cuplare slabă. Atât timp cât aplicațiile expun o interfață adecvată pentru comunicarea cu busul de mesaje, nu există nici o dependență față de aplicația în sine, aceasta permițând schimbări, actualizări și înlocuiri cu aplicații ce expun aceeași intefață.
+ \item Scalabilitate. Mai multe instanțe ale aceeași aplicații pot fi atașate busului pentru a prelucra mai multe cereri în același timp.
+ \item Simplitatea aplicației. Deși implementarea unui bus de mesaje adaugă complexitate infrastrucutrii, fiecare aplicație nu trebuie sa asigure decât o singură conexiune la bus în locul mai multora, către celălalte aplicații.
+\end{itemize}
+
+Acest stil arhitectural este potrivit cazurilor în care deja există aplicații care funcționează împreună pentru a realiza anumite funcții sau care combină mai multe sarcini într-o singură operație. Acest stil este adecvat dacă se dorește implementarea unei sarcini care necesită interacțiune cu aplicații externe sau aplicații găzduite pe medii diverse.
 
 \end{document}
