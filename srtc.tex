@@ -1,0 +1,222 @@
+\documentclass[12pt, a4paper, oneside, romanian]{teza-upb}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\usepackage{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[
+  bookmarksnumbered,
+  bookmarks,
+  bookmarksopen=true,
+  pdftitle={Dizertatie},
+  linktocpage]{hyperref}
+\singlespacing
+\begin{document}
+\begin{titlepage}
+	\centering
+	\includegraphics[width=0.15\textwidth]{img/UPB-logo.png}\par\vspace{1cm}
+	{\scshape\LARGE Facultatea de Electronică, Telecomunicații și Tehnologia Informației \par}
+	\vspace{1cm}
+	{\huge\bfseries Proiect SRTC\par}
+	\vspace{2cm}
+	{\Large\bfseries Studiul rutării in retele fixe\par}
+	\vspace{2cm}
+	{\Large\bfseries Andrei Mihăescu\par}
+	{\large TSAC II, ianuarie 2016\par}
+
+% Bottom of the page
+\end{titlepage}
+\newpage
+
+\chapter{RIPng}	
+RIP - eng. Routing Information Protocol - este un protocol de rutare de tip distanta-vector ce implica utilizarea ca metrica de rutare a numărului de pași de rutat (hop count). Prin aceasta, RIP previne apariția buclelor de rutare, utilizând o valoare limita maxima ca număr de pași de rutare pe calea de la sursa la destinație. In general, limita este fixata la 15 (o valoare fixata la 16 reprezinta o distanta de rutare infinita, inoperabila, prin urmare de evitat în selecția procesului de rutare). La începuturi, fiecare ruter capabil-RIP transmitea la fiecare 30 de secunde tabela sa de rutare . In implementările inițiale, tabelele de rutare erau de dimensiuni reduse și prin urmare traficul suplimentar era redus. Problemele apăreau odată cu dezvoltarea rețelelor când, într-adevăr traficul suplimentar de rețea începea sa devina consistent. Odată cu trecerea timpului, acest protocol a fost mai puțin preferat, în comparație cu alte protocoale de rețea precum OSPF sau EIGRP. RIP utilizează UDP ca și protocol de transport și ii este asignat portul cu numărul 520.
+
+\section{Versiuni}
+S-au stabilit trei versiuni ale acestui protocol: RIPv1, RIPv2 si RIPng.
+
+\subsection{RIP versiunea 1}
+Specificația originala de RIP a fost definita în RFC 1058 (Iunie 1988) utiliza rutarea pe baza adresării "classfull". Prin urmare, actualizările periodice, nu includeau și informația de subrețea specifice VLSM, astfel era necesar ca subrețelele existente sa fie toate de aceeași dimensiune. Totodată nu exista suport pentru autentificarea routerelor făcându-l vulnerabil atacurilor asupra rețelei.
+
+\subsection{RIP versiunea 2}
+Problemele specifice RIPv2 au fost corectate în RFC 1388 (1993) ulterior fiind standardizate sub denumirea RIPv2 (STD56). Astfel, este posibila transmiterea și a informației de subrețea suportând astfel adresarea CIDR (Classless InterDomain Routing). Limita maxima de 15 rute a fost menținuta în ideea păstrării compatibilității cu versiunea anterioara. Pentru a evita încărcarea inutila a gazdelor ce nu sunt implicate în procesul de rutare, routerele ce au implementat protocolul RIPv2 vor transmite tabela de rutare doar routerelor adiacente utilizând o adresa de tip multicast, 224.0.0.9, spre deosebire de RIPv1 ce utiliza o adresare de tip broadcast (adresate tuturor nodurilor din rețea).
+
+\subsection{RIPng}
+RIPng (eng. RIP next generation) a fost definit în RFC 2080 și reprezinta o extensie a lui lui RIPv1 oferind suport pentru IPv6. În vreme ce RIPv2 oferă suport pentru autentificarea actualizărilor RIPv1, RIPng nu oferă. Routerele IPv6 au fost programate sa suporte IPsec pentru autentificare. RIPng trimite actualizări utilizând UDP, pe portul 521, către grupul multicast, pe adresa FF02::9.
+\vspace{0.1cm}
+\section{Simulare NS3}
+
+În cadrul NS3 protocol RIPng este simulat folosind schema de mai jos.
+\begin{figure}[H]
+\centering
+\includegraphics*[scale=0.5]{img/RIPng.png}
+\caption{Topologie de test RIPng}
+\label{fig:punguta}
+\end{figure}
+ Detaliile legate de topologie sunt următoarele :
+\begin{itemize}
+ \item A,B,C și D sunt routere RIPng.
+ \item A și D sunt configurate cu adrese statice.
+ \item SRC și DST vor schimba pachete.
+ \item După aproximativ 3 secunde topologia este creată și un Echo Reply va fi primit.
+ \item După 40 de secunde link-ul între B și D se va opri cauzând o invalidare a rutei.
+ \item După 44 de secunde de la întrerupere, rețeaua va ajunge din nou la convergență.
+ \item Tehnica "Split Horizining" ar trebui să afecteze timpul de convergență, însă nu este cazul.
+\end{itemize}
+
+Pentru implementarea acestei topologii sunt folosite clase din bibliotecile NS3 după cum urmează:
+
+\begin{itemize}
+ \item crearea nodurilor \texttt{Ptr<Node> src = CreateObject<Node> ();}
+ \item simularea rețelelor astfel încât nodurile să poată comunica \texttt{NodeContainer net1 (src, a);}
+ \item setarea proprietăților legăturilor (link-urilor) se face folosind clasa \texttt{CSMAHelper}, după cum urmează : setarea vitezei link-ului : \texttt{csma.SetChannelAttribute ("DataRate", DataRateValue (5000000));} și setarea întărzierii \texttt{csma.SetChannelAttribute ("Delay", TimeValue (MilliSeconds (2)));}
+ \item toate configurările specifice pentru RIPng se fac prin intermediul unei clase ajutătoare denumită \texttt{RipNgHelper}
+ \item mai departe sunt excluse interfețele routerelor care nu se doresc a fi folosite \texttt{ripNgRouting.ExcludeInterface (a, 1);} și se modifică metricile implicite ale legăturilor \texttt{ripNgRouting.SetInterfaceMetric (c, 3, 10);}
+ \item următorul bloc de cod se ocupă de instalarea stivei IP care va fi folosită; se observă ca doar cea de IPv6 este instalată.
+ \item se asignează adrese interfețelor routerelor din rețeaua core 
+ 
+ \texttt{ipv6.SetBase (Ipv6Address ("2001:0:2::"), Ipv6Prefix (64));}
+ 
+ \texttt{Ipv6InterfaceContainer iic3 = ipv6.Assign (ndc3);}
+ 
+ \texttt{iic3.SetForwarding (0, true);}
+ 
+ \texttt{iic3.SetForwarding (1, true);}
+ 
+ \item în NS3 ping-ul este considerat precum o aplicație; acesta are configurat o sursă, respectiv calculatorul din care va fi inițiat ping-ul \texttt{ping6.SetLocal (iic1.GetAddress (0, 1));} și destinația \texttt{ping6.SetRemote (iic7.GetAddress (1, 1));}. După aceea aplicația "ping6" este instalată în container-ul de aplicații și lansat conform descrierii la momentul 1 și oprit la momentul 110, care marchează și sfârsitul simulării.
+ 
+\texttt{ApplicationContainer apps = ping6.Install (src);}
+
+\texttt{apps.Start (Seconds (1.0));}
+
+\texttt{apps.Stop (Seconds (110.0));}
+
+\item simulatorului îi este specificat ca la momentul 40 să declanșeze evenimentul TearDownLink, ceea ce reprezintă întreruperea unei legături.
+
+\item apoi simularea este lansată.
+\end{itemize}
+\newpage
+\section{Vizualizare rezultate}
+În urma rulării NS3 generează capturi Wireshark în care se poate vedea comportamentul topologiei create. Analizându-le se poate observa comportamentul descris mai sus. 
+
+\begin{figure}[H]
+\centering
+\includegraphics*[scale=0.25]{img/ripng1.png}
+\caption{Captura Wireshark functionare normală RIPng}
+\label{fig:punguta}
+\end{figure}
+
+Deasemenea se poate observa că în momentul întreruperii link-ului apare o pierdere de pachete până în momentul restabilirii convergenței rețelei.
+
+\begin{figure}[H]
+\centering
+\includegraphics*[scale=0.25]{img/ripng2.png}
+\caption{Captura Wireshark RIPng întrerupere link}
+\label{fig:punguta}
+\end{figure}
+
+\newpage
+Capturile corespund rezultatelor afișate în consolă. 
+
+\begin{figure}[H]
+\centering
+\includegraphics*[scale=0.25]{img/ripng2.png}
+\caption{Consolă rulare NS3}
+\label{fig:punguta}
+\end{figure}
+
+
+\chapter{Ping6}
+Ping6 reprezintă echivalentul IPv6 al comenzii ping, comandă ce folosește protocolul ICMP pentru testarea conectivității între două terminale. Deși este folosită în cadrul altor exemple pentru exemplificarea altor concepte, un exemplu a fost construit special pentru această aplicație foarte importantă. 
+
+Topologia exemplului este una foarte simplă:
+
+\begin{figure}[H]
+\centering
+\includegraphics*[scale=0.65]{img/ping6.png}
+\caption{Topologie exemplu ping6}
+\label{fig:punguta}
+\end{figure}
+
+Codul acestui exemplu include definiția unei proceduri pentru afișarea tabelei de rutarea a routerului, iar alta pentru asignarea unei adrese IP unei interfețe a echipamentului.
+
+Structura programului este următoarea: 
+\begin{itemize}
+ \item sunt declarate nodurile care vor fi folosite (n0, n1, r) 
+ 
+ \texttt{Ptr<Node> n0 = CreateObject<Node> ();}
+ 
+ \item sunt create rețelele ce vor lega nodurile.
+ 
+ \texttt{NodeContainer net1 (n0, r);}
+ 
+ \item stiva de protocoale IPv6 este instalată.
+ 
+ \texttt{InternetStackHelper internetv6;}
+ 
+ \texttt{internetv6.Install (all);}
+ 
+ \item pe fiecare din segmentele rețelei sunt setate caracteristicile link-urilor.
+ 
+  \texttt{CsmaHelper csma;}
+  
+  \texttt{csma.SetChannelAttribute ("DataRate", DataRateValue (5000000));}
+  
+  \texttt{csma.SetChannelAttribute ("Delay", TimeValue (MilliSeconds (2)));}
+  
+  \texttt{NetDeviceContainer d1 = csma.Install (net1);} 
+  
+  \newpage
+  
+  \item se alocă adresele IP pe fiecare rețea.
+  
+  \texttt{Ipv6AddressHelper ipv6;}
+  
+  \texttt{ipv6.SetBase (Ipv6Address ("2001:1::"), Ipv6Prefix (64));}
+  
+  \texttt{Ipv6InterfaceContainer i1 = ipv6.Assign (d1);}
+  
+  \item este afișată tabela de rutare a nodului n0 prin intermediul liniei : \texttt{stackHelper.PrintRoutingTable (n0);}
+  
+\begin{figure}[H]
+\centering
+\includegraphics*[scale=0.65]{img/ping6-1.png}
+\caption{Tabelă de rutare nod n1}
+\end{figure}
+ Se poate observa din imagine că nodul n0 nu cunoaște rute decât către rețeaua proprie și în cazul în care va dori sa comunice cu dispozitive din alte rețele o va face prin intermediul rutei implicite.
+ În schimb, rulând aceeași comandă pe nodul r putem observa că table sa conține rute spre ambele rețele. 
+\begin{figure}[H]
+\centering
+\includegraphics*[scale=0.65]{img/ping6-2.png}
+\caption{Tabelă de rutare nod r}
+\end{figure}  
+  \item după care este inițiat un obiect de tip Ping6. \texttt{Ping6Helper ping6;}
+  
+  \item acestui obiect îi sunt setate sursa și destinația, după care timp de 18s este rulată simularea.  
+\end{itemize}
+
+\newpage
+
+\chapter{Rutarea globală}
+În cadru acestei părți două exemple sunt interesante de analiza și anume cel legat de rutarea simplă globală și cea dinamică.
+
+\section{Rutarea globală simplă}
+\begin{figure}[H]
+\centering
+\includegraphics*[scale=0.65]{img/simple_global_routing_topo.png}
+\caption{Topologie exemplu rutare globală simplă}
+
+Specificitățile acestei topologii sunt următoarele:
+\begin{itemize}
+\item toate legăturile sunt punct-la-punct și folosesc banda și latența marcate
+\item există fluxuri CBR/UDP (Constant Bit Rate) dinspre n0 șpre n3 și dinspre n3 spre n1.
+\item există un flux FTP/TCP dinspre n0 spre n3, activ între 1.2s și 1.35s.
+\item un pachet UDP are dimensiunea 210 octeți, transmis la 0.00375 secunde ( echivalentul vitezei 448 Kbps)
+\item se folosesc cozi de tip DropTail, care presupun un tratament nediferențiat pentru toate pachetele. 
+
+În urma rulării simulării acestui exemplu se pot observa fluxurile ca în imaginile de mai jos: 
+
+\end{itemize}
+\end{figure} 
+
+
+\end{document}
