@@ -204,7 +204,7 @@ Structura programului este următoarea:
 \centering
 \includegraphics*[scale=0.65]{img/simple_global_routing_topo.png}
 \caption{Topologie exemplu rutare globală simplă}
-
+\end{figure}
 Specificitățile acestei topologii sunt următoarele:
 \begin{itemize}
 \item toate legăturile sunt punct-la-punct și folosesc banda și latența marcate
@@ -212,11 +212,53 @@ Specificitățile acestei topologii sunt următoarele:
 \item există un flux FTP/TCP dinspre n0 spre n3, activ între 1.2s și 1.35s.
 \item un pachet UDP are dimensiunea 210 octeți, transmis la 0.00375 secunde ( echivalentul vitezei 448 Kbps)
 \item se folosesc cozi de tip DropTail, care presupun un tratament nediferențiat pentru toate pachetele. 
+\end{itemize}
+
+\newpage
 
 În urma rulării simulării acestui exemplu se pot observa fluxurile ca în imaginile de mai jos: 
 
+\begin{figure}[H]
+\centering
+\includegraphics*[scale=0.5]{img/simple_global_routing_1.png}
+\caption{Captură trafic n3 - n1}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics*[scale=0.5]{img/simple_global_routing_2.png}
+\caption{Captură trafic n0 - n3}
+\end{figure}
+ 
+
+\section{Rutarea globală dinamică}
+
+Acest exemplu pune în valoare rutare globală dinamică folosind o rețea compusă atât din segment punct-la-punct cât și un segment CSMA/CD. În acest exemplu intefețele sunt oprite pentru a putea observa efectul rutării globale. În mod deliberat este activat atributul care activează răspunsul la evenimentele intefeței, astfel încât rutele să fie recalculate.
+
+\begin{figure}[H]
+\centering
+\includegraphics*[scale=0.5]{img/dynamic_global_routing_topo.png}
+\caption{Topologie exemplu rutare globală dinamică}
+\end{figure}
+
+Evemimentele din cadrul simulării sunt :
+\begin{itemize}
+ \item la momentul 1s un flux CBR/UDP este inițiat între n1 și n6 prin link-ul dinspre n5.
+ \item la momentul 10s un flux similar este inițiat însă folosind link-ul n1/n6.
+ \item înainte de lansarea simulării rutele globale sunt calculate. Cea mai scurtă cale de la n1 la n6 este folosind legătura punct-la-punct.
+ \item la momentul 1s pornește fluxul CBR dintre n1 și n6.
+ \item la momentul 2s intefața nodului n1 dinspre n6 este oprită. Pachetele vor fi trimise pe drumul n1-n2-n5-n6.
+ \item la momentul 4s, intefața este repornită și ruta este reinstalată.
+ \item la momentul 6s, este oprită intefața IPv4 între n6-n1 (din punctul de vedere al lui n1 legătura rămâne activă, însă traficul va fi redirecționat pe nodurile: n1-n2-n5-n6)
+ \item la momentul 8s, interfața este repornită. Ruta n1-n6 este refolosită.
+ \item la momentul 10s primul flux este oprit.
+ \item la momentul 11s pornește un nou flux, dar cu adresa destinație cealaltă adresa IP a lui n6.
+ \item la momentul 12s intefața între n1 și n6 este oprită. Pachetele vor fi trimise pe calea alternativă.
+ \item la momentul 14s intefața este repornită. Aceasta va schimba redirecta rutarea înapoi pe calea n1-n6 din moment ce notificarea repornirii interfeței va determina a nouă rută locală cu prioritate mai bună.
+ \item la momentul 16s al doilea flux este oprit.
 \end{itemize}
-\end{figure} 
+
 
 
 \end{document}
