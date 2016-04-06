@@ -1,7 +1,7 @@
 \documentclass[12pt, a4paper, oneside, romanian]{teza-upb}
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3}
-\usepackage{babel}
+\usepackage[english]{babel}
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage[
@@ -436,5 +436,15 @@ Beneficiile principale ale stilului SOA sunt:
 \end{itemize}
 
 Acest stil merită luat în considerare atunci când este diposnibil accesul la serviciile care se doresc a fi reutilizate; când serviciile pot fi cumpărate de la o companii terțe; când se dorește construirea aplicațiilor compuse dintr-o serie de servicii cu o singură interfață grafică; sau când se dorește crearea unei aplicații de tipul Software plus Services (S+S), Software as a Service (SaaS), sau bazate pe cloud. Stilul SOA este adecvat atunci trebuie asigurată comunicarea între segmentele unei aplicații și expuse funcționalități într-o manieră independentă de platformă, când se dorește utilizarea serviciilor centralizate precum autentificare sau expunerea serviciilor detectabile prin registre sau care pot fi utilizate de clienți care nu cunosc în prealabil interfețele.
+
+\chapter{Microservicii}
+
+Stilul arhitectural "micro servicii" reprezintă o abordare ce constă în dezvoltarea unuei aplicații ca o suită de mici servicii, fiecare rulând un proces independent și comunicând prin mecanisme simple, adesea resurse expuse prin API-uri via HTTP. Aceste servicii sunt construite în jurul nevoilor de business și instalate in mod automat. Există un minim necesar pentru o administrare centralizată a acestor servicii, care pot fii scrise folosind limbaje de programare și soluții de stocare diferite.
+
+Pentru a explica mai bine microserviciile este utilă comparația cu stilul monolit: o aplicație construită ca o singură unitate. Aplicațiile de tip enterprise sunt adesea construite din trei părți: o interfață grafică către client (compusă din pagini HTML și javascript ce rulează in browser-ul utilizatorului), o bază de date (constituită din mai multe tabele dintr-un sistem de gestiune al bazei de date) și o parte de server. Aplicația server se ocupă de cererile HTTP, execută logica de business, extrage și actualizează datele din baza de date, selectează și populează paginile HTML care vor fi trimise browser-ului. Partea server este un \textit{monolit} - un singur executabil logic. Orice schimbare in sistem presupune construirea și instalrea unei noi versiune a aplicației.
+
+O astfel de aplicație monolit este calea firească pentru construirea unui sistem. Toată logica pentru manipularea cererilor rulează în cadrul unui singur proces, permițând prin intermediul limbajului de programare împărțirea aplicației în clase, funcții și namespace-uri. Aceasta poate fi rulată și testată pe laptopul unui dezvoltator și instalată pe un mediu de producție folosind procese automatizate care să permită testarea acesteia. Aceasta poate fi scalată pe orizontală rulând mai multe instanțe în spatele unui load-balancer.
+
+Aplicațiile monolit pot fi un real succes, însă un număr tot mai mare de oameni le constată limitările, odată cu creșterea numărului de servicii oferite în cloud. Ciclurile de schimbări sunt strâns legate - o schimbare făcută unei mici părți a aplicației, necesită recompilarea și instalarea intregului monolit.  În timp păstrarea unuei modularități bune devine dificilă, impiedicând astfel izolarea modificărilor. Scalarea implică scalarea întregii aplicații, nu a părtilor care necesită resurse în plus.
 
 \end{document}
