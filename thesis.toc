@@ -22,4 +22,7 @@
 \contentsline {section}{\numberline {3.5}Arhitectura bazat\IeC {\u a} pe bus de mesaje}{15}{section.3.5}
 \contentsline {section}{\numberline {3.6}Arhitectura orientat\IeC {\u a} pe obiecte}{17}{section.3.6}
 \contentsline {section}{\numberline {3.7}Arhitectura orientat\IeC {\u a} pe servicii}{18}{section.3.7}
-\contentsline {chapter}{\numberline {4}Micro servicii}{20}{chapter.4}
+\contentsline {chapter}{\numberline {4}Microservicii}{20}{chapter.4}
+\contentsline {section}{\numberline {4.1}Caracteristici ale arhitecturii microservicii}{21}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Separarea prin intermediul serviciilor}{21}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Organizare \IeC {\^\i }n jurul nevoilor de business}{22}{subsection.4.1.2}

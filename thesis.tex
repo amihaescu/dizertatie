@@ -46,6 +46,7 @@ LOB - Line-of-business \\
 MVC - Model View Controller \\
 P2P - Peer-to-Peer \\
 QA - Quality Assurance \\ 
+RPC - Remote Procedure Call \\
 SOA - Service Oriented Architecture \\
 UML - Unified Modelling Language \\
 URI - Uniform Resource Identifiers \\
@@ -446,5 +447,45 @@ Pentru a explica mai bine microserviciile este utilă comparația cu stilul mono
 O astfel de aplicație monolit este calea firească pentru construirea unui sistem. Toată logica pentru manipularea cererilor rulează în cadrul unui singur proces, permițând prin intermediul limbajului de programare împărțirea aplicației în clase, funcții și namespace-uri. Aceasta poate fi rulată și testată pe laptopul unui dezvoltator și instalată pe un mediu de producție folosind procese automatizate care să permită testarea acesteia. Aceasta poate fi scalată pe orizontală rulând mai multe instanțe în spatele unui load-balancer.
 
 Aplicațiile monolit pot fi un real succes, însă un număr tot mai mare de oameni le constată limitările, odată cu creșterea numărului de servicii oferite în cloud. Ciclurile de schimbări sunt strâns legate - o schimbare făcută unei mici părți a aplicației, necesită recompilarea și instalarea intregului monolit.  În timp păstrarea unuei modularități bune devine dificilă, impiedicând astfel izolarea modificărilor. Scalarea implică scalarea întregii aplicații, nu a părtilor care necesită resurse în plus.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.3]{img/sketch.png}
+\caption{Arhitecturii monolit si microservicii}
+\label{fig:arhi_componente}
+\end{figure}
+
+Aceste considerente au dus la arhitectura microservicii: construirea aplicațiilor ca o suită de servicii. Pe lângă faptul ca serviciile pot fi instalate și scalate în mod independent, fiecare crează o limită fermă a modulului, permițând chiar și folosirea limbajelor de programare diferite, acestea putând fii gestionate de echipe diferite.
+
+Acest stil arhitectural nu este o noutate, având rădăcini în principiile de proiectare ale Unix-ului, însă nu este îndeajuns de răspândit.
+
+\section{Caracteristici ale arhitecturii microservicii}
+
+Deși nu există o definiție formală a stilului arhitectural microservicii, însă se poate face o grupare a trăsăturilor comune arhitecturilor care se încadrează în acest tipar. Ca în cazul oricărei definiție care enumeră o serie de trăsături comune, aceste nu se vor regăsi în toate arhitecturile ce folosesc microservicii, dar este de așteptat ca majoritatea arhitecturilor să  prezinte o mare parte a acestora.
+
+\subsection{Separarea prin intermediul serviciilor}
+
+De-a lungul industriei software, a existat întotdeauna dorința de a construi sisteme prin conectarea diverselor componente, așa cum se întămplă în lumea reală. In ultimele decenii a existat un progres subsanțial în domeniul dezvoltării bibliotecilor reutilizabile. Când vorbim despre componente ne lovim de dificultatea de a defini ce este o componentă. Definiția pe care o putem da la acest moment este că o \textbf{componentă} este o parte software care poate fi înlocuită și actualizată în mod independent. 
+
+Arhitecturile bazate pe microservicii folosesc librării, însă modalitatea principală prin care se face componentizarea este împărțirea pe servicii. Definim \textbf{bibliotecile} ca fiind componente ce funcționează împreună în cadrul unui program și deci au memorie comună, în vreme ce \textbf{serviciile} sunt componente ce rulează în cadrul unor procese diferite și care comunică prin mecanisme cum ar fi cereri de tip web sau \textbf{RPC} (Remote Procedure Call).
+
+Unul din motivele pentru folosirea serviciilor ca și componente (mai degrabă decât biblioteci) este faptul că serviciile pot fi instalate în mod independent. În cazul unei aplicații constituită din mai multe biblioteci aparținând unui singur proces, o schimbare a oricărei component ar rezulta în reinstalarea întregii aplicații. Dacă însă aplicația este descompusă în mai multe servicii, este de așteptat ca modificările pe servicii să nu necesite decât reinstalări alei unui singur serviciu. Acest lucru nu este universal valabil, unele modificări ar putea impacta interfețe ale serviciilor necesitând o sincronizarea la nivelul mai multor servicii, însă ținta unei arhitecturi bazate pe microservicii este minimizarea acestui impact prin precizarea funcționalităților in cadrul contractelor.	
+
+O altă consecință a folosirii serviciilor ca și componente este o intefațare mult mai explicită. Majoritatea limbajelor nu au un mecanism bun de definire a unei intefețe publice. Adesea, este doar documentația și disciplina utilizatorului care previn distrugerea încapsulării unei componente. Serviciile simplifică acest lucru folosind mecanisme explicite pentru apeluri la distanță.
+
+Folosirea serviciilor în acest fel are și dezavantaje. Apelurile la distanță sunt mult mai costisitoare decât apleurile efectuate în cadrul aceluiași proces și de aceeas procedurile trebuie să fie mai puțin granulare, ceea ce implică și o dificultate de folosire. Schimbarea responsabilităților dintre componente este mai dificilă de făcut atunci când trebuie făcut trans-proces.
+
+La o primă aproximare, se poate observa ca serviciile se mapează pe procese locale, dar această nu este decât o primă aproximare. Un serviciu poate fi constituit din mai multe procese care vor fi întotdeauna dezvoltate și instalate împreună, ca un proces de aplicație sau o o bază de date care va fi folosită doar de acel serviciu.
+
+\subsection{Organizare în jurul nevoilor de business}
+
+Când se dorește împărțirea unei aplicații în componente, adesea divizarea echipei se face în funcție de nivelul tehnologic, astfel formându-se echipe responsabile pentru interfața grafică, logica de server și baza de date. Când acestă împărțire este realizată, chiar și cele mai simple schimbări pot duce la proiecte realizate de mai multe echipe ceea ce consumă timp și bani. În 1967, Melvym Conawy afirma : "Orice organizație ce proiectează un sistem va produce un desgin care este o copie a structurii de comunicare a organizației".
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.5]{img/conways-law.png}
+\caption{Legea lui Conway}
+\label{fig:arhi_componente}
+\end{figure}
 
 \end{document}
