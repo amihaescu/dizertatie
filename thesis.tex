@@ -1,7 +1,7 @@
 \documentclass[12pt, a4paper, oneside, romanian]{teza-upb}
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3}
-\usepackage[english]{babel}
+\usepackage[romanian]{babel}
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage[
@@ -37,6 +37,7 @@ BDFU - Big Design Upfront \\
 COBRA - Common Object Request Broker Architecture \\
 COM - Common Object Model \\
 DCOM - Distributed Common Object Model  \\
+DDD - Domain-Driven Design \\
 DRY - Don't repeat yourself \\
 EJB - Enterprise Java Beans \\ 
 ESB - Enterprise Service Bus \\
@@ -305,7 +306,7 @@ Acest stil a fost descris ca fiind o piramidă întoarsă în care fiecare nivel
 \centering
 \includegraphics[scale=0.5]{img/layered-arch.PNG}
 \caption{Arhitectură stratificată}
-\label{fig:arhi_componente}
+\label{fig:arhi_stratificata}
 \end{figure}
 
 Straturile aplicației pot fi aceeși mașină fizică (pe acelasi nivel) sau pot fi distribuite pe masini diferite (N-Nivele) și componentele din același nivel comunica cu componente din alte nivele prin interfețe bine definite. De exemplu o aplicație web tipică este alcătuită dintr-un nivel de prezentare (tot ceea ce ține de interfața grafică), un nivel de logică business și un nivel de acces de date. 
@@ -357,7 +358,7 @@ Arhitectura bazată pe bus de mesaje descrie principiul folosirii unui sistem so
 \centering
 \includegraphics[scale=0.9]{img/message-bus.png}
 \caption{Arhitectură bazată pe bus de mesaje}
-\label{fig:arhi_componente}
+\label{fig:arhi_bus_mesaje}
 \end{figure}
 
 Arhitecturile bazate pe bus de mesaje au fost folosite in cadrul procesărilor complexe. Acest design oferă o arhitectuă ce permite inserarea aplicațiilor în proces și îmbunătățeste scalabilitatea prin posibilitatea de a atașa numeroase instanțe alea aceleași aplicații în bus. Variații ale acestui stil sunt: 
@@ -413,7 +414,7 @@ Stilul SOA poate să includă procese de business în servicii interoperabile fo
 \centering
 \includegraphics[scale=0.7]{img/soa.png}
 \caption{Arhitectură orientată pe servicii}
-\label{fig:arhi_componente}
+\label{fig:arhi_orientata_servicii}
 \end{figure}
 
 Principiile cheie ale stilului SOA sunt:
@@ -452,7 +453,7 @@ Aplicațiile monolit pot fi un real succes, însă un număr tot mai mare de oam
 \centering
 \includegraphics[scale=0.3]{img/sketch.png}
 \caption{Arhitecturii monolit si microservicii}
-\label{fig:arhi_componente}
+\label{fig:arhi_mono_micro}
 \end{figure}
 
 Aceste considerente au dus la arhitectura microservicii: construirea aplicațiilor ca o suită de servicii. Pe lângă faptul ca serviciile pot fi instalate și scalate în mod independent, fiecare crează o limită fermă a modulului, permițând chiar și folosirea limbajelor de programare diferite, acestea putând fii gestionate de echipe diferite.
@@ -485,7 +486,96 @@ Când se dorește împărțirea unei aplicații în componente, adesea divizarea
 \centering
 \includegraphics[scale=0.5]{img/conways-law.png}
 \caption{Legea lui Conway}
+\label{fig:legea_lui_conway}
+\end{figure}
+
+Abordarea separării componentelor diferă în cadrul microserviciilor, aceasta făcându-se ținând cont nevoile de business. Astfel de servicii preiau intreagă stivă tehnologică ce include interfața grafică, stocarea și orice colaborare externă. În consecință echipele sunt trans-funcționale, cuprinzând o plajă largă de cunoștințe necesare pentru dezvoltare: proiectarea interfeței grafice, baze de date și project management. 
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.5]{img/cross-functional-team.png}
+\caption{Echipe responsabile de servicii}
+\label{fig:dist_respo_servicii}
+\end{figure}
+
+Aplicațiile mari monolit pot fi întotdeauna modularizate în jurul nevoilor de business, însă aceasta nu se întâmplă foarte des. Cu siguranță este de dorit ca o echipă mare ce construiește o aplicație monolit să fie împărțită în echipe mai mici concentrare pe liniile de business. Una din probleme care pot apărea aici este împărțirea liniilor de business în funcție de prea multe criterii. Dacă monolitul se extinde peste prea multe module poate deveni dificil ca membrii echipei să-și însușească aplicația. În plus se observă ca modularitatea implică un nivel mai mare de disciplină. Separarea mult mai explicită necesară componentelor bazate pe servicii sporește claritatea limitelor responsabilității echipei.
+
+\subsection{Produse, nu proiecte}
+
+Majoritatea efoturilor de dezvoltare pe care le vedem în cadrul unui proiect sunt concentrate pe livrarea unui program care tinde sa fie perceput ca fiind complet. Odata cu terminarea dezvoltării aplicația este predată unei echipe responsabile pentru mentenanță și echipa de proiect este desființată. 
+
+Susținătorii microserviciilor tind să evite acest model, preferând în schimb noțiunea ca o echipă sa fie responsabil de produs pe întreaga sa viața. O sursă de inspirație pentru aceasta este sintagma din cadrul companiei Amazon: "you build it, you run it" unde echipa de dezvoltare își asumă responsabilitatea pentru mentenanța pe timpul producției. Aceasta îi aduce pe dezvoltatori în contact cu modul în care aplicația se comportă în producție și îmbunătățește contactul cu utilizatorii, preluând astfel o parte din efortul de mentenanță. 
+
+Această mentalitate, se leagă și de dependința de nevoile de business. Mai degrabă decât să privim aplicațiile ca un set de funcționalități complete, există o relație permanentă unde întrebarea se pune cum poate soft-ul să ajute utilizatorii pentru a sporii capacitățile de business.
+
+Nu există nici un motiv pentru care această abordare nu s-ar putea aplică și în cadru aplicațiilor monolit, dar granularitatea sporită oferită de servicii facilitează crearea relațiilor personale între dezvoltatori și utilizatori.
+
+\subsection{Puncte termnale inteligente și bus-uri simple}
+
+Pentru construirea unor structuri de comunicare între diferite procese există multe procese și abordări care se concentrează pe implementarea inteligenței în mecanismul de comunicare în sine. Un exemplu foarte bun este Entreprise Service Bus (\textbf{ESB}), aceste mecanisme oferind capacități complexe pentru rutarea mesajelor și aplicarea regulilor de business.
+
+Microserviciile implică o altă abordare: puncte terminal inteligent și bus-uri simple (eng. "smart endpoints and dumb pipes"). Aplicațiile ce urmează aceste principii tind să fie cât mai decuplate, primind o cerere, aplicând logica adecvată și producând un răspuns. Acești pași sunt corelați folosind protocoale simple de tip REST mai degrabă decât cele complexe precum WS-Choreography, BPEL sau orchestrare prin intermediul unuei unelte centrale. 
+
+Cele mai folosite două protocoale sunt HTTP cerere-răspuns folosind API-uri pentru accesarea resurselor și mecanisme simple de trimiterea mesajelor. Echipele care lucrează cu microservicii folosesc principiile și protocoalele pe baza caror a fost construit și web-ul. 
+
+Al doilea mecanism folosit este cel al mesajelor transmise prin intermediul unui bus simplu. Infrastructura aleasă este adesea simplă (nu are decât rolul de a ruta mesajele) - implementări simple precum RabbitMQ sau ZeroMQ nu fac mai mult decât să pună la dispoziție un canal de comunicare asincron - inteligența rămânând în punctele terminale ce produc și consumă mesajele; în microservicii.
+
+Într-un monolit, componentele execută instrucțiunile în cadrul aceluiași proces, iar comunicare între ele se face prin invocarea unei metode sau apelul unei funcții. Cea mai mare provocare în trecerea de la monolit la microservicii constă în schimbare șablonului de comunicare. O conversie de la apeluri în cadrul procesului la apeluri de tip RPC conduce la o comunicare excesivă care nu oferă o perfomanță bună. În schimb trebuie înlocuită comunicarea granulară cu o comunicare mai puțin selectivă.    
+
+\subsection{Guvernare distribuit}
+
+Una din consecințele unei guvernări centralizate este tendința de a standardiza tehnologia folosită. Experiența arată că aceasta abordare limitează flexibilitatea - "nu fiecare problemă este un cui și nu fiecare soluție este un ciocan". Se dorește folosirea uneltelor adecvate pentru a rezolva o problemă și în vreme aplicațiile monolit pot benefica într-o oarecare măsură de folosirea mai multor limbaje de programare, nu este ceva comun.  
+
+Împărțirea componentelor unui monolith pe servicii implică alegerea limbajului de programare și a uneltelor adecvate pentru construirea fiecăruia. Bineînțeles, doar pentru că avem posibilitatea a construi sisteme eterogene din punct de vedere al tehnologiilor nu înseamnă că este ceva obligatoriu. 
+
+Echipele care construiesc microservicii preferă o abordare diferită de cea standard. În loc să se folosească un set de standarde scrise, se preferă crearea de unelte pe care ceilalți dezvoltatori le pot folosi pentru a rezolva probleme similare cu cele cu care s-au confruntat. Acestea sunt distribuite in cadrul unor grupuri mai largi, dar nu în mod exclusiv folosindu-se modelul open-source. Popularitatea sporită a git și github a contribuit la răspândirea practicilor open source în cadrul companiilor. 
+
+Netflix este un exemplu foarte bun de organizație care urmează această filozofie. Distribuind cod util și foarte bine testat sub forma unor librării încurajează alții dezvoltatori să rezolve probleme similare, însă lasă ușa deschisă pentru abordări diferite în caz de nevoie. Bibliotecile partajate tind să se concentreze pe probleme comune cum ar fi stocarea datelor, comunicarea inter-proces și după cum vom discuta în cele ce urmează automatizarea infrastructurii.
+
+În cadrul comunității ce pratică microservicii, întârzierile sunt în mod particular neatractive. Aceasta nu implică o lipsă de importanță acordată contractelor de servicii, chiar dimpotrivă din moment ce ele tind să fie mai numeroase. Ele sunt doar privite dintr-o perspectivă diferită de administrare. Șabloane precum "Tolerant Reader" și "Consumer-Driver Contracts" sunt adesea aplicate microserviciilor. Aceastea facilitează o evoluție independentă a acestora. Folosirea contractelor orientate pe nevoile clienților ca și parte a proiectării crește nivelul de incredere și oferă un răspuns rapid asupra funcționării serviciului. Serviciul este apoi construit în vederea satisfacerii contractului. Aceste tehnici și apariția uneltelor adiacente, limitează nevoia centralizării contractelor prin scăderea cuplării temporale a serviciilor. 
+
+\subsection{Managementul distribuit al datelor}
+
+Management distribuit al datelor se poate face în mai multe feluri. La nivelul cel mai abstract, înseamnă că modelul conceptul va diferi de la un sistem la altul. Acesta este un scenariu tipic în cadrul aplicațiilor de tip enterprise, prespectiva departamentului de vânzări asupra datelor va fi diferită față de cea a echipei de suport. În acest caz informațiile despre un anumit client pot diferi. 
+
+Aceasta este o problemă tipică care poate apărea la intregrarea diverselor aplicații, însă poate apărea și la nivelul aceleaiași aplicații. Un mod în care poate fi rezolvată această problemă este folosind șablonul "Bounded Design" din Domain-Driven Design (DDD). DDD împarte un domeniu complex în mai multe domenii limitate și mapează relațiile între acestea. Acest proces este util atât în cazul aplicațiilor monolit cât și în cel al microserviciilor, însă există o corelație naturală între serviciul și granițele contextului ce ajută la clarificarea și întărirea separării. 
+
+Optarea pentru un model conceptual distribuit implică și un model distribuit pentru soluțiile de stocare. În vreme ce aplicațiile monolitice folosesc o singură bază de date pentru persistența datelor, în companiile mari se preferă o singură bază de date pentru o suită de aplicații - o parte a acestei decizii fiind legată de costul licenței. În cadrul microserviciilor se preferă folosirea propriei baze de date de către feicare serviciu în parte, fie instanțe diferite ale aceluiași sistem fie sisteme complet diferite - o abordare care se numește "Polyglot Persistence". Această abordare poate fi folosită și în cadrul aplicațiilor monolit, însă apare mai frecvent în cadrul microserviciilor. 
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.5]{img/decentralised-data.png}
+\caption{Model distribuit al datelor}
+\label{fig:model_dist_date}
+\end{figure}
+
+Folosirea unui model distribuit pentru pentru date implică și împărțirea responsabilității pentru mentenanța sistemelor. Abordarea comună pentru gestionarea actualizărilor a fost folosirea tranzacțiilor pentru asigurarea consistenței la nivelul mai multor resurse. Această abordare este folosită adesea în cadrul aplicațiilor de tip monolit. 
+
+Astfel tranzacțiilor contribuie la asigurarea consistenței datelor, dar impune și o cuplare temporală, ceea ce este problematic în cazul folosirii mai multor servicii. Tranzacțiile distribuite sunt foarte greu de implementat și de aceea microserviciile se axează pe o coordonarea fără tranzacții între servicii, cu mențiunea că în acest caz consistența nu este garantată și că această problemă va fi adresată prin mecanisme de compensare. 
+
+Faptul de a gestiona astfel inconsistențele este o nouă provocare pentru multe echipe de dezvoltare, dar este cea care adesea se pliează cel mai bine pentru cazurile de business. Adesea business-ul operează cu un anumit nivel de inconsistență pentru a răspunde repede la cereri, având la dispoziție mecanisme pentru trarea erorilor. Acest compromis rentează atât timp cât costul reparării greșelilor este mai mic decât costul pierderii anumitor informații de business. 	
+
+\chapter{Automatizarea infrastructurii}
+
+Tehnicile pentru automatizarea infrastructurii au evoluat foarte mult în ultimii ani - evoluția clodului și AWS - Amazon Web Services - în mod particular a redus foarte mult complexitatea operațională pentru gestionarea microserviciilor. 
+
+Multe dintre produsele și sistemele folosind microservicii sunt construite de echipe cu experiență în Continous Delivery și predecesorul său, Continous Integration. Echipele ce construiesc astfel aplicațiile folosesc în mod extensiv tehnici de automatizare a infrastructurii. Acest lucru, denumit în literatura de specialitate \textbf{"pipeline"}, este ilustrat mai jos:
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.6]{img/basic-pipeline.png}
+\caption{Pipeline}
 \label{fig:arhi_componente}
 \end{figure}
+
+Câteva aspecte-cheie ale procesului de livrare continuă (e.g. Continous Delivery) sunt: încrederea cât mai mare în faptul calitatea software-ului dată de o suită foarte mare de teste automate; trecerea dintr-un mediu în altul în cadrul pipeline-ului înseamnă instalarea automată pe fiecare nou mediu. 
+
+O aplicație monolit va fi compilată, testată și trecută prin aceste medii fără prea multe probleme. S-a constatat că investirea în automatizarea procesului de instalarea a unei aplicații în producție crește încrederea echipelor de a livra mult mai des pe acest mediu. Unul din obiectivele livrării continue este banalizarea procesului de instalare, astfel încât nu contează că se livrează una sau mai multe aplicații, lucrurile rămân la fel de simple. 
+
+
+
+
+ 
+
 
 \end{document}

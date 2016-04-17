@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.4.2)  9 APR 2016 18:06
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.4.17)  17 APR 2016 21:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **thesis.tex
 (./thesis.tex
 LaTeX2e <2011/06/27>
-Babel <3.9h> and hyphenation patterns for 4 languages loaded.
+Babel <3.9h> and hyphenation patterns for 28 languages loaded.
 (./teza-upb.cls (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2008/03/30 v1.1d Input encoding file
 \inpenc@prehook=\toks14
@@ -58,18 +58,14 @@ Package: setspace 2011/12/19 v6.7a set line spacing
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
 Package: babel 2013/12/03 3.9h The Babel package
 
-(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
-Language: english 2012/08/20 v3.3p English support from the babel system
+(/usr/share/texlive/texmf-dist/tex/generic/babel-romanian/romanian.ldf
+Language: romanian 2005/03/31 v1.2l Romanian support from the babel system
 
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
 File: babel.def 2013/12/03 3.9h Babel common definitions
 \babel@savecnt=\count89
 \U@D=\dimen105
-)
-\l@canadian = a dialect from \language\l@american 
-\l@australian = a dialect from \language\l@british 
-\l@newzealand = a dialect from \language\l@british 
-))
+)))
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
@@ -230,23 +226,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip45
 )
-
-LaTeX Warning: Unused global option(s):
-    [romanian].
-
 (./thesis.aux
-
-LaTeX Warning: Label `fig:arhi_componente' multiply defined.
-
-
-LaTeX Warning: Label `fig:arhi_componente' multiply defined.
-
-
-LaTeX Warning: Label `fig:arhi_componente' multiply defined.
-
-
-LaTeX Warning: Label `fig:arhi_componente' multiply defined.
-
 
 LaTeX Warning: Label `fig:arhi_componente' multiply defined.
 
@@ -387,34 +367,34 @@ Package hyperref Warning: bookmark level for unknown unnumberedsection defaults
 
 Lista acronimelor
 
-Underfull \hbox (badness 10000) in paragraph at lines 59--59
+Underfull \hbox (badness 10000) in paragraph at lines 60--60
 
  []
 
 [5
 
 ]
-Chapter 1.
+Capitolul 1.
 [1
 
 ]
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\u' on input line 74.
+(hyperref)                removing `\u' on input line 75.
 
 [2]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 91.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 92.
  (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 91.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 92.
  [3]
-Chapter 2.
-<img/IC351032.png, id=209, 510.90875pt x 528.97626pt>
+Capitolul 2.
+<img/IC351032.png, id=240, 510.90875pt x 528.97626pt>
 File: img/IC351032.png Graphic file (type png)
  <use img/IC351032.png>
-Package pdftex.def Info: img/IC351032.png used on input line 104.
+Package pdftex.def Info: img/IC351032.png used on input line 105.
 (pdftex.def)             Requested size: 255.45375pt x 264.48747pt.
 
 [4
@@ -422,172 +402,198 @@ Package pdftex.def Info: img/IC351032.png used on input line 104.
  <./img/IC351032.png>] [5]
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\textcommabelow' on input line 146.
+(hyperref)                removing `\textcommabelow' on input line 147.
 
 [6]
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\textcommabelow' on input line 157.
+(hyperref)                removing `\textcommabelow' on input line 158.
 
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\textcommabelow' on input line 157.
+(hyperref)                removing `\textcommabelow' on input line 158.
 
 [7]
-Chapter 3.
+Capitolul 3.
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\textcommabelow' on input line 169.
+(hyperref)                removing `\textcommabelow' on input line 170.
 
 [8
 
 ]
-Underfull \hbox (badness 1019) in paragraph at lines 200--200
-[]|[]\OT1/cmr/m/n/12 Imparte sis-temul ^^^Pn dou^^Ua aplica[]ii, ^^^Pn care cli
-entu
+Underfull \hbox (badness 1019) in paragraph at lines 201--201
+[]|[]\OT1/cmr/m/n/12 Imparte sis-te-mul ^^^Pn dou^^Ua aplica[]ii, ^^^Pn care cl
+i-entu
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 201--201
+Underfull \hbox (badness 2088) in paragraph at lines 202--202
+[]|\OT1/cmr/m/n/12 Arhitectur^^Ua ba-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 204--204
 []|\OT1/cmr/m/n/12 Arhitectur^^Ua
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 203--203
-[]|\OT1/cmr/m/n/12 Arhitectur^^Ua
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 207--207
+Underfull \hbox (badness 10000) in paragraph at lines 208--208
 []|\OT1/cmr/m/n/12 N-niveluri/3-
  []
 
-[9]
-Overfull \hbox (1.50368pt too wide) in paragraph at lines 230--231
-\OT1/cmr/m/n/12 Arhitectura client/server de-scrie sis-temele dis-tribuite care
- im-plic^^Ua sep-a-rarea clien-tu-lui []i serveru-
+
+Underfull \hbox (badness 10000) in paragraph at lines 213--213
+[]|\OT1/cmr/m/n/12 Arhitectur^^Ua
  []
 
-<img/clientserver.png, id=239, 422.7795pt x 257.46187pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 213--213
+\OT1/cmr/m/n/12 orien-tat^^Ua pe
+ []
+
+[9] <img/clientserver.png, id=270, 422.7795pt x 257.46187pt>
 File: img/clientserver.png Graphic file (type png)
 
 <use img/clientserver.png>
-Package pdftex.def Info: img/clientserver.png used on input line 234.
+Package pdftex.def Info: img/clientserver.png used on input line 235.
 (pdftex.def)             Requested size: 338.22404pt x 205.96976pt.
  [10 <./img/clientserver.png (PNG copy)>]
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\u' on input line 262.
+(hyperref)                removing `\u' on input line 263.
 
-[11] <img/component-based.png, id=250, 514.92375pt x 302.12875pt>
+[11] <img/component-based.png, id=281, 514.92375pt x 302.12875pt>
 File: img/component-based.png Graphic file (type png)
 
 <use img/component-based.png>
-Package pdftex.def Info: img/component-based.png used on input line 277.
+Package pdftex.def Info: img/component-based.png used on input line 278.
 (pdftex.def)             Requested size: 411.93954pt x 241.70332pt.
  [12 <./img/component-based.png>]
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\u' on input line 298.
+(hyperref)                removing `\u' on input line 299.
 
-<img/layered-arch.PNG, id=258, 398.48875pt x 303.1325pt>
+<img/layered-arch.PNG, id=289, 398.48875pt x 303.1325pt>
 File: img/layered-arch.PNG Graphic file (type png)
 
 <use img/layered-arch.PNG>
-Package pdftex.def Info: img/layered-arch.PNG used on input line 306.
+Package pdftex.def Info: img/layered-arch.PNG used on input line 307.
 (pdftex.def)             Requested size: 199.24388pt x 151.56587pt.
  [13 <./img/layered-arch.PNG>] [14]
-Overfull \hbox (6.86215pt too wide) in paragraph at lines 345--346
-[]\OT1/cmr/m/n/12 Tiparul prezen-tat mai sus spore[]te posi-bil-i-tatea de test
-are a aplica[]iei []i sim-plific^^Ua mentenan[]a
+Overfull \hbox (6.86215pt too wide) in paragraph at lines 346--347
+[]\OT1/cmr/m/n/12 Tiparul pre-zen-tat mai sus spore[]te po-si-bi-li-ta-tea de t
+es-tare a aplica[]iei []i sim-pli-fic^^Ua mentenan[]a
  []
 
 
-Overfull \hbox (0.26758pt too wide) in paragraph at lines 345--346
-\OT1/cmr/m/n/12 func[]ionalit^^Ua[]ii interfe[]ei grafice []i ofer^^Ua posi-bil
--i-tatea separ^^Uarii sarcinilor de con-cepere a interfe[]ei
+Overfull \hbox (0.26758pt too wide) in paragraph at lines 346--347
+\OT1/cmr/m/n/12 func[]ionalit^^Ua[]ii interfe[]ei gra-fice []i ofer^^Ua po-si-b
+i-li-ta-tea se-par^^Uarii sar-ci-ni-lor de con-ce-pere a interfe[]ei
  []
 
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\u' on input line 347.
+(hyperref)                removing `\u' on input line 348.
 
-[15] <img/message-bus.png, id=272, 362.35374pt x 163.61125pt>
+[15] <img/message-bus.png, id=304, 362.35374pt x 163.61125pt>
 File: img/message-bus.png Graphic file (type png)
 
 <use img/message-bus.png>
-Package pdftex.def Info: img/message-bus.png used on input line 358.
+Package pdftex.def Info: img/message-bus.png used on input line 359.
 (pdftex.def)             Requested size: 326.11536pt x 147.24875pt.
  [16 <./img/message-bus.png>]
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\u' on input line 381.
+(hyperref)                removing `\u' on input line 382.
 
 
-Overfull \hbox (6.0078pt too wide) in paragraph at lines 391--392
-\OT1/cmr/m/n/12 Aceasta per-mite oferirea im-ple-ment^^Uarilor al-ter-na-tive f
-^^Uar^^Ua afectare con-suma-to-rilor interfe[]ei. 
+Overfull \hbox (6.0078pt too wide) in paragraph at lines 392--393
+\OT1/cmr/m/n/12 Aceasta per-mite ofe-ri-rea im-ple-ment^^Uarilor al-ter-na-tive
+ f^^Uar^^Ua afec-tare con-su-ma-to-ri-lor interfe[]ei. 
  []
 
 
-Overfull \hbox (2.15645pt too wide) in paragraph at lines 393--394
-\OT1/cmr/m/n/12 Utiliz^^Uari tipice ale aces-tui stil in-clud definirea unui ob
-iect model care re-al-izeaz^^Ua op-er-atii []tiin[]ifice
+Overfull \hbox (2.15645pt too wide) in paragraph at lines 394--395
+\OT1/cmr/m/n/12 Utiliz^^Uari ti-pice ale aces-tui stil in-clud de-fi-ni-rea unu
+i obiect mo-del care re-a-li-zeaz^^Ua ope-ra-tii []tiin[]ifice
  []
 
 [17]
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\u' on input line 407.
+(hyperref)                removing `\u' on input line 408.
 
-<img/soa.png, id=282, 419.5675pt x 251.94125pt>
+<img/soa.png, id=314, 419.5675pt x 251.94125pt>
 File: img/soa.png Graphic file (type png)
  <use img/soa.png>
-Package pdftex.def Info: img/soa.png used on input line 414.
+Package pdftex.def Info: img/soa.png used on input line 415.
 (pdftex.def)             Requested size: 293.69524pt x 176.35767pt.
  [18 <./img/soa.png (PNG copy)>] [19]
-Chapter 4.
-<img/sketch.png, id=293, 853.1875pt x 521.95pt>
+Capitolul 4.
+<img/sketch.png, id=324, 853.1875pt x 521.95pt>
 File: img/sketch.png Graphic file (type png)
  <use img/sketch.png>
-Package pdftex.def Info: img/sketch.png used on input line 453.
+Package pdftex.def Info: img/sketch.png used on input line 454.
 (pdftex.def)             Requested size: 255.95822pt x 156.5862pt.
  [20
 
- <./img/sketch.png>]
-Overfull \hbox (9.95915pt too wide) in paragraph at lines 468--469
-\OT1/cmr/m/n/12 De-a lun-gul in-dus-triei soft-ware, a ex-i-s-tat ^^^Pntotdeaun
-a dorin[]a de a con-strui sis-teme prin conectarea
- []
-
-[21] <img/conways-law.png, id=303, 562.1pt x 464.73625pt>
+ <./img/sketch.png>] [21] <img/conways-law.png, id=334, 562.1pt x 464.73625pt>
 File: img/conways-law.png Graphic file (type png)
 
 <use img/conways-law.png>
-Package pdftex.def Info: img/conways-law.png used on input line 486.
+Package pdftex.def Info: img/conways-law.png used on input line 487.
 (pdftex.def)             Requested size: 281.04932pt x 232.36755pt.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 491.
- [22 <./img/conways-law.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 491.
+
+<img/cross-functional-team.png, id=335, 750.805pt x 431.6125pt>
+File: img/cross-functional-team.png Graphic file (type png)
+
+<use img/cross-functional-team.png>
+Package pdftex.def Info: img/cross-functional-team.png used on input line 496.
+(pdftex.def)             Requested size: 375.40158pt x 215.80571pt.
+ [22 <./img/conways-law.png> <./img/cross-functional-team.png>]
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\textcommabelow' on input line 513.
+
+[23] [24] <img/decentralised-data.png, id=350, 760.8425pt x 445.665pt>
+File: img/decentralised-data.png Graphic file (type png)
+
+<use img/decentralised-data.png>
+Package pdftex.def Info: img/decentralised-data.png used on input line 547.
+(pdftex.def)             Requested size: 380.42032pt x 222.83195pt.
+ [25 <./img/decentralised-data.png>]
+Capitolul 5.
+<img/basic-pipeline.png, id=357, 669.50125pt x 200.75pt>
+File: img/basic-pipeline.png Graphic file (type png)
+
+<use img/basic-pipeline.png>
+Package pdftex.def Info: img/basic-pipeline.png used on input line 566.
+(pdftex.def)             Requested size: 401.70384pt x 120.45091pt.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 581.
+ [26
+
+ <./img/basic-pipeline.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 581.
  (./thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 491.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 491.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 581.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 581.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 5B1F8AD0F4410D9E4845C8D50E0A8A9F;2086.
+(rerunfilecheck)             Checksum: 7AE651AA7DD59FD9848B2BBCC6E9D425;2507.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 491.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 581.
  ) 
 Here is how much of TeX's memory you used:
- 7780 strings out of 494985
- 108182 string characters out of 6180357
- 197241 words of memory out of 5000000
- 10833 multiletter control sequences out of 15000+600000
+ 7814 strings out of 494424
+ 108941 string characters out of 6165346
+ 198992 words of memory out of 5000000
+ 10887 multiletter control sequences out of 15000+600000
  11753 words of font info for 40 fonts, out of 8000000 for 9000
- 36 hyphenation exceptions out of 8191
- 30i,16n,38p,907b,545s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 372 hyphenation exceptions out of 8191
+ 30i,16n,38p,912b,545s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx6.pfb></usr/share/texli
@@ -599,10 +605,10 @@ blic/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
 fonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
 i7.pfb>
-Output written on thesis.pdf (28 pages, 350734 bytes).
+Output written on thesis.pdf (32 pages, 507643 bytes).
 PDF statistics:
- 362 PDF objects out of 1000 (max. 8388607)
- 301 compressed objects within 4 object streams
- 66 named destinations out of 1000 (max. 500000)
- 275 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 419 PDF objects out of 1000 (max. 8388607)
+ 348 compressed objects within 4 object streams
+ 78 named destinations out of 1000 (max. 500000)
+ 330 words of extra memory for PDF output out of 10000 (max. 10000000)
 

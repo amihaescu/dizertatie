@@ -1,4 +1,4 @@
-\select@language {english}
+\select@language {romanian}
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Organizarea pe "arii de responsabilitate"}}{4}{figure.2.1}
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Client/server}}{10}{figure.3.1}
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Arhitectur\IeC {\u a} bazat\IeC {\u a} pe componente}}{12}{figure.3.2}
@@ -7,3 +7,6 @@
 \contentsline {figure}{\numberline {3.5}{\ignorespaces Arhitectur\IeC {\u a} orientat\IeC {\u a} pe servicii}}{18}{figure.3.5}
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Arhitecturii monolit si microservicii}}{20}{figure.4.1}
 \contentsline {figure}{\numberline {4.2}{\ignorespaces Legea lui Conway}}{22}{figure.4.2}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Echipe responsabile de servicii}}{22}{figure.4.3}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Model distribuit al datelor}}{25}{figure.4.4}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Pipeline}}{26}{figure.5.1}

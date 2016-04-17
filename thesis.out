@@ -25,3 +25,8 @@
 \BOOKMARK [1][]{section.4.1}{4.1 Caracteristici ale arhitecturii microservicii}{chapter.4}% 25
 \BOOKMARK [2][]{subsection.4.1.1}{4.1.1 Separarea prin intermediul serviciilor}{section.4.1}% 26
 \BOOKMARK [2][]{subsection.4.1.2}{4.1.2 Organizare \356n jurul nevoilor de business}{section.4.1}% 27
+\BOOKMARK [2][]{subsection.4.1.3}{4.1.3 Produse, nu proiecte}{section.4.1}% 28
+\BOOKMARK [2][]{subsection.4.1.4}{4.1.4 Puncte termnale inteligente si bus-uri simple}{section.4.1}% 29
+\BOOKMARK [2][]{subsection.4.1.5}{4.1.5 Guvernare distribuit}{section.4.1}% 30
+\BOOKMARK [2][]{subsection.4.1.6}{4.1.6 Managementul distribuit al datelor}{section.4.1}% 31
+\BOOKMARK [0][]{chapter.5}{5 Automatizarea infrastructurii}{}% 32

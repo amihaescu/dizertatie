@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.1.1)  10 JAN 2016 20:21
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.4.2)  17 APR 2016 20:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **cercetare.tex
 (./cercetare.tex
 LaTeX2e <2011/06/27>
-Babel <3.9h> and hyphenation patterns for 28 languages loaded.
+Babel <3.9h> and hyphenation patterns for 4 languages loaded.
 (./teza-upb.cls (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2008/03/30 v1.1d Input encoding file
 \inpenc@prehook=\toks14
@@ -58,15 +58,35 @@ Package: setspace 2011/12/19 v6.7a set line spacing
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
 Package: babel 2013/12/03 3.9h The Babel package
 
-(/usr/share/texlive/texmf-dist/tex/generic/babel-romanian/romanian.ldf
-Language: romanian 2005/03/31 v1.2l Romanian support from the babel system
 
-(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
-File: babel.def 2013/12/03 3.9h Babel common definitions
-\babel@savecnt=\count89
-\U@D=\dimen105
-)))
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+! Package babel Error: Unknown option `romanian'. Either you misspelled it
+(babel)                or the language definition file romanian.ldf was not fou
+nd.
+
+See the babel package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.296 \ProcessOptions*
+                      
+Valid options are: shorthands=, KeepShorthandsActive,
+activeacute, activegrave, noconfigs, safe=, main=, math=
+headfoot=, strings=, config=, hyphenmap=, or a language name.
+
+
+! Package babel Error: You haven't specified a language option.
+
+See the babel package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.329 ...ry to proceed from here, type x to quit.}
+                                                  
+You need to specify a language, either as a global option
+or as an optional argument to the \usepackage command;
+You shouldn't try to proceed from here, type x to quit.
+
+) (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
@@ -93,14 +113,14 @@ Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
-\Gread@gobject=\count90
+\Gread@gobject=\count89
 ))
-\Gin@req@height=\dimen106
-\Gin@req@width=\dimen107
+\Gin@req@height=\dimen105
+\Gin@req@width=\dimen106
 )
 (/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count91
+\c@float@type=\count90
 \float@exts=\toks21
 \float@box=\box26
 \@float@everytoks=\toks22
@@ -163,14 +183,14 @@ Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
 Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
 )
-\@linkdim=\dimen108
-\Hy@linkcounter=\count92
-\Hy@pagecounter=\count93
+\@linkdim=\dimen107
+\Hy@linkcounter=\count91
+\Hy@pagecounter=\count92
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 )
-\Hy@SavedSpaceFactor=\count94
+\Hy@SavedSpaceFactor=\count93
 
 (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
@@ -187,17 +207,17 @@ Package hyperref Info: Plain pages OFF on input line 4458.
 Package hyperref Info: Backreferencing OFF on input line 4463.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4688.
-\c@Hy@tempcnt=\count95
+\c@Hy@tempcnt=\count94
 
 (/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip10
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 5041.
-\XeTeXLinkMargin=\dimen109
-\Fld@menulength=\count96
-\Field@Width=\dimen110
-\Fld@charsize=\dimen111
+\XeTeXLinkMargin=\dimen108
+\Fld@menulength=\count95
+\Field@Width=\dimen109
+\Fld@charsize=\dimen110
 Package hyperref Info: Hyper figures OFF on input line 6295.
 Package hyperref Info: Link nesting OFF on input line 6300.
 Package hyperref Info: Hyper index ON on input line 6303.
@@ -207,17 +227,17 @@ Package hyperref Info: Link coloring with OCG OFF on input line 6320.
 Package hyperref Info: PDF/A mode OFF on input line 6325.
 LaTeX Info: Redefining \ref on input line 6365.
 LaTeX Info: Redefining \pageref on input line 6369.
-\Hy@abspage=\count97
-\c@Item=\count98
-\c@Hfootnote=\count99
+\Hy@abspage=\count96
+\c@Item=\count97
+\c@Hfootnote=\count98
 )
 
 Package hyperref Message: Driver (autodetected): hpdftex.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
 File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
-\Fld@listcount=\count100
-\c@bookmark@seq@number=\count101
+\Fld@listcount=\count99
+\c@bookmark@seq@number=\count100
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
 Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
@@ -227,6 +247,17 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 \Hy@SectionHShift=\skip45
 )
 (./cercetare.aux
+
+! Package babel Error: You haven't defined the language romanian yet.
+
+See the babel package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.19 \select@language{romanian}
+                               
+Your command will be ignored, type <return> to proceed
+
 
 LaTeX Warning: Label `fig:arhi_componente' multiply defined.
 
@@ -258,16 +289,16 @@ File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
 )
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count102
-\scratchdimen=\dimen112
+\scratchcounter=\count101
+\scratchdimen=\dimen111
 \scratchbox=\box28
-\nofMPsegments=\count103
-\nofMParguments=\count104
+\nofMPsegments=\count102
+\nofMParguments=\count103
 \everyMPshowfont=\toks23
-\MPscratchCnt=\count105
-\MPscratchDim=\dimen113
-\MPnumerator=\count106
-\makeMPintoPDFobject=\count107
+\MPscratchCnt=\count104
+\MPscratchDim=\dimen112
+\MPnumerator=\count105
+\makeMPintoPDFobject=\count106
 \everyMPtoPDFconversion=\toks24
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
@@ -293,7 +324,7 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count108
+\c@section@level=\count107
 )
 LaTeX Info: Redefining \ref on input line 14.
 LaTeX Info: Redefining \pageref on input line 14.
@@ -333,6 +364,17 @@ LaTeX Font Warning: Font shape `OT1/cmr/bx/sc' undefined
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./img/UPB-logo.png (PNG co
 py)>] (./cercetare.toc
+
+! Package babel Error: You haven't defined the language romanian yet.
+
+See the babel package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1 \select@language {romanian}
+                               
+Your command will be ignored, type <return> to proceed
+
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 2.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -348,13 +390,37 @@ been already used, duplicate ignored
 l.34 \listoffigures
                     [1
 
-] (./cercetare.lof)
+] (./cercetare.lof
+
+! Package babel Error: You haven't defined the language romanian yet.
+
+See the babel package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1 \select@language {romanian}
+                               
+Your command will be ignored, type <return> to proceed
+
+)
 \tf@lof=\write5
 \openout5 = `cercetare.lof'.
 
  [2
 
-] (./cercetare.lot)
+] (./cercetare.lot
+
+! Package babel Error: You haven't defined the language romanian yet.
+
+See the babel package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1 \select@language {romanian}
+                               
+Your command will be ignored, type <return> to proceed
+
+)
 \tf@lot=\write6
 \openout6 = `cercetare.lot'.
 
@@ -374,7 +440,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 59--59
 [4
 
 ]
-Capitolul 1.
+Chapter 1.
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-0.def
 File: uni-0.def 2013/05/13 UCS: Unicode data U+0000..U+00FF
 )pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
@@ -407,7 +473,7 @@ been already used, duplicate ignored
                    \relax 
 l.99 \chapter
              {Principii fundamentale ale arhitecturii software} [3]
-Capitolul 2.
+Chapter 2.
 <img/IC351032.png, id=177, 510.90875pt x 528.97626pt>
 File: img/IC351032.png Graphic file (type png)
  <use img/IC351032.png>
@@ -441,7 +507,7 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\textcommabelow' on input line 157.
 
 [7]
-Capitolul 3.
+Chapter 3.
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\textcommabelow' on input line 169.
@@ -450,13 +516,13 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 
 ]
 Underfull \hbox (badness 1019) in paragraph at lines 200--200
-[]|[]\OT1/cmr/m/n/12 Imparte sis-te-mul ^^^Pn dou^^Ua aplica[]ii, ^^^Pn care cl
-i-entu
+[]|[]\OT1/cmr/m/n/12 Imparte sis-temul ^^^Pn dou^^Ua aplica[]ii, ^^^Pn care cli
+entu
  []
 
 
-Underfull \hbox (badness 2088) in paragraph at lines 201--201
-[]|\OT1/cmr/m/n/12 Arhitectur^^Ua ba-
+Underfull \hbox (badness 10000) in paragraph at lines 201--201
+[]|\OT1/cmr/m/n/12 Arhitectur^^Ua
  []
 
 
@@ -469,17 +535,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 207--207
 []|\OT1/cmr/m/n/12 N-niveluri/3-
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 212--212
-[]|\OT1/cmr/m/n/12 Arhitectur^^Ua
+[9]
+Overfull \hbox (1.50368pt too wide) in paragraph at lines 230--231
+\OT1/cmr/m/n/12 Arhitectura client/server de-scrie sis-temele dis-tribuite care
+ im-plic^^Ua sep-a-rarea clien-tu-lui []i serveru-
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 212--212
-\OT1/cmr/m/n/12 orien-tat^^Ua pe
- []
-
-[9] <img/clientserver.png, id=208, 422.7795pt x 257.46187pt>
+<img/clientserver.png, id=208, 422.7795pt x 257.46187pt>
 File: img/clientserver.png Graphic file (type png)
 
 <use img/clientserver.png>
@@ -509,14 +571,14 @@ Package pdftex.def Info: img/layered-arch.PNG used on input line 306.
 (pdftex.def)             Requested size: 199.24388pt x 151.56587pt.
  [13 <./img/layered-arch.PNG>] [14]
 Overfull \hbox (6.86215pt too wide) in paragraph at lines 345--346
-[]\OT1/cmr/m/n/12 Tiparul pre-zen-tat mai sus spore[]te po-si-bi-li-ta-tea de t
-es-tare a aplica[]iei []i sim-pli-fic^^Ua mentenan[]a
+[]\OT1/cmr/m/n/12 Tiparul prezen-tat mai sus spore[]te posi-bil-i-tatea de test
+are a aplica[]iei []i sim-plific^^Ua mentenan[]a
  []
 
 
 Overfull \hbox (0.26758pt too wide) in paragraph at lines 345--346
-\OT1/cmr/m/n/12 func[]ionalit^^Ua[]ii interfe[]ei gra-fice []i ofer^^Ua po-si-b
-i-li-ta-tea se-par^^Uarii sar-ci-ni-lor de con-ce-pere a interfe[]ei
+\OT1/cmr/m/n/12 func[]ionalit^^Ua[]ii interfe[]ei grafice []i ofer^^Ua posi-bil
+-i-tatea separ^^Uarii sarcinilor de con-cepere a interfe[]ei
  []
 
 
@@ -536,14 +598,14 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 
 
 Overfull \hbox (6.0078pt too wide) in paragraph at lines 391--392
-\OT1/cmr/m/n/12 Aceasta per-mite ofe-ri-rea im-ple-ment^^Uarilor al-ter-na-tive
- f^^Uar^^Ua afec-tare con-su-ma-to-ri-lor interfe[]ei. 
+\OT1/cmr/m/n/12 Aceasta per-mite oferirea im-ple-ment^^Uarilor al-ter-na-tive f
+^^Uar^^Ua afectare con-suma-to-rilor interfe[]ei. 
  []
 
 
 Overfull \hbox (2.15645pt too wide) in paragraph at lines 393--394
-\OT1/cmr/m/n/12 Utiliz^^Uari ti-pice ale aces-tui stil in-clud de-fi-ni-rea unu
-i obiect mo-del care re-a-li-zeaz^^Ua ope-ra-tii []tiin[]ifice
+\OT1/cmr/m/n/12 Utiliz^^Uari tipice ale aces-tui stil in-clud definirea unui ob
+iect model care re-al-izeaz^^Ua op-er-atii []tiin[]ifice
  []
 
 [17]
@@ -563,15 +625,9 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 441.
  (./cercetare.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 441.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 441.
+Package rerunfilecheck Info: File `cercetare.out' has not changed.
+(rerunfilecheck)             Checksum: AD44298D5529B8D14809E894186A23B3;1742.
 
-
-Package rerunfilecheck Warning: File `cercetare.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `cercetare.out':
-(rerunfilecheck)             Before: A9BBA4906471E8A2C20FA46098F22350;1742
-(rerunfilecheck)             After:  AD44298D5529B8D14809E894186A23B3;1742.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -581,12 +637,12 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 441.
  ) 
 Here is how much of TeX's memory you used:
- 7766 strings out of 494424
- 108113 string characters out of 6165347
- 198603 words of memory out of 5000000
- 10868 multiletter control sequences out of 15000+600000
+ 7487 strings out of 494985
+ 104547 string characters out of 6180357
+ 188275 words of memory out of 5000000
+ 10560 multiletter control sequences out of 15000+600000
  13474 words of font info for 46 fonts, out of 8000000 for 9000
- 372 hyphenation exceptions out of 8191
+ 36 hyphenation exceptions out of 8191
  30i,16n,38p,910b,544s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
@@ -599,7 +655,7 @@ s/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1
 amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmti7.pfb>
-Output written on cercetare.pdf (24 pages, 562575 bytes).
+Output written on cercetare.pdf (24 pages, 562640 bytes).
 PDF statistics:
  311 PDF objects out of 1000 (max. 8388607)
  258 compressed objects within 3 object streams
