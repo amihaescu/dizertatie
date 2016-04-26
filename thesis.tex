@@ -555,7 +555,7 @@ Astfel tranzacțiilor contribuie la asigurarea consistenței datelor, dar impune
 
 Faptul de a gestiona astfel inconsistențele este o nouă provocare pentru multe echipe de dezvoltare, dar este cea care adesea se pliează cel mai bine pentru cazurile de business. Adesea business-ul operează cu un anumit nivel de inconsistență pentru a răspunde repede la cereri, având la dispoziție mecanisme pentru trarea erorilor. Acest compromis rentează atât timp cât costul reparării greșelilor este mai mic decât costul pierderii anumitor informații de business. 	
 
-\chapter{Automatizarea infrastructurii}
+\subsection{Automatizarea infrastructurii}
 
 Tehnicile pentru automatizarea infrastructurii au evoluat foarte mult în ultimii ani - evoluția clodului și AWS - Amazon Web Services - în mod particular a redus foarte mult complexitatea operațională pentru gestionarea microserviciilor. 
 
@@ -572,10 +572,61 @@ Câteva aspecte-cheie ale procesului de livrare continuă (e.g. Continous Delive
 
 O aplicație monolit va fi compilată, testată și trecută prin aceste medii fără prea multe probleme. S-a constatat că investirea în automatizarea procesului de instalarea a unei aplicații în producție crește încrederea echipelor de a livra mult mai des pe acest mediu. Unul din obiectivele livrării continue este banalizarea procesului de instalare, astfel încât nu contează că se livrează una sau mai multe aplicații, lucrurile rămân la fel de simple. 
 
+O altă aria în care se observă folosirea extensivă a automatizării infrastrucurii este administrarea microserviciilor în producție. În contrast cu afirmația precedentă legată de banalizarea instalării aplicațiilor în producție, peisajul operațional este complet diferit. 
 
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.6]{img/micro-deployment.png}
+\caption{Instalarea modulelor diferă}
+\label{fig:arhi_componente}
+\end{figure}
 
+\subsection{Proiectare pentru dezastru}
 
- 
+O consecință a folosirii serviciilor ca și componente este faptul ca aplicațiile trebuie proiectate pentru a putea tolera pene de servicii (indisponibilitatea acestora). Orice apel al unui serviciu poate eșua datorită indisponibilității furnizorului de serviciu, clientul ar trebuie deci să răspundă într-un mod cât mai elegant. Acesta reprezintă un dezavantaj față de folosirea unui design monolit deoarece introduce complexitatea adițională. Consecința este că echipele responsabile pentru microservicii trebui în permanență să gestioneze modul în care o pană a unui serviciu va afecta experiența utilizatorului. Adesea companiile efectuează teste prin care simulează indisponibilitatea serviciilor și uneori chiar a centrele de date pentru a verifica compotamentul aplicațiilor. 
+
+Acest tip de teste automate realizate în producție ar fi indeajuns pentru a oferi echipelor operaționale datele necesare pentru a constata comportamentul aplicațiilor și pentru a face teste de performanță. Acest lucru nu implică faptul ca aplicațiile monolitice nu pot suporta scenarii de test complexe, însă este mai puțin obișnuit. 
+
+Din moment ce serviciile pot fi intrerupte la orice moment, este important ca panele sa fie detectate cât mai repede, și eventual serviciul să fie repornit în mod automat. Aplicațiile bazate pe microservicii pun foarte mult accentul pentru monitorizarea în timp real, atât a parametrilor tehnicii (numărul de cereri pe secundă care trimise către o baza de date sau către serverul aplicativ) cât și cele de business (câte comenzi sunt procesate pe minut). În acest mod se echipele de dezvoltare au la dispoziție un sisteme de monitorizare ce îi poate avertiza dacă ceva nu funcționează în parametrii. 
+
+Acest aspect este foarte important pentru o arhitectură bazată pe microservicii datorită folosirii extensive a orchestrării și a colaborării bazate pe evenimente ce duc la comportamente neprevăzute. În vreme ce descoperirea comportamentelor neprevăzute este lăudată de unii, adevărul este că de multe ori este un lucru rău. Monitorizarea este vitală pentru descoperirea acestora și remedierea lor într-un timp cât mai scurt. 
+
+Aplicațiile monolit ar putea fi construite la fel de transparente ca un microserviciu și în fapt chiar așa ar trebui să fie. Diferența este că absolut necesar să se știe când serviciile ce rulează pe o mașină distantă devin indisponibile. Folosind librării locale acest tip de transparență nu este foarte folositoare. 
+
+Echipele care lucrează cu microservicii se așteaptă să vadă soluții complexe de monitorizare și logare pentru fiecare serviciu în parte: pagini care arată statutul serviciilor și o multitudine de metrici operaționale și de business. 
+
+\subsection{Design evolutiv}
+
+Adepții microserviciilor privesc împărțirea unei aplicații pe servicii ca un pas natural prin care dezvoltatorii pot controla mult mai bine schimbările fără a îngreuna procesul. Controlarea schimbărilor nu înseamnă neapărat reducerea numărului de schimbări - cu atitudinea și uneltele potrivite se pot face schimbări frecvente, rapid și bine controlate. 
+
+În împărțirea unui sistem pe componente apare problema luării deciziei creării serviciilor, respectiva care sunt principiile ce trebuie folosite pentru a secționa aplicația în mai mult subsisteme. Proprietatea cheie a unei componente este independența interschimbării și a actualizării ceea ce faptul că vom cauta acele caracteristici ce vor permite rescrierea acesteia fără a afecta consumatorii. Există totuși grupuri care duc acestă idee mai departe și consideră că serviciile vor fi mai degrabă înlăturate și înlocuite cu altele, decât menținute pe termen lung. 
+
+Un exemplu foarte bun al unei aplicații gândite ca și monolit, dar care a fost evoluată în direcția microservicii este site-ul publicației The Guardian. Deși monolitul rămâne în continuare nucleul, noile funcționalități au fost realizate folosind microservicii ce apelează API-ul monolitului. Această abordare este deosebit de practică pentru funcționalitățile cu scop temporal limitat, cum ar fi paginile despre evenimente sportive. Astfel de pagini pot fi create repede folosind limbaje de programare ce permit dezvoltări rapide și șterse în momentul în care evenimentul s-a încheiat. O abordare similară poate fi întâlnită și în cadrul instituțiilor financiare când noi servicii sunt adăugate pentru o oportunitate a pieței și decomisionate câteva săptămâni mai târziu. 
+
+Accentul pe schimbare este un caz special al unui principiu mult mai general al design-ului modular. Este indicat ca lucrurile ce se schimbă în același timp să rămână în același modul. Părți ale sistemului care se schimbă foarte rar ar trebuie sa fie în servicii diferite față de cele care se schimbă foarte des. Dacă adesea apare nevoia de a schimba două servicii în același timp, atunci acestea ar trebui să formeze un singur serviciu. 
+
+Adunarea componetelor în cadrul unui serviciul oferă oportunitatea de a crea planuri de instalare mult mai granulare. În cazul unui monolit orice schimbare implică o recompilare și reinstalarea a întregii aplicații. Folosind microservicii, este necesară doar reinstalarea serviciului modificat. Acesta poate simplifica și grăbi procesul de instalare. Dezavantajul este că apare riscul nesatisfacerii unora dintre consumatorii serviciului. Abordarea clasică pentru rezolvarea acestor probleme este versionarea, însă în cadrul microservicii aceasta este considerată ca o ultimă alternativă. Versionarea poate fi evitată printr-o proiectare a serviciilor cât mai tolerantă la schimbările furnizorilor. 
+\newpage
+
+\section{Avatanje și dezavantaje ale microserviciilor}
+\subsection{Avantaje}
+
+Șablonul arhitectural al microserviciilor prezintă un număr important de avantaje. În primul rând, rezolvă problema complexității, prin descompunerea a ceea ce altfel ar fi fost un aplicație monolit foarte mare într-un set de servicii. În vreme ce ansamblu funcționalităților rămâne neschimbat, aplicația a fost împărțită în grupuri de servicii mult mai ușor de administrat. Fiecare serviciu conține un set bine definit de funcționalități expuse folosind RPC sau un API. Acest șablon oferă un grad de modularitate care în practică ar fi extrem de greu de obținut în cadrul unei aplicații monolitice. În consecință serviciile individuale sunt mult mai rapid de dezvoltat și mult mai simplu de înțeles și menținut. 
+
+În al doilea rând, această arhitectură permite fiecărui serviciu să fie dezvoltat în mod independent de către o altă echipă. Dezvoltatorii au posibilitatea de a alege orice tehnologie consideră optimă pentru îndeplinirea cerințelor, în condițiile în care reușesc să expună în mod corect API-ul stabilit. Desigur, majoritatea organizațiilor doresc să evite potențialele probleme care pot apărea datorită folosirii prea multor tehnologii și limitează alegerile. Totuși, această liberate presupune faptul că dezvoltatorii nu mai sunt obligați să folosească aceleași tehnologii învechite care au existat la începutul proiectului. Când dezvoltă un serviciu nou, au ocazia să folosească tehnologii actuale. În plus, serviciile fiind relativ mici, devine fezabilă rescrierea unui serviciu vechi folosind technologie actuală. 
+
+În al treilea rând acest șablon permite fiecărui microserviciu să fie instalat în mod independent. Dezvoltatorii nu mai au nevoie să coordoneze instalarea modificărilor care sunt specifice serviciului lor. Aceste genuri de modificări pot fi instalate imediat ce au fost testate. De exemplu, echipa responsabilă de interfața grafică poate să efectueaze rapid teste și să implementeaze schimbări. Această arhitectură face posibilă integrarea continuă. 
+
+În ultimul rând, microserviciile permit fiecărui serviciu să fie scalat în mod individual. Pot fi instalate doar numărul necesar de instanțe pentru fiecare serviciu care satisface nevoile de capacitate și disponibilitate. În plus se poate folosi un suport fizic care să corespundă nevoilor serviciilor. De exemplu un serviciu de procesare a imaginilor, care solicită foarte mult procesorul, poate fi instalat pe o instanță EC2 Compute-Optimized în vreme ce o bază de date în memorie poate fii instalată pe o instanță EC2 Memory-Optimized.
+
+\subsection{Dezavantaje}
+
+Ca orice tehnologie, arhitectura microservicii prezintă dezavantaje. Un prim dezvantaj ar fi numele în sine. Numele microservicii pune extrem de mult accentul pe dimensiunea serviciului. De fapt, sunt foarte muți dezvoltatorii care pun accentul pe construirea serviciilor cu o granulație foarte fină. În vreme ce serviciile mici sunt preferate, este important de avut în vedere că ele reprezintă calea spre rezolvarea unei probleme și nu sunt un scop în sine. Scopul microserviciilor este să împartă aplicația îndeajuns de mult pentru a facilita dezvoltarea și instalarea flexibilă. 
+
+Un alt dezavantaj major este complexitatea care rezultă din faptul ca o aplicație ce folosește microservicii este un sistem distribuit. Dezvoltatorii trebuie să aleagă și să implementeze sunt mecanism de comunicare inter-proces bazat fie pe mesaje fie pe RPC. În plus, trebuie să scrie cod care să se gestioneze situațiile în care furnizorul de serviciu este încet sau indisponibil. În vreme ce niciuna din aceste probleme nu este foarte complexă, este considerabil mai complexă decât o aplicație monolit un module comunică prin apeluri de proceduri la nivel de limbaj.   
+
+O altă provocare a microserviciilor o reprezintă arhitectura distribuită a bazei de date. Tranzacțiile de business care modifică entități multiple sunt ceva comun. Acest tip de tranzacții sunt trivial de implementat în cadrul unei aplicații monolit deoarece există o singură bază de date. Într-o arhitectură bazată pe microservicii multiplele baze de date ale serviciilor trebuie actualizate. Folosirea unui sistem distribuit de tranzacții nu este în mod normal o opțiune, și nu doar datorită Teoremei CAP - denumită și Teorema lui Brewer, care afirmă că este imposibil ca un sistem informatic să ofere simultan constrângerile următoare: consistență, disponibilitate și toleranță parțială. Ele pur și simplu nu sunt suportate de sistemele de baze de date NoSQL și nici de brokerii de mesaje. Compromisul este folosirea unei abordări bazate pe consistență, care este mai problematică pentru dezvoltatori. 
+
 
 
 \end{document}

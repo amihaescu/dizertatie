@@ -29,4 +29,9 @@
 \BOOKMARK [2][]{subsection.4.1.4}{4.1.4 Puncte termnale inteligente si bus-uri simple}{section.4.1}% 29
 \BOOKMARK [2][]{subsection.4.1.5}{4.1.5 Guvernare distribuit}{section.4.1}% 30
 \BOOKMARK [2][]{subsection.4.1.6}{4.1.6 Managementul distribuit al datelor}{section.4.1}% 31
-\BOOKMARK [0][]{chapter.5}{5 Automatizarea infrastructurii}{}% 32
+\BOOKMARK [2][]{subsection.4.1.7}{4.1.7 Automatizarea infrastructurii}{section.4.1}% 32
+\BOOKMARK [2][]{subsection.4.1.8}{4.1.8 Proiectare pentru dezastru}{section.4.1}% 33
+\BOOKMARK [2][]{subsection.4.1.9}{4.1.9 Design evolutiv}{section.4.1}% 34
+\BOOKMARK [1][]{section.4.2}{4.2 Avatanje si dezavantaje ale microserviciilor}{chapter.4}% 35
+\BOOKMARK [2][]{subsection.4.2.1}{4.2.1 Avantaje}{section.4.2}% 36
+\BOOKMARK [2][]{subsection.4.2.2}{4.2.2 Dezavantaje}{section.4.2}% 37

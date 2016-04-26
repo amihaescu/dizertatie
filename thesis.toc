@@ -1,7 +1,7 @@
 \select@language {romanian}
-\contentsline {chapter}{Lista figurilor}{iii}{chapter*.2}
-\contentsline {chapter}{Lista tabelelor}{iv}{chapter*.3}
-\contentsline {unnumberedsection}{Lista acronimelor}{v}{chapter*.4}
+\contentsline {chapter}{Lista figurilor}{iv}{chapter*.2}
+\contentsline {chapter}{Lista tabelelor}{v}{chapter*.3}
+\contentsline {unnumberedsection}{Lista acronimelor}{vi}{chapter*.4}
 \contentsline {chapter}{\numberline {1}Introducere}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Ce este o arhitectura software?}{1}{section.1.1}
 \contentsline {section}{\numberline {1.2}De ce este arhitectura important\IeC {\u a} ?}{2}{section.1.2}
@@ -30,4 +30,9 @@
 \contentsline {subsection}{\numberline {4.1.4}Puncte termnale inteligente \IeC {{\textcommabelow s}}i bus-uri simple}{23}{subsection.4.1.4}
 \contentsline {subsection}{\numberline {4.1.5}Guvernare distribuit}{24}{subsection.4.1.5}
 \contentsline {subsection}{\numberline {4.1.6}Managementul distribuit al datelor}{24}{subsection.4.1.6}
-\contentsline {chapter}{\numberline {5}Automatizarea infrastructurii}{26}{chapter.5}
+\contentsline {subsection}{\numberline {4.1.7}Automatizarea infrastructurii}{25}{subsection.4.1.7}
+\contentsline {subsection}{\numberline {4.1.8}Proiectare pentru dezastru}{26}{subsection.4.1.8}
+\contentsline {subsection}{\numberline {4.1.9}Design evolutiv}{27}{subsection.4.1.9}
+\contentsline {section}{\numberline {4.2}Avatanje \IeC {{\textcommabelow s}}i dezavantaje ale microserviciilor}{29}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Avantaje}{29}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Dezavantaje}{29}{subsection.4.2.2}
