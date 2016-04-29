@@ -635,7 +635,49 @@ Instalarea unei aplicații bazate pe microservicii este mult mai complexă. O ap
 
 O soluție pentru obținerea automatizării este folosirea unui furnizor de servicii de tip "platforma ca serviciu" (eng. Platform as a Service - PaaS). Furnizorii de PaaS oferă dezvoltatorilor o modalitate simplă de instalare și administrare a microserviciilor. Acest îi izolează de probleme cum ar fi cumpărarea și configurarea de resurse IT. În același timp, specialiștii de sisteme și rețele care configurează PaaS se pot asigura că toate bunele practici au fost respectate. O altă soluție este dezvoltarea a prorpiului PaaS. Un punct de plecare ar putea fii o soluție de clustering, precum Mesos sau Kubernetes folosit impreună cu tehnologii precum Docker. 
 
+\newpage
+\section{Construirea microserviciilor: folosirea unui API gateway}
+
+În vederea realizării unei aplicații folosind microservcii o modalitatea de interacțiune între aceasta și utilizatori trebuie aleasă. În cazul unei aplicații monolitice există doar un set de puncte terminale. Într-o arhitectura de tip microservicii, fiecare serviciu expune un set de funcționalități. Una din posibilele metode prin care se poate realiza comunicarea client aplicație este prin intermediul unui API gateway. 
+
+\subsection{Introducere}
+
+Pornind de la cazul practic al unei aplicații mobile a unui magazin online. Cel mai probabil acaesta va conține o pagină care va afișa detalii legate de produse. Deși este aplicație mobilă, pagina de detalii a produsului oferă multe informații. De exemplu, nu doar că există informații de bază despre produs, dar aceasta include și: numărul de produse din coș, istoricul comenzilor, recenziile altor clienți, opțiuni de livrare.
+
+În cazul unei aplicații monolit, un client de mobil ar putea obține datele printr-un simplu apel REST către aplicație: \texttt{GET api.company.com/productdetails/productId}. Un load balancer ar ruta cererea către unul din cele N servere identice. Aplicația ar lansa diverse interogări ale bazei de date care ar întoarce un răspuns către client. 
+
+Pe de altă parte, folosind microservicii, datele afișate pe pagină aparțin mai multor microservicii. O posibilă asociere între informații și servicii ar fi următoarea:
+\begin{itemize}
+	\item Shopping Cart Service - numărul de obiecte din coș
+	\item Order Service - istoricul comenzilor
+	\item Catalog Service - informații de bază despre produs, cum ar fi numele, imaginea și prețul
+	\item Review Service - recenziile clienților
+	\item Shipping Service - opțiuni de livrarea, termeni limită și costul de livrare pentru fiecare furnizor
+\end{itemize}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.4]{img/Richardson-microservices-part2-2_microservices-client.png}
+\caption{Diagramă a serviciilor}
+\label{fig:arhi_componente}
+\end{figure}
+
+În acest caz o strategie de comunicare între clienți și servicii trebuie aleasă. 
 
 
+\newpage
+\subsection{Comunicare directă între client și microservicii}
+
+Teoretic, un client ar lansa cereri directe către fiecare microserviciu. Fiecare microserviciu ar avea un punct terminal public de tipul: \texttt{https://serviceName.api.company.name}. Acest URL s-ar mapa la load balancer-ul microserviciului, care ar distribui cererile serverelor din back-end. Pentru obținerea detaliilor legate de produs, clientul ar lansa cereri spre fiecare din serviciile listate mai sus. 
+
+Din nefericire, există un număr de provocări și limitări în cazul acestei soluții. O primă problemă ar fi nepotrivirea dintre nevoile clientului și API-ul foarte granular expus de fiecare microserviciu. Clientul în acest exemplu va trebui să lanseze 7 cereri separate. În cazul unei aplicații mai complexe ar putea fi mult mai multe. În vreme ce un client ar putea lansa un număr mare de cereri într-o rețea locală ar fi probabil foarte ineficient în cazul internetului și în mod definitiv nepractic peste o rețea mobilă. Această abordare complică și codul care rulează la client. 
+
+O altă problemă cu acestă abordare ar fi că în unele cazuri microserviciile ar putea folosi protocoale care nu se pretează a fi folosite peste internet. Un serviciu ar putea folosi o librărie de tip RPC în vreme ce altul ar folosi protocol de mesagerie AMQP. Nici unul nu se pretează a fi folosit într-un browser și nici să traverseze un firewall și este foarte bine folosit în intern. O aplicație ar trebui să folosească protocoale precum HTTP sau WebSocket în afara firewall-ului. 
+
+Un dezavantaj al acestei abordări este că refactorizarea devine dificilă. Pe de-a lungul vieții sistemului este posibil ca partiționarea serviciilor să fie schimbată. De exemplu, două servicii ar putea unite, altul ar putea fi împărțit în două sau mai multe.  Dacă, însă, clienții comunică direct cu serviciile, atunci aceste operațiuni devin extrem de dificile. 
+
+Datoriă acestor tipuri de probleme în foarte puține cazuri clienții discută direct cu microserviciile. 
+
+\subsection{Folosirea unui API Gateway}
 
 \end{document}

@@ -35,3 +35,7 @@
 \BOOKMARK [1][]{section.4.2}{4.2 Avatanje si dezavantaje ale microserviciilor}{chapter.4}% 35
 \BOOKMARK [2][]{subsection.4.2.1}{4.2.1 Avantaje}{section.4.2}% 36
 \BOOKMARK [2][]{subsection.4.2.2}{4.2.2 Dezavantaje}{section.4.2}% 37
+\BOOKMARK [1][]{section.4.3}{4.3 Construirea microserviciilor: folosirea unui API gateway}{chapter.4}% 38
+\BOOKMARK [2][]{subsection.4.3.1}{4.3.1 Introducere}{section.4.3}% 39
+\BOOKMARK [2][]{subsection.4.3.2}{4.3.2 Comunicare directa \356ntre client si microservicii}{section.4.3}% 40
+\BOOKMARK [2][]{subsection.4.3.3}{4.3.3 Folosirea unui API Gateway}{section.4.3}% 41
