@@ -40,3 +40,13 @@
 \contentsline {subsection}{\numberline {4.3.1}Introducere}{31}{subsection.4.3.1}
 \contentsline {subsection}{\numberline {4.3.2}Comunicare direct\IeC {\u a} \IeC {\^\i }ntre client \IeC {{\textcommabelow s}}i microservicii}{32}{subsection.4.3.2}
 \contentsline {subsection}{\numberline {4.3.3}Folosirea unui API Gateway}{32}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.4}Avantaje \IeC {{\textcommabelow s}}i dezavantaje ale folosirii unui API Gateway}{33}{subsection.4.3.4}
+\contentsline {subsection}{\numberline {4.3.5}Implementarea unui API Gateway}{33}{subsection.4.3.5}
+\contentsline {subsubsection}{\numberline {4.3.5.1}Perfoman\IeC {{\textcommabelow t}}\IeC {\u a} \IeC {{\textcommabelow s}}i scalabilitate}{33}{subsubsection.4.3.5.1}
+\contentsline {subsection}{\numberline {4.3.6}Folosirea unui model de programare reactiv}{34}{subsection.4.3.6}
+\contentsline {subsection}{\numberline {4.3.7}Invocarea serviciilor}{34}{subsection.4.3.7}
+\contentsline {subsection}{\numberline {4.3.8}Descoperire serviciilor}{34}{subsection.4.3.8}
+\contentsline {subsection}{\numberline {4.3.9}Tratarea penelor par\IeC {{\textcommabelow t}}iale}{34}{subsection.4.3.9}
+\contentsline {section}{\numberline {4.4}Construirea microserviciilor: Comunicarea inter-process \IeC {\^\i }n cadrul microserviciilor}{36}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Introducere}{36}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}Stiluri de interac\IeC {{\textcommabelow t}}iune}{36}{subsection.4.4.2}

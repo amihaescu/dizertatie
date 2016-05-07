@@ -41,6 +41,7 @@ DDD - Domain-Driven Design \\
 DRY - Don't repeat yourself \\
 EJB - Enterprise Java Beans \\ 
 ESB - Enterprise Service Bus \\
+IPC - Inter-process communication \\
 ISB - Internet Service Bus \\ 
 JIT - Just in time \\
 LOB - Line-of-business \\
@@ -679,5 +680,134 @@ Un dezavantaj al acestei abordări este că refactorizarea devine dificilă. Pe 
 Datoriă acestor tipuri de probleme în foarte puține cazuri clienții discută direct cu microserviciile. 
 
 \subsection{Folosirea unui API Gateway}
+
+În general o abordare mult mai bună este folosirea a ceea ce se numește un API gateway. Un API gateway reprezintă un server care este punctul de intrare în sistem. Este similar cu șablonul "Facade" programarea orientată pe obiecte. API Gateway-ul încapsulează arhitectura internă a sistemului și expună un API care poate fi adaptat pentru fiecare client. S-ar mai putea ocupa și de alte funcții precum autentificare, monitorizare, load balancing, caching, administrarea și modelarea cererilor. 
+
+Sistemul precedent ar putea fi regândit pentru a include un API Gateway: 
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.3]{img/Richardson-microservices-part2-3_api-gateway.png}
+\caption{Folosirea unui API gateway}
+\label{fig:arhi_componente}
+\end{figure}
+
+API Gateway-ul este reponsabil pentru rutarea cererilor, compoziția și translația protocoalelor. Toate cererile de la clienți trec întâi prin API Gateway, care apoi le rutează către microserviciul adecvat. De cele mai multe ori, o cerere venită către gateway implică apelarea mai multor microservicii și agregarea rezultatelor. Pe lângă acestea, poate efectua tranzlații între protocoale web precum HTTP, WebSocket și protocoale care nu sunt orientate pe web, folosite în intern. 
+
+Printre funcționalitățile sale se numără și expunerea unui API pentru fiecare client, în special pentru clienții mobile. Luând de exemplu cazul enunțat mai sus al detaliilor unui produs. API Gateway-ul poate expune un punct terminal (\texttt{/productdetails?productid=xxx}) care va permite clientului mobile să obțină toate datele necesare prin intermediul unei singure cereri. Acesta va trata cererea invocând diverse servicii - informații de produs, recomandări, recenzii etc - și va combina rezultatele. 
+
+Un exemplu foarte bun de API Gateway este cel al firmei Netflix. Serviciul de streaming Netflix este disponibil într-o multitudine de formate : televizoare, box-uri, telefoane mobile, sisteme de gaming, tablete, etc. Inițial, Netflix a încercat să expună un API care să răspundă tuturor acestor formate. Mai târziu, au descoperit ca acesta nu va funcționa bine datorită varietății mari de dispozitive și nevoilor aferente. Astăzi folosesc un API Gateway care expune un API dedicat rulării codului ce implementează șablonul de tip adaptor pentru fiecare tip de dispozitiv. Un adaptor rezolvă fiecare cerere prin invocarea în medie a șase șapte servicii de back-end. 
+
+\subsection{Avantaje și dezavantaje ale folosirii unui API Gateway}
+
+Așa cum este de așteptat, folosirea unui API Gateway are avatanje și dezavantaje. Un avantaj major ar fi încapsularea întregii structurii interne a aplicației. Clientul discută cu acestă entitate, mai degrabă decât cu fiecare serviciu în parte. API Gateway-ul expune fiecărui tip de client un API specific.  Aceasta reduce numărul de apeluri între client și aplicație, dar duce și la o simplificare a codului client. 
+
+Printre dezavantaje se numără faptul ca este încă o componentă care trebuie dezvoltată, instalată și menținută. Există de asemenea riscul ca aceasta să devină un punct de aglomerare. Dezvoltatorii trebuie să actualizeze API Gateway-ul pentru a expune fiecare punct terminal al microserviciilor. Este important ca acest proces să fie cât mai simplu cu putință, altfel dezvoltatorii vor trebui să aștepte pentru a implementa schimbările. În ciuda acestor dezavantaje, în majoritatea cazurilor implementarea unei astfel de entități aduce valoare sistemului. 
+
+\subsection{Implementarea unui API Gateway}
+
+Odată listate motivele folosirii unui API Gateway împreună cu compromisurile făcute, un alt subiect de interes reprezintă probleme legate de design ce trebuie luate în calcul. 
+
+\subsubsection{Perfomanță și scalabilitate}
+
+Doar o mică parte din companii funcționează la o scară îndeajuns de mare pentru a avea nevoie de a procesa milioane de cereri pe zi. Totuși, pentru majoritatea aplicațiilor performanța și scalabilitatea API Gateway-ul sunt foarte importante. În acest caz, are sens construirea unui API Gateway pe baza unei platforme asincrone cu I/O neblocant. Există o varietate de tehnologii care pot implementa un astfel de componentă. Bazându-ne pe JVM (Java Virtual Machine) se poate construi o astfel de platformă folosind unul din framework-urile de tip NIO (Non-blocking IO) precum Netty, Vertx, Spring Reactor sau JBoss Undertow. 
+
+\subsection{Folosirea unui model de programare reactiv}
+
+API Gateway-ul prelucrează o parte din cereri prin simpla rutare către serviciile de backend adecvate. O altă parte din cereri este prelucrată invocând mai multe servicii și agregând rezultatele. În unele cazuri aceste cereri sunt independente. Pentru a minimiza timpul de răspuns, API Gateway-ul ar trebui să lanseze cererile în mod independent în același timp. Uneori însă există depdendențe între cereri. În acest caz este nevoie de o validare a cererii prin apelarea unui serviciu de autentificare înainte de a ruta cererea către un serviciu de backend. 
+
+Scrierea codului care apelează API-ul folosind abordarea tradițională de apelare asincronă poate deveni repede foarte complicată. Codul va fi foarte imbricat, dificil de înțeles și predispus la erori. O abordare mult mai bună este scrierea codului pentru API Gateway folosind stilul declarativ ce folosește o abordare declarativă. Exemple de abstractizări declarative includ Future pentru Scala, CompletableFuture pentru Java8 și Promise pentru JavaScript. Mai există de asemenea și Reactive Extensions, care a fost inițial dezvoltată de Microsoft pentru .NET. Netflix a creat RxJava pentru JVM pentru a fi folosit în API Gateway-ul lor. Există de asemenea și RxJS pentru JavaScript, care rulează atât în browser cât și pe Node.js. Folosirea unei abordări reactive va permite scrierea mult mai simplă și eficientă a codului pentru API Gateway. 
+
+\subsection{Invocarea serviciilor}
+
+O aplicație bazată pe microservicii este un sistem distribuit și trebuie să folosească un mecanism de comunicare inter-proces. Există două stiluri de comunicare inter-proces. O primă opțiune este folosirea unui mecanism asincron bazat pe mesaje. Câteva implementări folosesc brokere de mesaje precum JMS sau AMQP. Altele precum Zeromq, nu dispun de brokeri, iar serviciile comunică direct. Celălalt stil de comunicare inter-proces se bazează pe mecanisme asincrone cum ar fi HTTP sau Thrift. Un sistem va folosi în mod normal ambele stiluri. Ar putea chiar folosi și mai multe implementări ale fiecărui stil. În consecință, API Gateway-ul va trebui să suporte o varietate de mecanisme de comunicare. 
+
+\subsection{Descoperire serviciilor}
+
+API Gateway-ul are nevoie de cunoască locația (adresa IP și portul) fiecărui microserviciu cu care comunică. Într-o aplicație tradițională, acestea ar putea fi codate în dur, însă într-o aplicație modernă bazată pe microservicii ce rulează în cloud aceasta nu este o problemă simplă. Serviciile legate de infrastructură, cum ar fi broker-ul de mesaje, va avea în mod normal o locație statică, care poate fii specificată prin intermediul variabilelor de mediu ale sistemului de operare. Serviciile aplicației au locații asignate în mod dinamic. În plus, setul de instanțe al unui serviciu se schimbă dinamic datorită auto-scalării și actualizărilor. Înb consecință, API Gateway-ul, ca orice alt serviciu client din sistem, are nevoie să folosească un sistem de descoperire a serviciilor : fie Server-Side Discovery (descoperire pe partea de server), fie Client-Side Discovery (descoperire pe partea de client). Acest subiect va fi detaliat în capitolele ce urmează, însă pentru moment putem menționa că în cazul folosirii a descoperirii serviciilor efectuate de client API Gateway-ul trebuie să poată interoga registrul de servicii, care este o bază de date cu toate microserviciile și locațiile lor. 
+
+\subsection{Tratarea penelor parțiale}
+
+O altă problemă care trebuie adresată atunci când implementăm un API Gateway este problema penelor parțiale ale serviciilor. Această problemă apare în cadrul tuturor sistemelor distribuite când se apelează un serviciu lent sau indisponibil. API Gateway-ul nu ar trebui să fie blocat așteptând un răspuns al unui serviciu. Totuși modul în care tratează penele de seriviciu depinde de fiecare scenariu în parte și de ce serviciu este indisponibil. De exemplu, dacă serviciul de recomandări este indisponibil în cazul detaliilor de produs, API Gateway-ul ar trebui să returneze restul detaliilor de produs deoarece acestea sunt în continuare relevante pentru utilizator. În acest caz secțiunea de recomandări ar putea fi fie goală, fie populată cu o listă de zece produse codate în dur. Dacă, însă serviciul care oferă informații despre produs este indisponibil atunci API Gateway-ul ar trebui să returneze o eroare clientului.
+
+API Gateway-ul ar putea returna de asemenea date din memoria cache, dacă aceasta este disponibilă. De exemplu, din moment ce prețurile produselor nu se schimbă foarte des, API Gateway-ul ar putea returna date din memoria cache în cazul în care servicul de prețuri nu este disponibil. Datele ar putea fi stocate de către API Gateway în sine sau ar putea fie stocate într-un sistem extern precum Redis sau Memcached. Returnând fie lista de produse codate în dur fie date din memoria cache, API Gateway-ul asigură o bună experiență a utilizatorului în cazul în care apar pene de serviciu. 
+
+Netflix Hystrix este o bibliotecă foarte folositoare pentru scrierea de cod ce apelează servicii la distanță. Hystrix anulează apeluri ce nu sunt rezolvate într-un anumit timp. Implementează deasemenea un șablon de tip \textit{circuit breaker}, care împiedică clientul să aștepte fără sens după un serviciu indisponibil. Dacă rata de erori depășește un anumit nivel specificat, Hystrix lansează întreruperea circuitului și toate cererile vor eșua instant pentru o perioadă de timp.  Hystrix permite definirea unor acțiuni în cazul în care o cerere eșuează, cum ar fi citirea dintr-o memorie cache sau returnarea unei valori implicite. Se recomandă folosirea unei biblioteci alternative în cazul folosirii unor tehnologii care nu sunt bazate pe JVM. 
+
+\newpage
+\section{Construirea microserviciilor: Comunicarea inter-process în cadrul microserviciilor}
+
+\subsection{Introducere}
+
+Într-o aplicație monolit, componentele se invocă una pe cealaltă prin apeluri la de proceduri și metode la nivel de limbaj. Pe de alta parte, o aplicație bazată pe microservii este un sistem distribuit care rulează pe mai multe masini. Fiecare instanță a unui serviciu este un proces. În consecință, după cum se poate vedea mai jos, serviciile trebuie să interacționeze folosind un mecanism de comunicare inter-proces (IPC - eng. inter-process communication)
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.45]{img/ipc-1.png}
+\caption{Comunicare inter-process}
+\label{fig:arhi_componente}
+\end{figure}
+
+În cele ce urmează vom studia diversele tehnologii IPC, dar înainte vom explora diverse subiecte legate de proiectare. 
+
+
+\subsection{Stiluri de interacțiune}
+
+În alegerea unui mecanism IPC pentru un serviciu, este util să luam în calcul cum serviciul urmează să interacționeze. Există o varietate de stiluri de interacțiune de tip client-server.  Ele pot fi clasificate în două dimensiune. Prima dimensiune este dacă sau nu interacțiunea este unu-la-unu sau unu-la-mai-mulți: 
+
+\begin{itemize}
+ \item unu-la-unu : fiecare cererea a clientului este procesată de exact o instanță a unui serviciu.
+ \item unu-la-mai-mulți: fiecare cerere este procesată de mai multe instanțe de serviciu.
+\end{itemize}
+
+Al doilea criteriu de luat în calcul este sincronicitatea:
+
+\begin{itemize}
+	\item sincronă: clientul așteaptă răspunsul de la serviciul, timp în care blochează execuția altor operații
+	\item asincronă: clientul nu blochează execuția și răspunsul, dacă există, nu trebuie trimis imediat.
+\end{itemize}
+	
+Tabelul de mai jos arată diferite tipuri de interacțiuni:
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+& Unu-la-unu & Unu-la-mai-multi \\ \hline
+Sincron & Cerere/Răspuns & - \\ \hline
+Asincorn & Notificare & Publish/Subscribe \\ 
+& Cerere/Răspuns asincron & Publish/Răspunsuri asincrone \\ \hline
+\end{tabular}
+\end{center}
+
+Există următoarele tipuri de interacțiuni unu-la-unu:
+
+\begin{itemize}
+ \item Cerere/răspuns - Un client lansează o cerere către un serviciu și asteaptă un răspuns. Clientul așteaptă răspunsul într-un timp rezonabil. Într-o aplicație care folosește fire de execuție, firul de execuție care lansează cererea s-ar putea chiar bloca în timp ce așteaptă. 
+ \item Notificare - clientul trimite o cerere la un serviciu, însă un răspuns nu este așteptat.
+ \item Cerere/răspuns asincron - un client trimite o cerere la un serviciu, care răspunde asincron. Clientul nu se blochează în timp ce așteaptă și este proiectat plecând de la presupunerea că răspunsul ar putea ajunge după o perioadă mai lungă de timp.
+\end{itemize}
+ 
+Există următoarele tipuri de interacțiuni unu-la-mai-mulți:
+
+\begin{itemize}
+	\item Publish/subscribe - un client publică un mesaj de notificare, care este consumat de zero sau mai multe servicii interesate.
+	\item Publish/async responses - un client postează un mesaj de cerere și apoi așteaptă o perioadă de timp pentru răspunsurile de la serviciile interesate. 
+\end{itemize}
+
+Fiecare serviciu folosește o combinație a acestor stiluri de interacțiune. Pentru unele servicii, un singur mecanism IPC este suficient. Alte servicii ar putea avea nevoie să folosească o combinație de mecanisme IPC. Schema de mai jos arată cum serviciile dintr-o aplicație de preluare a cererilor de taxi ar putea interacționa atunci când un client lansează o cerere. 
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.15]{img/Richardson-microservices-part3-taxi-service.png}
+\caption{Exemplu de interacțiune servicii}
+\label{fig:arhi_componente}
+\end{figure}
+
+Serviciile folosesc o combinație de notificări, cerere/răspuns și publish/subscribe. De exemplu, telefonul mobil al clientului trimite o notificare către serviciul "Trip Management" pentru a cere o mașină. Acest serviciu verifică dacă contul clientului este activ folosind cerere/răspuns pentru a invoca serviciul "Passenger". Apoi serviciul "Trip Management" crează o excursie și folosește publish/subscribe pentru a notifica celălalte servicii incluzând dispatcher-ul, care va localiza un șofer disponibil. 
+
+
+
+
+	
 
 \end{document}

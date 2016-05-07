@@ -39,3 +39,13 @@
 \BOOKMARK [2][]{subsection.4.3.1}{4.3.1 Introducere}{section.4.3}% 39
 \BOOKMARK [2][]{subsection.4.3.2}{4.3.2 Comunicare directa \356ntre client si microservicii}{section.4.3}% 40
 \BOOKMARK [2][]{subsection.4.3.3}{4.3.3 Folosirea unui API Gateway}{section.4.3}% 41
+\BOOKMARK [2][]{subsection.4.3.4}{4.3.4 Avantaje si dezavantaje ale folosirii unui API Gateway}{section.4.3}% 42
+\BOOKMARK [2][]{subsection.4.3.5}{4.3.5 Implementarea unui API Gateway}{section.4.3}% 43
+\BOOKMARK [3][]{subsubsection.4.3.5.1}{4.3.5.1 Perfomanta si scalabilitate}{subsection.4.3.5}% 44
+\BOOKMARK [2][]{subsection.4.3.6}{4.3.6 Folosirea unui model de programare reactiv}{section.4.3}% 45
+\BOOKMARK [2][]{subsection.4.3.7}{4.3.7 Invocarea serviciilor}{section.4.3}% 46
+\BOOKMARK [2][]{subsection.4.3.8}{4.3.8 Descoperire serviciilor}{section.4.3}% 47
+\BOOKMARK [2][]{subsection.4.3.9}{4.3.9 Tratarea penelor partiale}{section.4.3}% 48
+\BOOKMARK [1][]{section.4.4}{4.4 Construirea microserviciilor: Comunicarea inter-process \356n cadrul microserviciilor}{chapter.4}% 49
+\BOOKMARK [2][]{subsection.4.4.1}{4.4.1 Introducere}{section.4.4}% 50
+\BOOKMARK [2][]{subsection.4.4.2}{4.4.2 Stiluri de interactiune}{section.4.4}% 51
