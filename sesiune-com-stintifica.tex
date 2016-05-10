@@ -29,6 +29,8 @@
 	{\Large Ș.l. dr. ing. Radu BADEA\par}
 % Bottom of the page
 \end{titlepage}
+\tableofcontents
+\listoffigures
 \newpage
 
 \chapter{Motivație}
@@ -66,16 +68,138 @@ Aplicațiile bazate pe microservicii fac parte dintr-o categorie mai largă de a
  \item Serviciile împart schema și contractul, nu clasa. Serviciile partajează contracte și scheme atunci când comunică, și nu clase interne.
 \end{itemize}
 
-\begin{figure}[ht]
-\centering
-\includegraphics[scale=0.3]{img/sketch.png}
-\caption{Aplicații monolit și aplicații bazate pe microservicii}
-\label{fig:arhi_mono_micro}
-\end{figure}
 
 Plecând de la aceste caracteristici ideea microserviciilor duce mai departe distribuirea și slaba cuplare a serviciilor, astfel că dezvoltarea unuei aplicații este realizată ca o suită de mici servicii, fiecare rulând un proces independent și comunicând prin mecanisme simple, adesea resurse expuse prin API-uri via HTTP. Pe lângă faptul ca serviciile pot fi instalate și scalate în mod independent, fiecare crează o limită fermă a modulului, permițând chiar și folosirea limbajelor de programare diferite, acestea putând fii gestionate de echipe diferite.
 
+\section{Caracteristici}
 
+Aplicațiile bazate pe microservicii folosesc librării, însă modalitatea principală prin care se face componentizarea reprezintă împărțirea pe servicii. Definim \textbf{bibliotecile} ca fiind componente ce funcționează împreună în cadrul unui program și deci au memorie comună, în vreme ce \textbf{serviciile} sunt componente ce rulează în cadrul unor procese diferite și care comunică prin mecanisme cum ar fi cereri de tip web sau \textbf{RPC} (Remote Procedure Call).
+
+Unul din motivele pentru folosirea serviciilor ca și componente (mai degrabă decât biblioteci) este faptul că serviciile pot fi instalate în mod independent. În cazul unei aplicații constituită din mai multe biblioteci aparținând unei singure instanțe, o schimbare a oricărei componente ar rezulta în reinstalarea întregii aplicații. Dacă însă aplicația este descompusă în mai multe servicii, este de așteptat ca modificările la nivel de serviciu să nu necesite decât reinstalări alei acestuia. Acest lucru nu este universal valabil, unele modificări ar putea impacta interfețe ale mai multor serviciilor necesitând o sincronizarea la nivelul mai multor servicii, însă ținta unei arhitecturi bazate pe microservicii este minimizarea acestui impact prin precizarea funcționalităților in cadrul contractelor.
+
+Când se dorește împărțirea unei aplicații în componente, adesea divizarea echipei se face în funcție de nivelul tehnologic, astfel formându-se echipe responsabile pentru interfața grafică, logica de server și baza de date. Când acestă împărțire este realizată, chiar și cele mai simple schimbări pot duce la proiecte realizate de mai multe echipe ceea ce consumă timp și bani.
+
+Abordarea separării componentelor diferă în cadrul microserviciilor, aceasta făcându-se ținând cont nevoile de business. Astfel de servicii preiau intreagă stivă tehnologică ce include interfața grafică, stocarea și orice colaborare externă. În consecință echipele sunt trans-funcționale, cuprinzând o plajă largă de cunoștințe necesare pentru dezvoltare: proiectarea interfeței grafice, baze de date și project management. 
+
+Pentru construirea unor structuri de comunicare între diferite procese există multe procese și abordări care se concentrează pe implementarea inteligenței în mecanismul de comunicare în sine. Un exemplu foarte bun este Entreprise Service Bus (\textbf{ESB}), aceste mecanisme oferind capacități complexe pentru rutarea mesajelor și aplicarea regulilor de business.
+
+Microserviciile implică o altă abordare: puncte terminale inteligente și bus-uri simple (eng. "smart endpoints and dumb pipes"). Aplicațiile ce urmează aceste principii tind să fie cât mai decuplate, primind o cerere, aplicând logica adecvată și producând un răspuns. Acești pași sunt corelați folosind protocoale simple de tip REST mai degrabă decât cele complexe precum WS-Choreography, BPEL sau orchestrare prin intermediul unuei unelte centrale. 
+
+Cele mai folosite două protocoale sunt HTTP cerere-răspuns folosind API-uri pentru accesarea resurselor și mecanisme simple de trimiterea mesajelor. Echipele care lucrează cu microservicii folosesc principiile și protocoalele pe baza caror a fost construit și web-ul. 
+
+Al doilea mecanism folosit este cel al mesajelor transmise prin intermediul unui bus simplu. Infrastructura aleasă este adesea simplă (nu are decât rolul de a ruta mesajele) - implementări simple precum RabbitMQ sau ZeroMQ nu fac mai mult decât să pună la dispoziție un canal de comunicare asincron - inteligența rămânând în punctele terminale ce produc și consumă mesajele.
+
+Datorită numărului mare de componente, microserviciile se bazează pe automtizarea infrastructurii pentru livrarea componentelor în mod repetabil în diversele medii. 
+
+Tehnicile pentru automatizarea infrastructurii au evoluat foarte mult în ultimii ani - evoluția clodului și a furnizorilor de infrastructură ca serviciu (\textit{eng. Infrastructure as a Service}). Acest lucru a redus foarte mult complexitatea operațională pentru gestionarea microserviciilor. 
+
+Multe dintre produsele și sistemele folosind microservicii sunt construite de echipe cu experiență în Continous Delivery și predecesorul său, Continous Integration. Echipele ce construiesc astfel aplicațiile folosesc în mod extensiv tehnici de automatizare a infrastructurii. Acest lucru, denumit în literatura de specialitate \textbf{"pipeline"}, este ilustrat mai jos:
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.6]{img/basic-pipeline.png}
+\caption{Pipeline}
+\label{fig:arhi_componente}
+\end{figure}
+
+Un \textbf{"pipeline"} reprezintă o înlățuire de procese care trebuie urmate de fiecare dată când se dorește instalarea aplicației pe un mediu diferit. Aceste procese includ, compilarea aplicație, rularea testelor unitare și a celor de integrare, împachetarea ei și a tuturor resurselor necesare și eventual instalarea acesteia pe serverul dorit.
+
+Câteva aspecte-cheie ale procesului de livrare continuă (e.g. Continous Delivery) sunt: încrederea cât mai mare în faptul calitatea software-ului dată de o suită foarte mare de teste automate; trecerea dintr-un mediu în altul în cadrul pipeline-ului înseamnă instalarea automată pe fiecare nou mediu. 
+
+O aplicație monolit va fi compilată, testată și trecută prin aceste medii fără prea multe probleme. S-a constatat că investirea în automatizarea procesului de instalarea a unei aplicații în producție crește încrederea echipelor de a livra mult mai des pe acest mediu. Unul din obiectivele livrării continue este banalizarea procesului de instalare, astfel încât nu contează că se livrează una sau mai multe aplicații, lucrurile rămân la fel de simple. 
+
+O altă aria în care se observă folosirea extensivă a automatizării infrastrucurii este administrarea microserviciilor în producție. În contrast cu afirmația precedentă legată de banalizarea instalării aplicațiilor în producție, peisajul operațional este complet diferit. 
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.6]{img/micro-deployment.png}
+\caption{Instalarea modulelor diferă}
+\label{fig:arhi_componente}
+\end{figure}
+
+\section{Avatanje și dezavantaje ale microserviciilor}
+\subsection{Avatanje}
+Microserviciile prezintă un număr important de avantaje. În primul rând, rezolvă problema complexității, prin descompunerea a ceea ce altfel ar fi fost un aplicație monolit foarte mare într-un set de servicii. Fiecare serviciu conține un set bine definit de funcționalități expuse folosind RPC sau un API. Prin aceasta se crează un grad de modularitate care în practică ar fi extrem de greu de obținut în cadrul unei aplicații monolitice. În consecință serviciile individuale sunt mult mai rapid de dezvoltat și mult mai simplu de înțeles și menținut. 
+
+Această arhitectură permite fiecărui serviciu să fie dezvoltat în mod independent de către o altă echipă. Dezvoltatorii au posibilitatea de a alege orice tehnologie consideră optimă pentru îndeplinirea cerințelor, în condițiile în care reușesc să expună în mod corect API-ul stabilit. În plus, serviciile fiind relativ mici, devine fezabilă rescrierea unui serviciu vechi folosind technologie actuală. 
+
+Fiecare microserviciu poate să fie instalat în mod independent. Dezvoltatorii nu mai au nevoie să coordoneze instalarea modificărilor care sunt specifice serviciului lor. Aceste modificări pot fi instalate imediat ce au fost testate. De exemplu, echipa responsabilă de interfața grafică poate să efectueaze rapid teste și să implementeaze schimbări. Această arhitectură face posibilă integrarea continuă. 
+
+În ultimul rând, microserviciile permit fiecărui serviciu să fie scalat în mod individual. Pot fi instalate doar numărul necesar de instanțe pentru fiecare serviciu care satisface nevoile de capacitate și disponibilitate. În plus se poate folosi un suport fizic care să corespundă nevoilor serviciilor. De exemplu un serviciu de procesare a imaginilor, care solicită foarte mult procesorul, poate fi instalat pe o instanță EC2 Compute-Optimized în vreme ce o bază de date în memorie poate fii instalată pe o instanță EC2 Memory-Optimized.
+
+\subsection{Dezavantaje}
+
+Ca orice tehnologie, arhitectura microservicii prezintă dezavantaje. Un prim dezvantaj este complexitatea care rezultă din faptul ca o aplicație ce folosește microservicii este un sistem distribuit. Dezvoltatorii trebuie să aleagă și să implementeze sunt mecanism de comunicare inter-proces bazat fie pe mesaje fie pe RPC. În plus, trebuie să scrie cod care să se gestioneze situațiile în care furnizorul de serviciu este încet sau indisponibil. În vreme ce niciuna din aceste probleme nu este foarte complexă, este considerabil mai complexă decât o aplicație monolit un module comunică prin apeluri de proceduri la nivel de limbaj.   
+
+O altă provocare a microserviciilor o reprezintă arhitectura distribuită a bazei de date. Tranzacțiile de business care modifică entități multiple sunt ceva comun. Acest tip de tranzacții sunt trivial de implementat în cadrul unei aplicații monolit deoarece există o singură bază de date. Într-o arhitectură bazată pe microservicii multiplele baze de date ale serviciilor trebuie actualizate. Folosirea unui sistem distribuit de tranzacții nu este în mod normal o opțiune, și nu doar datorită Teoremei CAP - denumită și Teorema lui Brewer, care afirmă că este imposibil ca un sistem informatic să ofere simultan constrângerile următoare: consistență, disponibilitate și toleranță parțială. Ele pur și simplu nu sunt suportate de sistemele de baze de date NoSQL și nici de brokerii de mesaje. Compromisul este folosirea unei abordări bazate pe consistență, care este mai problematică pentru dezvoltatori. 
+
+Testarea microserviciilor este mult mai complexă. De exemplu, folosind o bibliotecă modernă precum Spring Boot este foarte simplu de scris o clasă de test care pornește o aplicație web monolitică și care îi testează API-ul. În contrast cu aceasta, un test similar pentru un serviciu ar necesita lansarea serviciului și a serviciilor de care depinde, sau simularea acestora. Încă odata, acestea nu sunt foarte complex de realizat însă este importantă estimarea efortului necesar pentru a face aceasta. 
+
+Instalarea unei aplicații bazate pe microservicii este mult mai complexă. O aplicație monolit este pur și simplu instalată pe un set de servere identice ce se află în spatele unui load-balancer tradițional. Fiecare instanță este configurată cu locațiile serviciilor de infrastructură cum ar fi baza de date și broker-ul de mesaje. Pe de altă, o aplicație bazată pe microservicii este alcătuită dintr-un număr mare de servicii. Aceasta implică o complexitate crescută datorată nevoii de configurare, instalare, scalare și monitorizare a fiecăruia dintre servicii. În plus, este necesară implementarea unui mecanism de descoperire a serviciilor care să permite acestora să obțină adresa și portul altor servicii cu care ar avea nevoie să comunice. Modul tradițional de operare folosind tichete și operațiuni manuale nu scalează bine la acest nivel de complexitate. În consecință, instalarea cu succes a unei aplicații cu microservicii necesită un grad ridicat de control asupra procesului din partea dezvoltatorilor și un nivel înalt de automatizare. 
+
+O soluție pentru obținerea automatizării este folosirea unui furnizor de servicii de tip "platforma ca serviciu" (eng. Platform as a Service - PaaS). Furnizorii de PaaS oferă dezvoltatorilor o modalitate simplă de instalare și administrare a microserviciilor. Acest îi izolează de probleme cum ar fi cumpărarea și configurarea de resurse IT. În același timp, specialiștii de sisteme și rețele care configurează PaaS se pot asigura că toate bunele practici au fost respectate. O altă soluție este dezvoltarea a prorpiului PaaS. Un punct de plecare ar putea fii o soluție de clustering, precum Mesos sau Kubernetes folosit impreună cu tehnologii precum Docker. 
+
+
+\section{Construirea microserviciilor}
+
+În vederea realizării unei aplicații folosind microservcii o modalitatea de interacțiune între aceasta și utilizatori trebuie aleasă. În cazul unei aplicații monolitice există doar un set de puncte terminale. Într-o arhitectura de tip microservicii, fiecare serviciu expune un set de funcționalități. Una din posibilele metode prin care se poate realiza comunicarea client aplicație este prin intermediul unui API gateway.
+
+În cazul unei aplicații monolit, un client de mobil ar putea obține datele printr-un simplu apel REST către aplicație: \texttt{GET api.company.com/productdetails/productId}. Un load balancer ar ruta cererea către unul din cele N servere identice. Aplicația ar lansa diverse interogări ale bazei de date care ar întoarce un răspuns către client. 
+
+Pe de altă parte, folosind microservicii, datele afișate pe pagină aparțin mai multor microservicii, caz în care o strategie de comunicare între clienți și servicii trebuie aleasă. 
+
+În general o abordare mult mai bună decât comunicare directă între clienți și microservicii este folosirea a ceea ce se numește un API gateway. Un API gateway reprezintă un server care este punctul de intrare în sistem. Este similar cu șablonul "Facade" programarea orientată pe obiecte. API Gateway-ul încapsulează arhitectura internă a sistemului și expună un API care poate fi adaptat pentru fiecare client. S-ar mai putea ocupa și de alte funcții precum autentificare, monitorizare, load balancing, caching, administrarea și modelarea cererilor. 
+
+
+\begin{figure}[ht]
+\centering
+\begin{minipage}{0.45\textwidth}
+\centering
+\includegraphics[scale=0.4]{img/Richardson-microservices-part2-2_microservices-client.png}
+\caption{Folosirea unui API gateway}
+\end{minipage}\hfill
+\begin{minipage}{0.45\textwidth}
+\centering
+\includegraphics[scale=0.4]{img/Richardson-microservices-part2-3_api-gateway.png}
+\caption{Diagramă a serviciilor}
+\end{minipage}
+\end{figure}
+
+\section{Comunicarea inter-process}
+
+Într-o aplicație monolit, componentele se invocă una pe cealaltă prin apeluri la de proceduri și metode la nivel de limbaj. Pe de alta parte, o aplicație bazată pe microservii este un sistem distribuit care rulează pe mai multe masini. Fiecare instanță a unui serviciu este un proces. În consecință, serviciile trebuie să interacționeze folosind un mecanism de comunicare inter-proces (\textit{IPC - eng. inter-process communication)}.
+
+Interacțiunile intre procese pot fi de mai multe feluri, în funcție de mai multe criterii.  Un prim criteriu ar fi numărul de entități implicate: unu-la-unu, fiecare cerere a clientului este procesată de exact un singur serviciu, unu-la-mai-mulți, fiecare cerere este procesată de mai multe servicii. Al doilea criteriu de luat în calcul este caracterul sincron și astfel avem două categorii de interacțiuni: sincronă, clientul așteaptă răspunsul de la serviciul, timp în care blochează execuția altor operații și asincronă clientul nu blochează execuția și răspunsul, dacă există, nu trebuie trimis imediat.
+
+Interacțiunile unu-la-unu pot fi de mai multe tipuri:
+
+\begin{itemize}
+ \item Cerere/răspuns - Un client lansează o cerere către un serviciu și asteaptă un răspuns. Clientul așteaptă răspunsul într-un timp rezonabil. Într-o aplicație care folosește fire de execuție, firul de execuție care lansează cererea s-ar putea chiar bloca în timp ce așteaptă. 
+ \item Notificare - clientul trimite o cerere la un serviciu, însă un răspuns nu este așteptat.
+ \item Cerere/răspuns asincron - un client trimite o cerere la un serviciu, care răspunde asincron. Clientul nu se blochează în timp ce așteaptă și este proiectat plecând de la presupunerea că răspunsul ar putea ajunge după o perioadă mai lungă de timp.
+\end{itemize}
+ 
+La fel ca cele unu-la-unu, și interacțiunile unu-la-mai-mulți pot fi de mai multe feluri:
+publish/subscribe - un client publică un mesaj de notificare, care este consumat de zero sau mai multe servicii interesate sau publish/async responses - un client postează un mesaj de cerere și apoi așteaptă o perioadă de timp pentru răspunsurile de la serviciile interesate. 
+
+Folosind aceste stiluri de interacțiune serviciile comunică între ele folosind API-uri (\textit{Application Programming Interface}). API-ul unui serviciu reprezintă contractul între serviciu și clienți. Indiferent de mecanismul IPC ales, este important ca API-ul serviciului să fie precis definit.
+
+Ca orice componentă API-ul se va schimba de-a lungul existenței aplicației. Într-o aplicație monolit operațiune de schimbare este destul de simplă. Într-o aplicație bazată pe microservicii aceasta este mult mai dificilă, chiar daca toți consumatorii sunt în aceeași aplicație. În mod tipic, clienții nu pot fi forțați să schimbe versiune pe care o folosesc. Deasemenea, versiunile noi vor fi instalate incremental astfel încât cele noi și cele vechi vor rula în mod simultan. 
+\newpage
+\section{Identificarea serviciilor}
+
+Pentru apelarea unui REST (Representational State Transfer) API este nevoie de lansarea unei cereri, care să includă locația de rețea a serverului (adresa IP și portul). În cazul unei aplicații monolit care rulează pe un server fizic, aceste informații sunt relativ statice. Ele ar putea fi citite de exemplu dintr-un fisier de configurare care este actualizate periodic. În schimb, într-o aplicație mondernă ce rulează în cloud si este bazată pe microservicii acest lucru este mult mai dificil de rezolvat după cum arată schema de mai jos:
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.2]{img/Richardson-microservices-part4-1_difficult-service-discovery.png}
+\caption{Identificarea serviciilor în cloud}
+\label{fig:arhi_componente}
+\end{figure}
+
+Instanțelor serviciilor le sunt alocate în mod dinamic locații de rețea.  În plus, instațele se vor modifica în mod dinamic datorită auto-scalării, penelor și actualizărilor. În  consecintă codul client are nevoie de un mecanism mai elaborat de identificare a serviciilor. 
+
+Există două categorii de șabloane: identificare pe partea de client (\textit{eng. client-side discovery}) și identificare pe partea de server (\textit{eng. server-side discovery}).
 
 
 \end{document}

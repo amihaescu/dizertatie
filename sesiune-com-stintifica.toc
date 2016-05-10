@@ -1,0 +1,12 @@
+\select@language {romanian}
+\contentsline {chapter}{Lista figurilor}{2}{chapter*.2}
+\contentsline {chapter}{\numberline {1}Motiva\IeC {{\textcommabelow t}}ie}{3}{chapter.1}
+\contentsline {chapter}{\numberline {2}Aplica\IeC {{\textcommabelow t}}ii monolit}{4}{chapter.2}
+\contentsline {chapter}{\numberline {3}Aplica\IeC {{\textcommabelow t}}ii bazate pe microservicii}{5}{chapter.3}
+\contentsline {section}{\numberline {3.1}Caracteristici}{5}{section.3.1}
+\contentsline {section}{\numberline {3.2}Avatanje \IeC {{\textcommabelow s}}i dezavantaje ale microserviciilor}{7}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Avatanje}{7}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Dezavantaje}{8}{subsection.3.2.2}
+\contentsline {section}{\numberline {3.3}Construirea microserviciilor}{9}{section.3.3}
+\contentsline {section}{\numberline {3.4}Comunicarea inter-process}{9}{section.3.4}
+\contentsline {section}{\numberline {3.5}Identificarea serviciilor}{11}{section.3.5}
