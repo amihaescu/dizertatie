@@ -16,3 +16,5 @@
 \contentsline {subsection}{\numberline {3.5.4}Metode de \IeC {\^\i }nregistrare a serviciilor}{14}{subsection.3.5.4}
 \contentsline {subsubsection}{\numberline {3.5.4.1}Auto-\IeC {\^\i }nregistrarea}{14}{subsubsection.3.5.4.1}
 \contentsline {subsubsection}{\numberline {3.5.4.2}\IeC {\^I}nregistrarea ter\IeC {{\textcommabelow t}}\IeC {\u a}}{15}{subsubsection.3.5.4.2}
+\contentsline {chapter}{\numberline {4}Concluzii}{16}{chapter.4}
+\contentsline {chapter}{\numberline {5}Bibliografie}{17}{chapter.5}

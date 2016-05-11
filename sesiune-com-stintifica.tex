@@ -289,5 +289,22 @@ Un exemplu de o astfe de componentă este proiectul open-source Registrator. Ace
 
 Principalul beneficiu al acestui mod de funcționare este faptul că decuplează serviciile de registrul serviciilor. Nu mai este necesară implementarea logici la nivelul fiecărui limbaj de programare, în schimb procesul este gestionat într-o manieră centralizată de către un serviciu dedicat. Dezavantajul este că, dacă nu este furnizat de mediul de instalarea acesta devine încă o componentă ce trebuie configurată și menținută. 
 
+\chapter{Concluzii}
+
+Așteptările din ce în ce mai exigente de la sistemele informatice au dus la creșterea nivelului de distribuirea a acestora pentru asigurarea flexibilității și robusteții necesare. Scalabilitatea este deasemenea o cerință recurentă din partea utilizatorilor acestor sisteme.
+
+Pentru a răspunde acestor nevoi, modelul tradițional de aplicații monolit nu mai este de actualitate, datorită lipsei de flexibilitate, scalabilității reduse și timpului lung de livrare în producție. Pentru a putea profita pe deplin de toate avantajele conferite de înaltul grad de disponibilitate a resurselor de calcul un nou model a fost necesar. 
+
+Folosirea microserviciilor contribuie la o bună valorificare a resurselelor prin crearea de sisteme slab cuplate capabile să scaleze în ambele sensuri. Toate cele prezentate în lucrare de față sunt argumente pentru care microserviciile ar putea repreznta o soluție pentru proiectarea unor sisteme capabile să scaleze în mod indepdent. Modularizarea este mult mai bună, datorită separării logicii de business pe servicii. Acestea, împreună cu un minim de infrastructura preconfigurată (serverul pe care va rula aplicația) sunt livrate ca și artefacte folosind tehnologii precum Docker. Folosind ultimele tendințe din cadrul automatizării infrastructurii aceste artefacte sunt livrate în producție. În momentul finalizării instalării, serviciile sunt înregistrate și devin utilizabile în mod automat, fără niciun fel de intervenție manuală. Toate acestea califică microserviciile ca fiind o posibilă soluție pentru sisteme auto-scalabile.
+
+\chapter{Bibliografie}
+
+\begin{itemize}
+ \item Martin Fowler - \texttt{http://martinfowler.com/articles/microservices.html}
+ \item Microservice.io - \texttt{http://microservices.io/}
+ \item Microsoft Developer Network - \texttt{https://msdn.microsoft.com}
+ \item NGINX - \texttt{https://www.nginx.com/}
+ \item Bulding Microservices, Sam Newman, O'Reilly Press
+\end{itemize}
 
 \end{document}
