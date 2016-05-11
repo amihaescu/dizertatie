@@ -10,3 +10,9 @@
 \contentsline {section}{\numberline {3.3}Construirea microserviciilor}{9}{section.3.3}
 \contentsline {section}{\numberline {3.4}Comunicarea inter-process}{9}{section.3.4}
 \contentsline {section}{\numberline {3.5}Identificarea serviciilor}{11}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}Identificarea serviciilor de c\IeC {\u a}tre client}{11}{subsection.3.5.1}
+\contentsline {subsection}{\numberline {3.5.2}Identificarea serviciilor de c\IeC {\u a}tre server}{12}{subsection.3.5.2}
+\contentsline {subsection}{\numberline {3.5.3}Registrul serviciilor}{13}{subsection.3.5.3}
+\contentsline {subsection}{\numberline {3.5.4}Metode de \IeC {\^\i }nregistrare a serviciilor}{14}{subsection.3.5.4}
+\contentsline {subsubsection}{\numberline {3.5.4.1}Auto-\IeC {\^\i }nregistrarea}{14}{subsubsection.3.5.4.1}
+\contentsline {subsubsection}{\numberline {3.5.4.2}\IeC {\^I}nregistrarea ter\IeC {{\textcommabelow t}}\IeC {\u a}}{15}{subsubsection.3.5.4.2}

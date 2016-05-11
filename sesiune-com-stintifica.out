@@ -9,3 +9,9 @@
 \BOOKMARK [1][]{section.3.3}{3.3 Construirea microserviciilor}{chapter.3}% 9
 \BOOKMARK [1][]{section.3.4}{3.4 Comunicarea inter-process}{chapter.3}% 10
 \BOOKMARK [1][]{section.3.5}{3.5 Identificarea serviciilor}{chapter.3}% 11
+\BOOKMARK [2][]{subsection.3.5.1}{3.5.1 Identificarea serviciilor de catre client}{section.3.5}% 12
+\BOOKMARK [2][]{subsection.3.5.2}{3.5.2 Identificarea serviciilor de catre server}{section.3.5}% 13
+\BOOKMARK [2][]{subsection.3.5.3}{3.5.3 Registrul serviciilor}{section.3.5}% 14
+\BOOKMARK [2][]{subsection.3.5.4}{3.5.4 Metode de \356nregistrare a serviciilor}{section.3.5}% 15
+\BOOKMARK [3][]{subsubsection.3.5.4.1}{3.5.4.1 Auto-\356nregistrarea}{subsection.3.5.4}% 16
+\BOOKMARK [3][]{subsubsection.3.5.4.2}{3.5.4.2 \316nregistrarea terta}{subsection.3.5.4}% 17

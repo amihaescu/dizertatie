@@ -201,5 +201,93 @@ Instanțelor serviciilor le sunt alocate în mod dinamic locații de rețea.  Î
 
 Există două categorii de șabloane: identificare pe partea de client (\textit{eng. client-side discovery}) și identificare pe partea de server (\textit{eng. server-side discovery}).
 
+\subsection{Identificarea serviciilor de către client}
+
+Atunci când descoperirea este realizată de către client, acesta este responsabil pentru determinare locațiilor de rețea ale instanțelor de serviciu și pentru a face balansare pe baza acestora. Clientul lansează o cerere către registrul de servicii (\textit{eng. sevice registry}), care este o bază de date a instanțelor de serviciu. Clientul apoi folosește un algoritm de balansare pentru a select unul dintre ele și pentru a lasa cererea propriu-zisă. 
+
+Locația de rețea a unei instanțe de serviciu este înregistrată în registrul de serviciu atunci când este lansată. Este înlăturată atunci când instanța este oprită. Starea instanțelor serviciilor este actualizată period folosind un mecanism de tip puls (\textit{eng. heartbeat}).
+
+\newpage
+
+Principiul de funcționare al identificării serviciilor de către client funcționează conform schemei de mai jos:
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.18]{img/Richardson-microservices-part4-2_client-side-pattern.png}
+\caption{Identificarea serviciilor de către client}
+\label{fig:arhi_componente}
+\end{figure}
+
+Acest mod de funcționare prezintă o varietate de beneficii și dezavantaje. Se bazează pe un principiu simplu și exceptând registrul serviciilor nu există alte componente mobile. În plus, din moment ce serviciul cunoaște toate instanțele de serviciu disponibile, poate să ia decizii de balansare inteligente, specifice aplicației. Un dezavantaj major este cuplarea clientului cu registrul serviciilor; în acest caz trebuie implementată o logică de descoperire a serviciilor pentru fiecare limbaj de programare și set de biblioteci folosite de către serviciile-client. 
+
+\subsection{Identificarea serviciilor de către server}
+
+Cealaltă abordare posibilă este identificarea serviciilor de către server, care funcționează conform schemei de mai jos:
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.22]{img/Richardson-microservices-part4-3_server-side-pattern.png}
+\caption{Identificarea serviciilor de către server}
+\label{fig:arhi_componente}
+\end{figure}
+
+Clientul lansează o cerere către serviciu prin intermediul unui load balancer, care la rândul său interoghează registrul de servicii și rutează fiecare cerere către o instanță a serviciului. Ca și în cazul identificării de către client, instanțele de serviciu sunt gestionate de registrul de servicii. 
+
+AWS Elastic Load Balancer (ELB), produs al companiei Amazon este un exemplu de asemenea mecanism. Este folosit în principiu pentru a balansa traficul extern venit din Internet. Totuși poate fi folosit pentru a distribui traficul care este intern unui cloud privat. Un client lansează cereri via ELB folosind numele DNS. Acesta distribui traficul între instanțele înregistrate. Nu există un registru de servicii separat, în schimb toate aceste instanțe sunt înregistrate direct în ELB.
+
+Unele medii care folosesc Kubernetes sau Marathon folosesc un proxy la nivelul fiecărei mașini din cluster. Proxy-ul joacă rolul load-balancer-ului responsabil pentru descoperire de către server. Pentru a lansa o cerere către un serviciu, un client rutează cererea via proxy folosind adresa IP a hostului și portul serviciului. Apoi proxy-ul transmite mai departe cererea către o instanță disponibilă din cluster.
+
+Acest mod de funcționare prezintă deasemenea avantaje și dezavantaje. Un mare avantaj ar fi faptul că detaliile legate de identificare sunt decuplate de client. Aceștia lansează pur si simplu cereri către load balancer, ceea ce elimină nevoia implementării unei logici de identificare pentru fiecare limbaj de programare sau set de biblioteci folosit de către serviciile client. Există totuși și dezavantaje. Dacă funcționalitatea nu este livrată împreună cu mediul de instalare, este încă o componente ce trebuie configurată și menținută. 
+
+\subsection{Registrul serviciilor}
+Registrul serviciilor este o parte cheie din procesul de identificare a serviciilor. Este o bază de date ce conține locațiile de rețea ale instanțelor serviciilor. Acesta trebuie să fie o componentă cu un grad înalte de disponibilitate și mereu actualizat. Clienți pot stoca în memoria cache locațiile de rețea obținute de la acesta, însă informația va deveni la un moment dat învechită și clienții vor fi nevoiți să reapeleze registrul. În consecință, un regitru de servicii reprezintă un cluster de server care folosesc un protocol de replicare pentru a menține consistența.
+
+Un exemplu de astfel de componentă este Eureka. Acesta oferă un API de tip REST pentru înregistrarea instanțelor de serviciu, cât și pentru interogări. O instanță de serviciu se înregistrează printr-o cerere de tip POST. La fiecare 30 de secunde înregistrarea trebuie actualizată printr-o cerere de tip PUT. Înregistrarea este ștearsă fie folosind o cerere HTTP DELETE fie pentru expirarea unui timer. Un client poate obține lista de instanțe înregistrate folosind o cerere de tip HTTP GET.
+
+Alte exemplu de astfel de componente:
+
+\begin{itemize}
+ \item \textbf{etcd} - reprezintă o componentă de stocare de tip cheie-valoare cu un grad înalte de disponibilitate folosit pentru stocarea configurațiilor și pentru identificarea serviciilor. Două proiecte notabile care folosesc această componentă sunt Kubernetes și Cloud Foundry. 
+ \item \textbf{consul} - este o unealtă pentru identificarea și configurarea serviciilor. Oferă un API care permite clienților să se înregistreze și să descopere servicii. Acesta poate efectua verificări pentru determinarea disponibilității serviciului. 
+ \item \textbf{Apache Zookeeper} - este un serviciu de coordonare a aplicațiilor distribuite foarte răspândit. Inițial a fost un subproiect Hadoop, dar acum a devenit un proiect separat. 
+\end{itemize}
+
+Deasemenea, este de notat faptul ca sisteme pentru Kubernetes, Marathon și AWS nu au un registru al serviciilor explicit. În schimb, acesta este o componentă integrată a infrastructurii.
+
+\newpage
+\subsection{Metode de înregistrare a serviciilor}
+
+Așa cum am menționat anterior, instanțele de serviciu trebuie să fie înregistrare și șterse din registrul serviciilor. Există câteva modalități pentru a gestiona aceste două operațiuni. Una este ca serviciile să se înregistreze ele însele, numit și auto-înregistrare. Cealaltă opțiune este ca o componentă a sistemului să gestioneze aceast, numit și înregistrare terță.
+
+\subsubsection{Auto-înregistrarea}
+Folosind auto-înregistrarea, o instanță a serviciului este reponsabilă pentru înregistrare și anularea acesteia din cadrul registrului. Deasemenea, dacă este necesar, instanța serviciului trimite pulsuri pentru a preveni expirarea înregistrării.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.22]{img/Richardson-microservices-part4-4_self-registration-pattern.png}
+\caption{Auto-înregistrare}
+\label{fig:arhi_componente}
+\end{figure}
+
+Un exemplu bun al acestei abordări este client Eureka. Acesta se ocupă de toate aspectele legate de înregistrarea și înlăturarea unei instanțe în registrul serviciilor. Proiectul Spring Cloud, care implementează o serie de șabloane încluzând identificarea serviciilor, facilitează abonarea unui serviciu la Eureka printr-o simplă anotare \texttt{@EnableEurekaClient}.
+
+Un prim avantaj al acestei metode ar fi simplitatea, datorită faptului că nu necesită nici o altă componentă de sistem. Însă, dezavantajul major este cuplarea între instanțe și registrul serviciilor. Aceasta crează necesitatea codării acestei funcționalităti la nivelul fiecărui limbaj de programare.
+
+Abordarea alternativă, care decuplează serviciile de registrul serviciilor, este înregistrarea terță.
+\newpage
+\subsubsection{Înregistrarea terță}
+Folosind înregistrarea terță, instanțele serviciuliu nu mai sunt responsabile pentru înregistrarea în cadrul registrului serviciilor. În schimb, o altă componentă de sistem cunoscută sub numele de registrar al serviciilor (\textit{eng. service registrar}) se ocupă de aceasta. Acesta monitorizează schimbările la nivelul instanțelor fie prin interogări periodice al mediului de instalare fie prin abonarea la evenimente. Atunci când detectează o nouă instanță acesta o înregistrează la nivelul registrului. Deasemenea tot el se va ocupa și de eliminare înregistrării în momentul în care instanța nu mai este  disponibilă. 
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.3]{img/Richardson-microservices-part4-5_third-party-pattern.png}
+\caption{Înregistrare terță}
+\label{fig:arhi_componente}
+\end{figure}
+
+Un exemplu de o astfe de componentă este proiectul open-source Registrator. Acesta este capabil să gestioneze instanțele de serviciu care sunt instalate ca și containere Docker. Acesta dispune suport pentru o serie de registrii de servicii precum, \texttt{etcd} și \texttt{Consul}.
+
+Principalul beneficiu al acestui mod de funcționare este faptul că decuplează serviciile de registrul serviciilor. Nu mai este necesară implementarea logici la nivelul fiecărui limbaj de programare, în schimb procesul este gestionat într-o manieră centralizată de către un serviciu dedicat. Dezavantajul este că, dacă nu este furnizat de mediul de instalarea acesta devine încă o componentă ce trebuie configurată și menținută. 
+
 
 \end{document}
