@@ -97,7 +97,7 @@ Multe dintre produsele și sistemele folosind microservicii sunt construite de e
 
 \begin{figure}[ht]
 \centering
-\includegraphics[scale=0.6]{img/basic-pipeline.png}
+\includegraphics[scale=0.7]{img/basic-pipeline.png}
 \caption{Pipeline}
 \label{fig:arhi_componente}
 \end{figure}
@@ -155,16 +155,16 @@ Pe de altă parte, folosind microservicii, datele afișate pe pagină aparțin m
 \centering
 \begin{minipage}{0.45\textwidth}
 \centering
-\includegraphics[scale=0.4]{img/Richardson-microservices-part2-2_microservices-client.png}
+\includegraphics[scale=0.5]{img/Richardson-microservices-part2-2_microservices-client.png}
 \caption{Folosirea unui API gateway}
 \end{minipage}\hfill
 \begin{minipage}{0.45\textwidth}
 \centering
-\includegraphics[scale=0.4]{img/Richardson-microservices-part2-3_api-gateway.png}
+\includegraphics[scale=0.5]{img/Richardson-microservices-part2-3_api-gateway.png}
 \caption{Diagramă a serviciilor}
 \end{minipage}
 \end{figure}
-
+\newpage
 \section{Comunicarea inter-process}
 
 Într-o aplicație monolit, componentele se invocă una pe cealaltă prin apeluri la de proceduri și metode la nivel de limbaj. Pe de alta parte, o aplicație bazată pe microservii este un sistem distribuit care rulează pe mai multe masini. Fiecare instanță a unui serviciu este un proces. În consecință, serviciile trebuie să interacționeze folosind un mecanism de comunicare inter-proces (\textit{IPC - eng. inter-process communication)}.
@@ -192,7 +192,7 @@ Pentru apelarea unui REST (Representational State Transfer) API este nevoie de l
 
 \begin{figure}[ht]
 \centering
-\includegraphics[scale=0.2]{img/Richardson-microservices-part4-1_difficult-service-discovery.png}
+\includegraphics[scale=0.3]{img/Richardson-microservices-part4-1_difficult-service-discovery.png}
 \caption{Identificarea serviciilor în cloud}
 \label{fig:arhi_componente}
 \end{figure}
@@ -213,7 +213,7 @@ Principiul de funcționare al identificării serviciilor de către client funcț
 
 \begin{figure}[ht]
 \centering
-\includegraphics[scale=0.18]{img/Richardson-microservices-part4-2_client-side-pattern.png}
+\includegraphics[scale=0.25]{img/Richardson-microservices-part4-2_client-side-pattern.png}
 \caption{Identificarea serviciilor de către client}
 \label{fig:arhi_componente}
 \end{figure}
@@ -226,7 +226,7 @@ Cealaltă abordare posibilă este identificarea serviciilor de către server, ca
 
 \begin{figure}[ht]
 \centering
-\includegraphics[scale=0.22]{img/Richardson-microservices-part4-3_server-side-pattern.png}
+\includegraphics[scale=0.3]{img/Richardson-microservices-part4-3_server-side-pattern.png}
 \caption{Identificarea serviciilor de către server}
 \label{fig:arhi_componente}
 \end{figure}
@@ -264,7 +264,7 @@ Folosind auto-înregistrarea, o instanță a serviciului este reponsabilă pentr
 
 \begin{figure}[ht]
 \centering
-\includegraphics[scale=0.22]{img/Richardson-microservices-part4-4_self-registration-pattern.png}
+\includegraphics[scale=0.3]{img/Richardson-microservices-part4-4_self-registration-pattern.png}
 \caption{Auto-înregistrare}
 \label{fig:arhi_componente}
 \end{figure}
@@ -280,7 +280,7 @@ Folosind înregistrarea terță, instanțele serviciuliu nu mai sunt responsabil
 
 \begin{figure}[ht]
 \centering
-\includegraphics[scale=0.3]{img/Richardson-microservices-part4-5_third-party-pattern.png}
+\includegraphics[scale=0.4]{img/Richardson-microservices-part4-5_third-party-pattern.png}
 \caption{Înregistrare terță}
 \label{fig:arhi_componente}
 \end{figure}

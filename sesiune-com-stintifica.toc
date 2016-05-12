@@ -8,7 +8,7 @@
 \contentsline {subsection}{\numberline {3.2.1}Avatanje}{7}{subsection.3.2.1}
 \contentsline {subsection}{\numberline {3.2.2}Dezavantaje}{8}{subsection.3.2.2}
 \contentsline {section}{\numberline {3.3}Construirea microserviciilor}{9}{section.3.3}
-\contentsline {section}{\numberline {3.4}Comunicarea inter-process}{9}{section.3.4}
+\contentsline {section}{\numberline {3.4}Comunicarea inter-process}{10}{section.3.4}
 \contentsline {section}{\numberline {3.5}Identificarea serviciilor}{11}{section.3.5}
 \contentsline {subsection}{\numberline {3.5.1}Identificarea serviciilor de c\IeC {\u a}tre client}{11}{subsection.3.5.1}
 \contentsline {subsection}{\numberline {3.5.2}Identificarea serviciilor de c\IeC {\u a}tre server}{12}{subsection.3.5.2}
