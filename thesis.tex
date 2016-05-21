@@ -14,7 +14,7 @@
 \begin{document}
 \author{Andrei Mihăescu}
 
-\title{Arhitecturi software orientate pe servicii}
+\title{Arhitecturi pentru sisteme auto-scalabile: microservicii}
 
 
 \facultatea{Facultatea de Electronică, Telecomunicații și Tehnologia Informației}
@@ -24,7 +24,7 @@
 \campus{Leu} 
 \program{Tehnologii Software Avansate pentru Comunicatii}
 \titlulobtinut{Master}
-\director{Conf. Dr. Eduard Popivici} 
+\director{Conf. Dr. Ing. Eduard Popivici} 
 
 \submissionmonth{Iunie} 
 \submissionyear{2016} 
@@ -41,6 +41,7 @@ DDD - Domain-Driven Design \\
 DRY - Don't repeat yourself \\
 EJB - Enterprise Java Beans \\ 
 ESB - Enterprise Service Bus \\
+IDL - Interface Definition Language \\
 IPC - Inter-process communication \\
 ISB - Internet Service Bus \\ 
 JIT - Just in time \\
@@ -805,9 +806,164 @@ Fiecare serviciu folosește o combinație a acestor stiluri de interacțiune. Pe
 
 Serviciile folosesc o combinație de notificări, cerere/răspuns și publish/subscribe. De exemplu, telefonul mobil al clientului trimite o notificare către serviciul "Trip Management" pentru a cere o mașină. Acest serviciu verifică dacă contul clientului este activ folosind cerere/răspuns pentru a invoca serviciul "Passenger". Apoi serviciul "Trip Management" crează o excursie și folosește publish/subscribe pentru a notifica celălalte servicii incluzând dispatcher-ul, care va localiza un șofer disponibil. 
 
+\subsection{Definirea API-urilor}
+
+API-ul unui serviciu reprezintă contractul între serviciu și clienții săi. Indiferent de mecanismul IPC ales, este importantă definirea unui API-ului folosind un limbaj de tip IDL - Interface Definition Language. Există chiar argumente care susțin abordare "API-first" în cadrul procesului de definire a API-urilor. În acest caz se începe dezvoltarea serviciului prin definirea interfeței împreună cu clientul. Numai în momentul stabilirii interfeței se poate începe implementarea serviciului. Operând în acest mod sunt îmbunătățite șansele ca serviciul să răspundă cerințelor clientului. 
+
+Natura API-ul depinde foarte mult de mecanismul IPC folosit. Dacă se folosesc mesaje, atunci API-ul va fi compus din canale de mesaje și tipuri de mesaje. Dacă în schimb se folosește HTTP, API-ul va fi format din URL-uri și formate de cereri și răspuns. 
+
+\subsection{API-uri evolutive}
+
+API-ul unui serviciu se va schimba în mod invariabil pe parcursul timpului. Într-o aplicație monolit modificarea API-ului și a clienților acestui este o operație simplă. Într-o aplicație bazată pe microservicii aceasta implică un efort mult mai mare, chiar dacă toți consumatorii API-ul sunt alte servicii din cadrul aceleiași aplicații. În plus procesul de migrare spre noua versiune a serviciului se va face incremental astfel încât și vechea și noua versiune a serviciului vor funcționa în același timp. Este important a lua în considerare o strategie pentru tratarea acestor probleme. 
+
+Modul în care este implementată schimbarea depinde de mărimea schimbării. Unele sunt minore și retro-compatibile cu versiunea precedentă, cum ar fi de exemplu în cazul adăugării unor atribute la cererile sau răspunsurile HTTP. Serviciile și clienții ar trebuie să implementeze principiul robusteții \textit{eng. robustness principle}, care spune că un serviciu ar trebui să fie conservativ în ceea ce trimite ca și răspuns, dar flexibil în ceea ce primește ca și cerere. Clienții care folosesc un API mai vechi ar trebuie să poată să-și continue activitatea cu noua versiune a serviciului. Serviciile ar trebui să returneze valori implicite pentru atributele care lipsesc, iar clienții ar trebui să ignore parametrii adiționali primiți în răspuns. Este importantă folosirea unui mecanism IPC și un format al mesajelor care să permită modificarea facilă a API-urilor. 
+
+Uneori, însă, modificările aduse API-urile nu sunt atât de simple și nici retro-compatibile. Din moment ce clienții nu pot fi forțați să migreze imediat la noua versiune, serviciul trebuie sa ofere suport și pentru versiunile mai vechi o perioadă de timp. În cazul folosirii unui mecanism bazat pe protocolul HTTP, precum REST, o abordare ar fi includerea versiunii de serviciu în URL. Astfel fiecare serviciu ar putea expune mai multe versiuni în același timp. O altă abordare ar fi instalarea mai multor instanțe fiecare dintre ele rulând o anumită versiune a serviciului. 
+
+\subsection{Gestionarea penelor parțiale de serviciu}
+
+Într-un sistem distribuit există permanent riscul unui pene de serviciu. Din moment ce clienții și serviciile sunt procese separate, există posibilitatea ca un serviciu să nu răspundă în timp util la cererea clientului. Un serviciu ar putea fi oprit din cauza unei pene, a mentenanței sau supa-încărcat și să răspundă foarte încet la cereri. 
+
+Considerând un caz concret în care un client apelează un serviciu indisponibil. O implementare naivă a clientului ar bloca execuția acestui pe termen nedefinit în așteptarea răspunsului. Nu doar că aceasta implică o experiență neplacută a utilizatorului, dar în multe cazuri ar consuma resurse valoroase pentru un fir de execuție. Într-un final, aplicația va rămâne fără fire de execuție și se va bloca. 
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.15]{img/Richardson-microservices-part3-threads-blocked.png}
+\caption{Consumarea resurselor unei aplicații}
+\label{fig:arhi_componente}
+\end{figure}
+
+Pentru evitarea acestei probleme, este importantă proiectarea serviciilor în vederea gestionării penelor de serviciu. O abordare bună ar fi folosirea uneia sau a unora din strategiile următoare:
+
+\begin{itemize}
+ \item indisponibilitatea rețelei - evitarea blocării pe termen nedefinit poate fi evitată prin folosirea unor contorii (\textit{eng. timeouts}) în așteptarea unui răspuns. Folosirea contorilor garantează că resursele nu vor fi cuplate în mod nedefinit. 
+ \item limitarea numărului de cereri - prin stabilirea unei limite superioare a numărului de cereri pe care un client le are către un serviciu se poate bloca lansarea de noi cereri, deoarece se consideră că acestea nu vor fi rezolvate într-un timp acceptabil. 
+ \item circuit breaker pattern - prin monitorizarea numărului de cereri cu succes și eșuate se poate stabili un prag de la care mecanismul poate fi activat, ceea ce sugerează ca serviciul este indisponibil și că noile cereri vor eșua.  După o perioada tampon, clientul poate reîncerca și dacă cererea este cu succes atunci mecanismul este dezactivat. 
+ \item mecanisme de rezervă - în cazul în care o cerere eșuează, se poate returna o valoare din memoria cache sau una implicită.
+\end{itemize}
+
+Hystrix este o librărie open-source care implementează toate aceste mecanisme, ce poate fii folosită într-un mediu bazat pe JVM. 
+
+\subsection{Tehnologii IPC}
+
+Există o multitudine de tehnologii IPC care pot fii folosite. Serviciile pot folosi mecanisme de comunicare sincrone de tip cerere/răspuns precum REST sau Thrift. Deasemenea, pot folosi mecanisme de comunicare asincronă bazate pe mesaje precum AMQP sau STOMP. Există o varietate de formate de mesaje. Serviciile pot folosi formate ușor de citit precum JSON sau XML sau formate binare, care sunt mai eficient, precum Avro sau Protocol Buffers. 
+
+\subsection{Comunicarea asincronă bazată pe mesaje}
+
+Folosind acest tip de comunicare, procesele interacționează asincron prin schimb de mesaje. Un client lansează o cerere către un serviciu trimițând un mesaj. Dacă serviciul trebuie să răspundă, o va face prin trimiterea unui mesaj separat către client. Din moment ce comunicarea este asincronă, clientul nu este blocat în timp ce așteaptă răspunsul. În schimb, clientul este scris plecând de presupunerea că răspunsul nu va fi recepționat imediat. 
+
+Un mesaj este alcătuit din antete - metadate precum expeditorul - și corpul mesajlui. Mesajele sunt trimise pe canale. Un număr variabil de producători pot trimite mesaje către canal. În mod similar, orice număr de consumatori pot primi mesajele de la canal. Există două tipuri de canale: punct-la-punct sau publish-subscribe. Un canal punct-la-punct livrează mesajul fix unui consumator care citește de pe canal. Serviciile ce folosesc canale punct-la-punct folosesc interacțiunea unu-la-unu descrisă mai devreme. Un canal de tip publish-subscribe livrează mesajul către toți consumatorii. Serviciile ce folosesc canale publish-subscribe interacționează în modul unu-la-mai-mulți descris mai sus. 
+
+\section{Identificarea serviciilor}
+
+Pentru apelarea unui REST (Representational State Transfer) API este nevoie de lansarea unei cereri, care să includă locația de rețea a serverului (adresa IP și portul). În cazul unei aplicații monolit care rulează pe un server fizic, aceste informații sunt relativ statice. Ele ar putea fi citite de exemplu dintr-un fisier de configurare care este actualizate periodic. În schimb, într-o aplicație mondernă ce rulează în cloud si este bazată pe microservicii acest lucru este mult mai dificil de rezolvat după cum arată schema de mai jos:
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.3]{img/Richardson-microservices-part4-1_difficult-service-discovery.png}
+\caption{Identificarea serviciilor în cloud}
+\label{fig:arhi_componente}
+\end{figure}
+
+Instanțelor serviciilor le sunt alocate în mod dinamic locații de rețea.  În plus, instațele se vor modifica în mod dinamic datorită auto-scalării, penelor și actualizărilor. În  consecintă codul client are nevoie de un mecanism mai elaborat de identificare a serviciilor. 
+
+Există două categorii de șabloane: identificare pe partea de client (\textit{eng. client-side discovery}) și identificare pe partea de server (\textit{eng. server-side discovery}).
+
+\subsection{Identificarea serviciilor de către client}
+
+Atunci când descoperirea este realizată de către client, acesta este responsabil pentru determinare locațiilor de rețea ale instanțelor de serviciu și pentru a face balansare pe baza acestora. Clientul lansează o cerere către registrul de servicii (\textit{eng. sevice registry}), care este o bază de date a instanțelor de serviciu. Clientul apoi folosește un algoritm de balansare pentru a select unul dintre ele și pentru a lasa cererea propriu-zisă. 
+
+Locația de rețea a unei instanțe de serviciu este înregistrată în registrul de serviciu atunci când este lansată. Este înlăturată atunci când instanța este oprită. Starea instanțelor serviciilor este actualizată period folosind un mecanism de tip puls (\textit{eng. heartbeat}).
+
+Principiul de funcționare al identificării serviciilor de către client funcționează conform schemei de mai jos:
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.25]{img/Richardson-microservices-part4-2_client-side-pattern.png}
+\caption{Identificarea serviciilor de către client}
+\label{fig:arhi_componente}
+\end{figure}
+
+Acest mod de funcționare prezintă o varietate de beneficii și dezavantaje. Se bazează pe un principiu simplu și exceptând registrul serviciilor nu există alte componente mobile. În plus, din moment ce serviciul cunoaște toate instanțele de serviciu disponibile, poate să ia decizii de balansare inteligente, specifice aplicației. Un dezavantaj major este cuplarea clientului cu registrul serviciilor; în acest caz trebuie implementată o logică de descoperire a serviciilor pentru fiecare limbaj de programare și set de biblioteci folosite de către serviciile-client. 
+
+\subsection{Identificarea serviciilor de către server}
+
+Cealaltă abordare posibilă este identificarea serviciilor de către server, care funcționează conform schemei de mai jos:
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.3]{img/Richardson-microservices-part4-3_server-side-pattern.png}
+\caption{Identificarea serviciilor de către server}
+\label{fig:arhi_componente}
+\end{figure}
+
+Clientul lansează o cerere către serviciu prin intermediul unui load balancer, care la rândul său interoghează registrul de servicii și rutează fiecare cerere către o instanță a serviciului. Ca și în cazul identificării de către client, instanțele de serviciu sunt gestionate de registrul de servicii. 
+
+AWS Elastic Load Balancer (ELB), produs al companiei Amazon este un exemplu de asemenea mecanism. Este folosit în principiu pentru a balansa traficul extern venit din Internet. Totuși poate fi folosit pentru a distribui traficul care este intern unui cloud privat. Un client lansează cereri via ELB folosind numele DNS. Acesta distribui traficul între instanțele înregistrate. Nu există un registru de servicii separat, în schimb toate aceste instanțe sunt înregistrate direct în ELB.
+
+Unele medii care folosesc Kubernetes sau Marathon folosesc un proxy la nivelul fiecărei mașini din cluster. Proxy-ul joacă rolul load-balancer-ului responsabil pentru descoperire de către server. Pentru a lansa o cerere către un serviciu, un client rutează cererea via proxy folosind adresa IP a hostului și portul serviciului. Apoi proxy-ul transmite mai departe cererea către o instanță disponibilă din cluster.
+
+Acest mod de funcționare prezintă deasemenea avantaje și dezavantaje. Un mare avantaj ar fi faptul că detaliile legate de identificare sunt decuplate de client. Aceștia lansează pur si simplu cereri către load balancer, ceea ce elimină nevoia implementării unei logici de identificare pentru fiecare limbaj de programare sau set de biblioteci folosit de către serviciile client. Există totuși și dezavantaje. Dacă funcționalitatea nu este livrată împreună cu mediul de instalare, este încă o componente ce trebuie configurată și menținută. 
+
+\subsection{Registrul serviciilor}
+Registrul serviciilor este o parte cheie din procesul de identificare a serviciilor. Este o bază de date ce conține locațiile de rețea ale instanțelor serviciilor. Acesta trebuie să fie o componentă cu un grad înalte de disponibilitate și mereu actualizat. Clienți pot stoca în memoria cache locațiile de rețea obținute de la acesta, însă informația va deveni la un moment dat învechită și clienții vor fi nevoiți să reapeleze registrul. În consecință, un regitru de servicii reprezintă un cluster de server care folosesc un protocol de replicare pentru a menține consistența.
+
+Un exemplu de astfel de componentă este Eureka. Acesta oferă un API de tip REST pentru înregistrarea instanțelor de serviciu, cât și pentru interogări. O instanță de serviciu se înregistrează printr-o cerere de tip POST. La fiecare 30 de secunde înregistrarea trebuie actualizată printr-o cerere de tip PUT. Înregistrarea este ștearsă fie folosind o cerere HTTP DELETE fie pentru expirarea unui timer. Un client poate obține lista de instanțe înregistrate folosind o cerere de tip HTTP GET.
+
+Alte exemplu de astfel de componente:
+
+\begin{itemize}
+ \item \textbf{etcd} - reprezintă o componentă de stocare de tip cheie-valoare cu un grad înalte de disponibilitate folosit pentru stocarea configurațiilor și pentru identificarea serviciilor. Două proiecte notabile care folosesc această componentă sunt Kubernetes și Cloud Foundry. 
+ \item \textbf{consul} - este o unealtă pentru identificarea și configurarea serviciilor. Oferă un API care permite clienților să se înregistreze și să descopere servicii. Acesta poate efectua verificări pentru determinarea disponibilității serviciului. 
+ \item \textbf{Apache Zookeeper} - este un serviciu de coordonare a aplicațiilor distribuite foarte răspândit. Inițial a fost un subproiect Hadoop, dar acum a devenit un proiect separat. 
+\end{itemize}
+
+Deasemenea, este de notat faptul ca sisteme pentru Kubernetes, Marathon și AWS nu au un registru al serviciilor explicit. În schimb, acesta este o componentă integrată a infrastructurii.
+
+\subsection{Metode de înregistrare a serviciilor}
+
+Așa cum am menționat anterior, instanțele de serviciu trebuie să fie înregistrare și șterse din registrul serviciilor. Există câteva modalități pentru a gestiona aceste două operațiuni. Una este ca serviciile să se înregistreze ele însele, numit și auto-înregistrare. Cealaltă opțiune este ca o componentă a sistemului să gestioneze aceast, numit și înregistrare terță.
+
+\subsubsection{Auto-înregistrarea}
+Folosind auto-înregistrarea, o instanță a serviciului este reponsabilă pentru înregistrare și anularea acesteia din cadrul registrului. Deasemenea, dacă este necesar, instanța serviciului trimite pulsuri pentru a preveni expirarea înregistrării.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.3]{img/Richardson-microservices-part4-4_self-registration-pattern.png}
+\caption{Auto-înregistrare}
+\label{fig:arhi_componente}
+\end{figure}
+
+Un exemplu bun al acestei abordări este client Eureka. Acesta se ocupă de toate aspectele legate de înregistrarea și înlăturarea unei instanțe în registrul serviciilor. Proiectul Spring Cloud, care implementează o serie de șabloane încluzând identificarea serviciilor, facilitează abonarea unui serviciu la Eureka printr-o simplă anotare \texttt{@EnableEurekaClient}.
+
+Un prim avantaj al acestei metode ar fi simplitatea, datorită faptului că nu necesită nici o altă componentă de sistem. Însă, dezavantajul major este cuplarea între instanțe și registrul serviciilor. Aceasta crează necesitatea codării acestei funcționalităti la nivelul fiecărui limbaj de programare.
+
+Abordarea alternativă, care decuplează serviciile de registrul serviciilor, este înregistrarea terță.
+\newpage
+\subsubsection{Înregistrarea terță}
+Folosind înregistrarea terță, instanțele serviciuliu nu mai sunt responsabile pentru înregistrarea în cadrul registrului serviciilor. În schimb, o altă componentă de sistem cunoscută sub numele de registrar al serviciilor (\textit{eng. service registrar}) se ocupă de aceasta. Acesta monitorizează schimbările la nivelul instanțelor fie prin interogări periodice al mediului de instalare fie prin abonarea la evenimente. Atunci când detectează o nouă instanță acesta o înregistrează la nivelul registrului. Deasemenea tot el se va ocupa și de eliminare înregistrării în momentul în care instanța nu mai este  disponibilă. 
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.4]{img/Richardson-microservices-part4-5_third-party-pattern.png}
+\caption{Înregistrare terță}
+\label{fig:arhi_componente}
+\end{figure}
+
+Un exemplu de o astfe de componentă este proiectul open-source Registrator. Acesta este capabil să gestioneze instanțele de serviciu care sunt instalate ca și containere Docker. Acesta dispune suport pentru o serie de registrii de servicii precum, \texttt{etcd} și \texttt{Consul}.
+
+Principalul beneficiu al acestui mod de funcționare este faptul că decuplează serviciile de registrul serviciilor. Nu mai este necesară implementarea logici la nivelul fiecărui limbaj de programare, în schimb procesul este gestionat într-o manieră centralizată de către un serviciu dedicat. Dezavantajul este că, dacă nu este furnizat de mediul de instalarea acesta devine încă o componentă ce trebuie configurată și menținută. 
 
 
 
-	
+\chapter{Bibliografie}
+
+\begin{itemize}
+ \item Martin Fowler - \texttt{http://martinfowler.com/articles/microservices.html}
+ \item Microservice.io - \texttt{http://microservices.io/}
+ \item Microsoft Developer Network - \texttt{https://msdn.microsoft.com}
+ \item NGINX - \texttt{https://www.nginx.com/}
+ \item Bulding Microservices, Sam Newman, O'Reilly Press
+\end{itemize}	
 
 \end{document}

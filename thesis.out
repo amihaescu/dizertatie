@@ -49,3 +49,16 @@
 \BOOKMARK [1][]{section.4.4}{4.4 Construirea microserviciilor: Comunicarea inter-process \356n cadrul microserviciilor}{chapter.4}% 49
 \BOOKMARK [2][]{subsection.4.4.1}{4.4.1 Introducere}{section.4.4}% 50
 \BOOKMARK [2][]{subsection.4.4.2}{4.4.2 Stiluri de interactiune}{section.4.4}% 51
+\BOOKMARK [2][]{subsection.4.4.3}{4.4.3 Definirea API-urilor}{section.4.4}% 52
+\BOOKMARK [2][]{subsection.4.4.4}{4.4.4 API-uri evolutive}{section.4.4}% 53
+\BOOKMARK [2][]{subsection.4.4.5}{4.4.5 Gestionarea penelor partiale de serviciu}{section.4.4}% 54
+\BOOKMARK [2][]{subsection.4.4.6}{4.4.6 Tehnologii IPC}{section.4.4}% 55
+\BOOKMARK [2][]{subsection.4.4.7}{4.4.7 Comunicarea asincrona bazata pe mesaje}{section.4.4}% 56
+\BOOKMARK [1][]{section.4.5}{4.5 Identificarea serviciilor}{chapter.4}% 57
+\BOOKMARK [2][]{subsection.4.5.1}{4.5.1 Identificarea serviciilor de catre client}{section.4.5}% 58
+\BOOKMARK [2][]{subsection.4.5.2}{4.5.2 Identificarea serviciilor de catre server}{section.4.5}% 59
+\BOOKMARK [2][]{subsection.4.5.3}{4.5.3 Registrul serviciilor}{section.4.5}% 60
+\BOOKMARK [2][]{subsection.4.5.4}{4.5.4 Metode de \356nregistrare a serviciilor}{section.4.5}% 61
+\BOOKMARK [3][]{subsubsection.4.5.4.1}{4.5.4.1 Auto-\356nregistrarea}{subsection.4.5.4}% 62
+\BOOKMARK [3][]{subsubsection.4.5.4.2}{4.5.4.2 \316nregistrarea terta}{subsection.4.5.4}% 63
+\BOOKMARK [0][]{chapter.5}{5 Bibliografie}{}% 64
