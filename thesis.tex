@@ -854,6 +854,33 @@ Folosind acest tip de comunicare, procesele interacționează asincron prin schi
 
 Un mesaj este alcătuit din antete - metadate precum expeditorul - și corpul mesajlui. Mesajele sunt trimise pe canale. Un număr variabil de producători pot trimite mesaje către canal. În mod similar, orice număr de consumatori pot primi mesajele de la canal. Există două tipuri de canale: punct-la-punct sau publish-subscribe. Un canal punct-la-punct livrează mesajul fix unui consumator care citește de pe canal. Serviciile ce folosesc canale punct-la-punct folosesc interacțiunea unu-la-unu descrisă mai devreme. Un canal de tip publish-subscribe livrează mesajul către toți consumatorii. Serviciile ce folosesc canale publish-subscribe interacționează în modul unu-la-mai-mulți descris mai sus. 
 
+Există multe sisteme de mesaje, dar este de preferat să fie ales unul care să suporte mai multe limbaje de programare. Unele sisteme de mesagerie oferă suport pentru protocoale standard precum AMQP și STOMP. Altele folosesc protocoale proprietare, dar care însă sunt documentate. Există un număr mare de sisteme de mesagerie open-source precum RabbitMQ, Apache Kafka, Apace ActiveMQ și NSQ. La nivel înalt toate oferă suport pentru mesaje și canale și încearcă să fie performante și scalabile, însă fiecare prezintă diferențe la nivelul modelului de broker. 
+
+Avantajele folosirii mesajelor:
+
+\begin{itemize}
+ \item decuplarea clientului de serviciu - un client lansează o cerere prin simpl trimitere a unui mesaj pe canalul adecvat. Clientul nu cunoaște ce instanțe de serviciu există și nici nu trebuie să folosească vreun mecanism de identificare pentru a afla locația serviciului. 
+ \item zona de tampon - folosind protocoale sincrone de tip cerere/răspuns, precum HTTP, atât clientul cât și serverul trebuie să fie disponibil în momentul schimbului.  Pe de altă parte, un broker de mesaje poate să adune mesajele scrise într-un canal până ce acestea sunt procesate de un consumator. Asta înseamnă că un magazin online poate să accepte comenzi de la clienți chiar dacă sistemul de preluare al acestora este încet sau indisponibil. 
+ \item interacțiuni flexibile client-server - mesageria implementează toate stilurile de interacțiune descrise mai devreme.
+ \item comunicare inter-process explicită - mecanismele bazate pe RPC dau impresia unui apel local al metodei, când aceasta este pe un server distant. Totuși, datorită posibilității unei pene, lucrurile sunt un pic diferite. Mesageria explicitează aceste diferențe astfel încât programatorii să nu aibă falsul sentiment de securitate în momentul apelării unor funcții. 
+\end{itemize}
+
+Dezavantajele folosirii mesajelor ar fi :
+
+\begin{itemize}
+ \item complexitate operațională crescută - sistemul de mesagerie este încă o componentă a sistemului care trebuie instalată, configurată și menținută. Este foarte important ca broker-ul de mesaje să aibă un grad înalt de disponibilitate, altfel robustețea sistemului va fi impactată. 
+ \item complexitatea implementării interacțiunilor cerere/răspuns - interacțiunile cerere/răspuns necesită efort în plus pentru a fi implementate. Fiecare cerere trebuie să conțină un identificator al canalului de răspuns și un identificator de corelație. Serviciul va scrie în răspuns identificatorul de corelație pe canalul de răspuns. Clientul va folosi acest identificator pentru a corela răspunsul cu cererea. În aceste cazuri este mai simplu să se folosească un mecanism IPC care oferă în mod implicit funcționalitățile menționate. 
+\end{itemize}
+
+Recent, limbajele pentru definirea unei interfețe pentru API-urile de tip REST au devenit din nou populare. Există câte opțiuni precum RAML sau Swagger. Câteva IDL - Interface Description Language - precum Swagger permit definirea formatului mesajelor de cerere și răspuns. Altele precum RAML necesită folosirea unei alte componente precum JSON Schema. Pe lângă descrierea API-urilor, limbaje IDL oferă unelte pentru generarea funcționalităților pe partea de client sau server plecând de la definirea interfeței. 
+
+Apache Thrift este o alternativă interesantă la REST. Este o colecție de biblioteci pentru scrierea de clienți și servere de tip RPC agnostică față de limbaje. Se poate folosi compilatorul pentru a genera parți ale clientului și serverului într-o multitudine de limbaje precum: C++, Java, Python, PHP, Ruby, Erland și Node.js.
+
+O interfață Thrift este compusă din unul sau mai multe servicii. Definiția unui serviciu este similară cu o interfață în Java. Este o colecție de metode cu parametrii bine definiți. Metodele pot fie returna sau nu să returneze o valoare. Cele care returnează o valoare implementează un stil de interacțiune de tip cerere/răspuns. Clientul așteaptă un răspuns și ar putea arunca o excepție. Metodele unidirecționale corespund notificărilor; serverul nu trimite un răspuns. 
+
+Thrift oferă suport pentru o varietate de formate de mesaje precum: JSON, binar și binar compact. Formatul binar este mai eficient decât JSON deoarece este mai rapid de decodat. După cum sugerează și numele, formatul binar-compact este și mai eficient. Formatul JSON, este desigur mult mai facil de citit. Thrift oferă posibilitatea folosirii directe a protocoalelor de transport TCP sau HTTP. Folosirea directă a TCP-ului este mult mai eficientă decât HTTP, însă HTPP este mai ușor de citit de către firewall-uri, browsere și oameni. 
+
+
 \section{Identificarea serviciilor}
 
 Pentru apelarea unui REST (Representational State Transfer) API este nevoie de lansarea unei cereri, care să includă locația de rețea a serverului (adresa IP și portul). În cazul unei aplicații monolit care rulează pe un server fizic, aceste informații sunt relativ statice. Ele ar putea fi citite de exemplu dintr-un fisier de configurare care este actualizate periodic. În schimb, într-o aplicație mondernă ce rulează în cloud si este bazată pe microservicii acest lucru este mult mai dificil de rezolvat după cum arată schema de mai jos:

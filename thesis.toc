@@ -55,11 +55,11 @@
 \contentsline {subsection}{\numberline {4.4.5}Gestionarea penelor par\IeC {{\textcommabelow t}}iale de serviciu}{38}{subsection.4.4.5}
 \contentsline {subsection}{\numberline {4.4.6}Tehnologii IPC}{39}{subsection.4.4.6}
 \contentsline {subsection}{\numberline {4.4.7}Comunicarea asincron\IeC {\u a} bazat\IeC {\u a} pe mesaje}{40}{subsection.4.4.7}
-\contentsline {section}{\numberline {4.5}Identificarea serviciilor}{40}{section.4.5}
+\contentsline {section}{\numberline {4.5}Identificarea serviciilor}{41}{section.4.5}
 \contentsline {subsection}{\numberline {4.5.1}Identificarea serviciilor de c\IeC {\u a}tre client}{41}{subsection.4.5.1}
-\contentsline {subsection}{\numberline {4.5.2}Identificarea serviciilor de c\IeC {\u a}tre server}{41}{subsection.4.5.2}
-\contentsline {subsection}{\numberline {4.5.3}Registrul serviciilor}{42}{subsection.4.5.3}
-\contentsline {subsection}{\numberline {4.5.4}Metode de \IeC {\^\i }nregistrare a serviciilor}{43}{subsection.4.5.4}
-\contentsline {subsubsection}{\numberline {4.5.4.1}Auto-\IeC {\^\i }nregistrarea}{43}{subsubsection.4.5.4.1}
+\contentsline {subsection}{\numberline {4.5.2}Identificarea serviciilor de c\IeC {\u a}tre server}{42}{subsection.4.5.2}
+\contentsline {subsection}{\numberline {4.5.3}Registrul serviciilor}{43}{subsection.4.5.3}
+\contentsline {subsection}{\numberline {4.5.4}Metode de \IeC {\^\i }nregistrare a serviciilor}{44}{subsection.4.5.4}
+\contentsline {subsubsection}{\numberline {4.5.4.1}Auto-\IeC {\^\i }nregistrarea}{44}{subsubsection.4.5.4.1}
 \contentsline {subsubsection}{\numberline {4.5.4.2}\IeC {\^I}nregistrarea ter\IeC {{\textcommabelow t}}\IeC {\u a}}{45}{subsubsection.4.5.4.2}
 \contentsline {chapter}{\numberline {5}Bibliografie}{46}{chapter.5}
