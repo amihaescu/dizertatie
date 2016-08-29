@@ -968,19 +968,72 @@ Un prim avantaj al acestei metode ar fi simplitatea, datorită faptului că nu n
 Abordarea alternativă, care decuplează serviciile de registrul serviciilor, este înregistrarea terță.
 \newpage
 \subsubsection{Înregistrarea terță}
-Folosind înregistrarea terță, instanțele serviciuliu nu mai sunt responsabile pentru înregistrarea în cadrul registrului serviciilor. În schimb, o altă componentă de sistem cunoscută sub numele de registrar al serviciilor (\textit{eng. service registrar}) se ocupă de aceasta. Acesta monitorizează schimbările la nivelul instanțelor fie prin interogări periodice al mediului de instalare fie prin abonarea la evenimente. Atunci când detectează o nouă instanță acesta o înregistrează la nivelul registrului. Deasemenea tot el se va ocupa și de eliminare înregistrării în momentul în care instanța nu mai este  disponibilă. 
-
-\begin{figure}[ht]
-\centering
-\includegraphics[scale=0.4]{img/Richardson-microservices-part4-5_third-party-pattern.png}
-\caption{Înregistrare terță}
-\label{fig:arhi_componente}
-\end{figure}
+Folosind înregistrarea terță, instanțele serviciuliu nu mai sunt responsabile pentru înregistrarea în cadrul registrului serviciilor. În schimb, o altă componentă de sistem cunoscută sub numele de registrar al serviciilor (\textit{eng. service registrar}) se ocupă de aceasta. 
+Acesta monitorizează schimbările la nivelul instanțelor fie prin interogări periodice al mediului de instalare fie prin abonarea la evenimente. Atunci când detectează o nouă instanță acesta o înregistrează la nivelul registrului. Deasemenea tot el se va ocupa și de eliminare înregistrării în momentul în care instanța nu mai este  disponibilă. 
 
 Un exemplu de o astfe de componentă este proiectul open-source Registrator. Acesta este capabil să gestioneze instanțele de serviciu care sunt instalate ca și containere Docker. Acesta dispune suport pentru o serie de registrii de servicii precum, \texttt{etcd} și \texttt{Consul}.
 
-Principalul beneficiu al acestui mod de funcționare este faptul că decuplează serviciile de registrul serviciilor. Nu mai este necesară implementarea logici la nivelul fiecărui limbaj de programare, în schimb procesul este gestionat într-o manieră centralizată de către un serviciu dedicat. Dezavantajul este că, dacă nu este furnizat de mediul de instalarea acesta devine încă o componentă ce trebuie configurată și menținută. 
+Principalul beneficiu al acestui mod de funcționare este faptul că decuplează serviciile de registrul serviciilor. Nu mai este necesară implementarea logici la nivelul fiecărui limbaj de programare, în schimb procesul este gestionat într-o manieră centralizată de către un serviciu dedicat. Dezavantajul este că, dacă nu este furnizat de mediul de instalarea acesta devine încă o componentă ce trebuie configurată și menținută.
 
+\chapter{Implementare practică}
+
+Punerea în practică a acestor concepte teoretice a fost realizată cu ajutorul unei aplicații web pentru vizionarea de conținut video pe baza de cont și abonament similar cu platformele deja existente pe piață. Aceasta permite unui utilizator crearea unui cont, alegerea tipului de abonament și în cazul alegerii unui abonament plătit alegerea metodei de plată pentru abonamentul respectiv. În funcție de tipul de cont creat acesta va putea vedea anumite clipuri video.
+
+Aplicația implementează câteva cazuri de utilizare ce asigură o funcționalitate minimală pentru a constitui, ceea ce în literatura de specialitate se numește un produs minim viabil - \textit{eng. minimal viable product}. În cadrul metodologiei Agile un astfel de produs ar fi livrat de o echipa la finalul unui \textit{sprint}.
+
+Pentru a respecta principiile enunțate în partea teoretică aplicația a fost împărțită în mai multe microservicii, care vor constituii noduri ale aplicatiției, după cum urmează:
+\begin{itemize}
+	\item service registry - componenta care este responsabilă pentru menținerea listei de instanțe ale fiecărui serivicu.
+	\item gateway - punctul principal de comunicare între utilizator și sistem
+	\item serviciul de gestiune al utilizatorilor
+	\item serviciul de gestiune al rolurilor utilizatorilor
+	\item serviciul de gestiune al conținutului video
+	\item serviciul de gestiune al comentariilor
+	\item instanțe ale bazelor de date aferente fiecărui serviciu
+\end{itemize}
+
+Aplicația putea fi constituită dintr-un singur bloc, ceea ce ar fi conferit unitate acesteia și poate o arhitectura mai simplă, dar i-ar fi redus din flexibilitate. În esență, modul în care dezvoltarea s-a realizat a fost plecând de la implementarea funcționalității dorite în cadrul gateway-ului. Odată satisfacută cerința apelul local pentru realizarea acesteia a fost înlocuit cu un apel distant către un serviciu REST. Apoi funcționalitatea a fost retestată pentru asigurarea consitenței la nivelul logic al acesteia.
+
+Arhitectura aplicației exemplificată în schema de mai jos demonstrează gradul mare de decuplare al componentelor acesteia. Nu doar că acestea sunt decuplate, dar comunicarea se face prin interfețe bine definite ce folosesc protocoale cu specificații clare, respectiv HTTP. 
+\newpage
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.7]{img/arhitectura.png}
+\caption{Arhitectura aplicației}
+\label{fig:arhi_componente}
+\end{figure}
+
+Mai sus sunt reprezentate blocurile funcționale ale aplicației. Microserviciile nu se cunosc între ele, altfel spus niciodata un microserviciu nu va apela un alt microserviciu. Ele expun funcționalități prin intermediul unui API de tip REST care urmează a fi consumat. Punctul central al acestei arhitecturii îl reprezintă "Service registry", deși interacțiune cu exteriorul se realizează prin intermediul "API Gateway". Acesta este componentă foarte importantă deoarece toate celălalte servicii îl vor apela pentru a se putea înregistra. În acest caz și API Gateway-ul va stabili o conexiune cu acesta în primul rând pentru a se înregistra și apoi pentru a obține informații legate de celalate servicii și a efectua apeluri.
+
+Nodurile din partea dreapta a schemei sunt construite într-o manieră similară. Acestea nu mențin nici un fel de informație legată de sesiunea utilizatorului care este conectat. Pe de altă parte API Gateway-ul este cel care utilizat funcționalitățile expuse de servicii implementează cazuri de utilizare, precum crearea unui nou cont sau autentificare și menține informații legate de sesiune. 
+
+\newpage
+\section{Funcționarea unui caz de utilizare}
+
+Pentru a putea întelege mai bine funcționarea aplicației și avantajele folosirii acestui tip de arhitectură, cel puțin teoretic este necesară exemplificarea unui caz de utilizare ce folosește mai multe microservicii.
+
+Prin modul în care a fost concepută aplicația crearea unui utilizator implică apelarea atât a serviciului responsabil de gestiunea utilizatorilor cât și cel responsabil de gestiunea rolurilor. 
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.5]{img/user_case.png}
+\caption{Caz de utilizare: crearea unui utilizator}
+\label{fig:arhi_componente}
+\end{figure}
+
+Cazul de utilizare presupune ca aplicația a pornit cu succes și că cele două servicii s-au conectat la "Service Registry". 
+
+
+Utilizatorul prin intermediul interfeței grafice completează câmpurile necesare pentru creare unui cont, după care la apăsarea pe buton o cerere de tip POST este lansată către gateway. Gateway-ul interceptează cererea și caută să obțină, în primă fază instanțe ale seriviciului de gestiune a utilizatorilor de la service registry. Odată obținută lista de instanțe, apelează algoritmul de load-balancing și lansează mai departe cererea către microserviciu. În momentul în care scrierea în baza de date s-a efectuat cu succes, microserviciul răspunde cu identificatorul utilizatorului. Plecând de la această informație, gateway-ul cere mai departe service registry-ului instanțele de serviciu pentru gestiunea rolurilor. Se aplică din nou algoritmul de load-balancing după care, la obținerea confirmării scrierii în baza de date gateway-ul răspunde utilizatorului cu un mesaj HTTP 200 OK, iar acesta este redirectat către pagina principală. 
+\newpage
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.5]{img/login_screen.png}
+\caption{Ecran creare utilizator}
+\label{fig:arhi_componente}
+\end{figure}
+
+După cum se poate vedea în acest caz de utilizare, implementând corect microserviciile obținem o decuplare foarte bună între componentele unui sistem, însă introducem foarte multe dependențe către servicii externe. 
 
 
 \chapter{Bibliografie}

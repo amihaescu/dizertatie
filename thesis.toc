@@ -62,4 +62,6 @@
 \contentsline {subsection}{\numberline {4.5.4}Metode de \IeC {\^\i }nregistrare a serviciilor}{44}{subsection.4.5.4}
 \contentsline {subsubsection}{\numberline {4.5.4.1}Auto-\IeC {\^\i }nregistrarea}{44}{subsubsection.4.5.4.1}
 \contentsline {subsubsection}{\numberline {4.5.4.2}\IeC {\^I}nregistrarea ter\IeC {{\textcommabelow t}}\IeC {\u a}}{45}{subsubsection.4.5.4.2}
-\contentsline {chapter}{\numberline {5}Bibliografie}{46}{chapter.5}
+\contentsline {chapter}{\numberline {5}Implementare practic\IeC {\u a}}{46}{chapter.5}
+\contentsline {section}{\numberline {5.1}Func\IeC {{\textcommabelow t}}ionarea unui caz de utilizare}{48}{section.5.1}
+\contentsline {chapter}{\numberline {6}Bibliografie}{50}{chapter.6}
