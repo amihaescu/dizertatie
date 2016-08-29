@@ -1025,15 +1025,37 @@ Cazul de utilizare presupune ca aplicația a pornit cu succes și că cele două
 
 
 Utilizatorul prin intermediul interfeței grafice completează câmpurile necesare pentru creare unui cont, după care la apăsarea pe buton o cerere de tip POST este lansată către gateway. Gateway-ul interceptează cererea și caută să obțină, în primă fază instanțe ale seriviciului de gestiune a utilizatorilor de la service registry. Odată obținută lista de instanțe, apelează algoritmul de load-balancing și lansează mai departe cererea către microserviciu. În momentul în care scrierea în baza de date s-a efectuat cu succes, microserviciul răspunde cu identificatorul utilizatorului. Plecând de la această informație, gateway-ul cere mai departe service registry-ului instanțele de serviciu pentru gestiunea rolurilor. Se aplică din nou algoritmul de load-balancing după care, la obținerea confirmării scrierii în baza de date gateway-ul răspunde utilizatorului cu un mesaj HTTP 200 OK, iar acesta este redirectat către pagina principală. 
+
 \newpage
 \begin{figure}[ht]
 \centering
 \includegraphics[scale=0.5]{img/login_screen.png}
-\caption{Ecran creare utilizator}
+\caption{Pagină creare utilizator}
 \label{fig:arhi_componente}
 \end{figure}
 
-După cum se poate vedea în acest caz de utilizare, implementând corect microserviciile obținem o decuplare foarte bună între componentele unui sistem, însă introducem foarte multe dependențe către servicii externe. 
+După cum se poate vedea în acest caz de utilizare, implementând corect microserviciile obținem o decuplare foarte bună între componentele unui sistem, însă introducem foarte multe dependențe către servicii externe. Depedența de servicii externe expune aplicația la anumite riscuri, cum ar fi faptul că serviciile pot sa nu fie disponibile. În acest caz aplicația trebuie protejată. În cadrul microserviciilor acestă protecție se poate realiza prin implementarea șablonului "Circuit breaker". Aceasta anulează toate apelurile către un  seriviciu în momentul în care cererile eșuate depăsesc un anumit prag. 
+
+Demonstrarea implementării acestui șamblon oferă oportunitate prezentării unui alt caz de utilizare : obținerea comentariilor pentru un video clip.
+
+\newpage
+\section{Șablonul circuit breaker}
+
+Odata creat contul, utilizatorul poate naviga și vizualiza video clipurile la care are acces. Pe lângă aceasta, el poate adaugă și comentarii care vor fi partajate de toți utilizatorii, după cum se poate vede în imaginea de mai jos:
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.25]{img/comments-working.png}
+\caption{Pagină comentarii - serviciu funcțional}
+\label{fig:arhi_componente}
+\end{figure}
+
+Dacă din anumite motive serivciul de gestiune a comentariilor devine indisponibil, atunci este nevoie ca după un anumit număr de cereri, declanșare de noi apeluri către serviciul respectiv să fie scurt-circuitate astfel încât timpul de așteptare să fie redus la minim. În cazul de față, dacă serviciul devine indisponibil singurul comentariu care va fi afișat va fi unul de informare din partea sistemului. 
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.25]{img/comments-not-working.png}
+\caption{Pagină comentarii - serviciu în pană}
+\label{fig:arhi_componente}
+\end{figure}
 
 
 \chapter{Bibliografie}
