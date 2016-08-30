@@ -1048,7 +1048,6 @@ Se poate observa din extrasul de mai sus modul de împachetare al aterfactului e
 
 Se poate observa din imaginea de mai sus că folosim versiune \texttt{1.4.0.RELEASE} a SpringBoot, care la rândul său folosește Apache Tomcat versiunea \texttt{8.5.4}. Pentru lansarea în modul acesta a oricărei aplicații ce folosește SpringBoot este necesar un minim de configurare. Acesta se rezumă la folosirea unei anotări asupra unei clase \texttt{@SpringBootApplication} și aplearea metodei static \texttt{run} din clasa \texttt{SpringApplication} în punctul de intare al oricărui program Java \texttt{public static void main()}.
 
-
 \begin{figure}[ht]
 \centering
 \includegraphics[scale=0.5]{img/spring-boot-min-config.png}
@@ -1056,8 +1055,86 @@ Se poate observa din imaginea de mai sus că folosim versiune \texttt{1.4.0.RELE
 \label{fig:arhi_componente}
 \end{figure}
 
+Unul din avantajele folosirii SpringBoot este faptul că acesta dispune de pachete de librării grupate pentru a îndeplini o anumită funcționalitate. De exemplu conectarea la baza de date și folosirea acesteia într-un mod facil programatorilor Java se face, în mod tradițional folosind o serie de librării, care la rândul lor pot depinde de alte librări care pot intra în conflict. În plus, dacă aceste nu sunt în conflict una cu cealaltă pot intra în conflict cu librăriile furnizate de server. Așadar SpringBoot simplifică mult această sarcină prin furnizarea unor pachete testate, gata a fi folosite. 
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.6]{img/spring-boot-data-dependencies.png}
+\caption{Lansare instanță microserviciu}
+\label{fig:arhi_componente}
+\end{figure}
+
+Mai sus sunt adăugate două "depdendințe", prima care oferă toate funcționalitatea pentru acesarea entităților din baza de date și cea de-a doua care oferă motorul pentru conectarea la baza de date. Acestea împreună cu o configurație minimală în fișierul de proprietăți a aplicației vor realiza conexiunea.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.6]{img/spring-boot-connexion-details.png}
+\caption{Lansare instanță microserviciu}
+\label{fig:arhi_componente}
+\end{figure}
+
+Pentru a facilita portarea aplicației pe mai diferite medii - dezvoltare, testare, producție - adresa bazei de date este luată ca și variabilă de mediu. 
+
+Plecând de la aceste librări se poate crea un microserviciu de tip depozit după cum urmează - exemplificarea va fi realizată folosind serviciul de gestiune a comentariilor. Se pleacă de crearea unei clase care reprezintă entitate ce va fi stocată în baza de date. Folosind anotări specifice aceasta este marcată ca entitate (\texttt{@Entity}), după care este specificat numele tabelului care va fi creat în baza de date prin \texttt{@Table}. Mai departe se pot crea interogări specifice folosind \texttt{@NamedQueries}. În final clasa va arată ca în imaginea de mai jos:
 
 
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.5]{img/spring-boot-entity.png}
+\caption{Clasă de tip entitate}
+\label{fig:arhi_componente}
+\end{figure}
+
+Pe lângă anotările prezentate mai sus se poate observa \texttt{@Id} și \texttt{@GeneratedValue} folosite deasupra câmpului \texttt{id}. Acestea sunt folosite pentru marca acest câmp ca fiind cheie a tabelei. Celălalte câmpuri nu mai conțin niciun fel de anotare deoarece este folosit principiul "convention over configuration" care aplicat în acest caz va crea în mod automat coloane în tabelă. 
+
+Folosirea acestor anotări împreună cu o linie adițională în fișierul de configurare vor pemite crearea și actualizarea tabele în baza de date. Configurarea specifică tipul de DDL - Data Description Language - specific Spring care va fi folosit în cadrul conexiunii la baza de date.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.6]{img/spring-boot-ddl-auto.png}
+\caption{Configurarea DDL}
+\label{fig:arhi_componente}
+\end{figure}
+
+Continuând în sus pe scara arhitecturală, folosind această clasă model vom crea o altă clasă ce expune funcționalitățile de crearea, modificare și ștergere. În mod tradițional asigurarea acestor funcționalități se face prin crearea mai multor clase responsabile pentru gestiune tranzacționabilității interogărilor către baza de date, însă folosind Spring totul se poate face în mod declarativ prin polimorfism extinzând clasa \texttt{JpaRepository<T, ID>}. Aceasta folosește "generics" pentru a putea fi aplicată oricărei entități.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.6]{img/spring-boot-jpa-repository.png}
+\caption{Configurarea DDL}
+\label{fig:arhi_componente}
+\end{figure}
+
+Interfața mai extinde o altă interfață care nu conține decât prototipul unei funcții cu același nume ca și interogarea declarată în clasa model.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.6]{img/spring-boot-repo-custom.png}
+\caption{Configurarea DDL}
+\label{fig:arhi_componente}
+\end{figure}
+
+Astfel, doar cu aceste două interfețe foarte simple avem acces la o multitudine de operațiuni care vor persista entități în baza de date, ce vor putea fi acesate dintr-un nivel superior a aplicației - nivelul de serviciu. Acesta componentă va fi injectată folosind anotarea \texttt{Autowired} ceea ce implică faptul ca ne așteptăm ca aceasta să existe în contextul administrat de Spring.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.4]{img/spring-boot-repo-injection.png}
+\caption{Operațiuni legate de baza de date}
+\label{fig:arhi_componente}
+\end{figure}
+
+
+\newpage
+La nivelul serviciu vor implementate reguli de business ce vor altera datele obținute din baza de date înainte de a le trimite mai departe la la controller.
+
+Ultima componentă a microserviciul este controller-ul, cel care va expune informațiile agregate și prelucrate de serivicu prin intermediul unui API de tip REST. 
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.5]{img/spring-boot-controller.png}
+\caption{Expunerea serviciilor prin intermediul unui REST API}
+\label{fig:arhi_componente}
+\end{figure}
 
 \section{Funcționarea unui caz de utilizare}
 
