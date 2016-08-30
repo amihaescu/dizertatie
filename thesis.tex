@@ -1161,9 +1161,37 @@ Folosind doar această anotare și lansând aplicația se crează toată funcți
 \label{fig:arhi_componente}
 \end{figure}
 
+\newpage
 \subsection{API Gateway}
 
+Dintre toate componentele API Gateway-ul este cea mai complexă în materie de logică de business inclusă. Mai exact, aceasta include părți de logică aparțințând tuturor microserviciilor și implementează cazurile de utilizare. Totuși ca și complexitate tehnică este mai simplă decât celălalte componente deoarece tot ceea ce realizează aceasta este să apeleze serviciile și să agrege rezultatele obținute de la acestea. Teoretic la acest nivel nu ar mai fi nevoie de nici un fel de procesare, deoarece aceasta a fost deja implementată la nivelul microserviciilor.
 
+Ca și structură a codului este foarte similar organizată cu precedentele componente, folosind o arhitectură stratificată. Diferența majoră este ca la nivelul de depozitare apelurile către baza de date sunt înlocuite cu apeluri către servicii.
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.5]{img/spring-boot-repo-remote-call.png}
+\caption{API Gateway - clasa depozit}
+\label{fig:arhi_componente}
+\end{figure}
+
+Se poate observa introducerea unei noi clase \texttt{RestTemplate} anotată cu \texttt{@Autowired}. Aceasta este cea care va fi folosită pentru a lansa apelurile către serviciile inregistrate la "Service Registry". Încă o dată, datorită bunei integrări a proiectului Eureka cu Spring, prin intermediul acestei clase nu doar că vom putea lansa apeluri către servicii, dar vom putea chiar distribui în mod echitabil cererile între instanțele de serviciu.
+
+Pe lângă implementarea apelurilor către serviciile distante, API Gateway-ul mai implementează și o interfață grafică menită să permită utilizatorilo o comunicare facilă cu sistemul. Aceasta a fost realizată folosind tehnologii front-end precum AngularJS și Bootstrap, librării de javascript devenite standard în industrie.
+
+Intefața grafică este concepută ca Single Page Application - SPA. Aceasta presupune faptul că intreaga parte de front-end este încărcată de la prima acesare. Tot scheletul necesar redării paginilor este trimis pe client și apoi datele sunt obținute prin apeluri REST către api-ul expus de server.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.5]{img/spring-boot-spa-network.png}
+\caption{Livrarea aplicației front-end}
+\label{fig:arhi_componente}
+\end{figure}
+
+Se poate observa că în urma primului apel serverul răspunde cu pagina setată ca index care conține o serie de dependințe către alte fisiere. Ulterior acestea sunt încărcate astfel încât aplicația va rula în browser-ul utilizatorului. 
+
+\newpage
 \section{Funcționarea unui caz de utilizare}
 
 Pentru a putea întelege mai bine funcționarea aplicației și avantajele folosirii acestui tip de arhitectură, cel puțin teoretic este necesară exemplificarea unui caz de utilizare ce folosește mai multe microservicii.
