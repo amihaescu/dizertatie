@@ -1007,7 +1007,58 @@ Mai sus sunt reprezentate blocurile funcționale ale aplicației. Microserviciil
 
 Nodurile din partea dreapta a schemei sunt construite într-o manieră similară. Acestea nu mențin nici un fel de informație legată de sesiunea utilizatorului care este conectat. Pe de altă parte API Gateway-ul este cel care utilizat funcționalitățile expuse de servicii implementează cazuri de utilizare, precum crearea unui nou cont sau autentificare și menține informații legate de sesiune. 
 
+\section{Descrierea componentelor}
+
+Fiecare din componentele din componentele sistemului are anumite caracteristici, în funcție de rolul pe care îl îndeplinește în cadrul cazurilor de utilizare. Astfel, privind schema de arhitectura a aplicației putem identifica faptul că modul în care microserviciile au fost construite este diferit de modul în care a fost construit "Service Registry" și "API Gateway".  O caracteristică comună a microserviciilor din partea dreaptă ar fi faptul că aceste nu dispun de o interfață grafică, ele fiind proiectate ca simple servicii REST ce expun funcționalități pentru efectuarea de operațiuni de bază legate de entitățile pentru care sunt construite. În literatura de specialitate acestea se numesc și repository - depozit.
+
 \newpage
+\subsection{Microserviciile de tip depozit}
+
+Microserviciile de tip depozit sunt cele care implementează logica de business asupra entităților sistemului. O specificitate a acestora este faptul că acestea se conectează la un mediu de stocare persistent. Acesta poate fi o bază de date sau o locație pe un disc. În cazul de față trei dintre servicii se contează câte o bază de date, iar cel de-al patrulea are acces la un disc. Ceea ce poate fi remarcat în cadrul microserviciilor,spre deosebire de o abordare monolit este faptul că microserviciile se contează la baze de date diferite. Aceasta are două implicații. Prima este că administrarea bazelor se poate face de către echipe diferite. A doua presupune o libertate în alegerea sistemului de gestiune a bazei de date - SGBD, sistem care poate fi ales pentru a răspunde mai bine cerințelor serivciului respectiv. Deși în schemă fiecare microserviciu este reprezntat ca un singur bloc, în realitate pot fi mai multe instanțe ale acestuia. În cazul acesta pentru a putea asigura coorența la nivelul datelor, toate instanțele se vor conecta la aceeași bază de date.
+
+O altă particularitate a acestor componente este faptul ca ele nu mențin nici un fel de informație legată de stare. Plecând de la informația primită ca și dată de intrare ele vor putea furniza mereu același rezultat, fiecare caz de utilizare implementat de acestea fiind complet indenpdent față de celălalt. În vederea proiectării sistemelor auto-scalabile acesta este un avantaj, deoarece permite crearea și distrugerea instanțelor unui serviciu, fără riscul de a pierde vreunul fel de informație de stare. Putem spune ca operațiunile efectuate de aceste componente sunt atomice. 
+
+Din punct de vedere tehnologic, acestea sunt realizate folosind limbajul de programare Java. Motivul alegerii acestuia este nivelul de compotență ridicat și popularitatea acestuia în rândul dezvoltatorilor. Această popularitate se traduce la rândul ei printr-o abudență de biblioteci software ce pot accelera procesul de dezvoltare. 
+
+Pe parcursul acestei lucrări s-a făcut adese referire în mod interschimbabil la serviciu, microserviciu și instanțe ale unui serviciu. Ne putem referi la serviciu, sau microserviciu - acesta fiind o restrângere din punct de vedere al funcționalității serviciului, ca la acel bloc al sistemului capabil să indeplinească anumite reguli de business. Îl vom putea considera precum un șablon sau dacă facem o paralelă cu programarea orientată pe obiecte acesta ar fi comparat cu o clasă. O instanță a serviciului este o materializare a seriviciului, efectiv serverul care indeplinește funcțiile descrise. 
+
+Un serviciu poate fi compus din mai multe instanțe de serviciu - din mai multe servere. În abodarea clasică, monobloc, echipa responsabilă cu gestiunea infrastructurii ar oferi echipei de dezvoltare servere pe care aplicațiile să poate fi instalate. Modalitatea aceasta de lucru este greoaie și predispusă la erori. Furnizare și configurare unor astfel de servere poate dura și luni și chiar și în acest caz pot apărea discrepanțe între configurare serverului folosit de dezvoltator și cel furnizat. 
+
+O abordare modernă este crearea de aplicații "self-contained" în care serverul este inclus în aplicație. Aceasta elimină îndoielile legate de consistența configurărilor între cele două medii. În acest caz serverul devine parte a artefactelor ce vor fi livrate. 
+
+Astfel întregul sistem a fost gândit ca fiecare aplicație să conțină propriul server. Una din soluțiile cele mai populare pentru acest tip de server este SpringBoot. Acesta este un proiect al firmei Pivotal, cea care susține și libraria devenită standaard în industrie, Spring. SpringBoot are la bază un server Apache Tomcat. Acesta face dezvoltarea foarte facilă și rapidă deoarece Apache Tomcat este un simplu Servlet Container, opțiune mult mai puțin pretențioasă în materie de resurse decât un server aplicatif. 
+
+Pentru folosirea SpringBoot este necesară adăugarea acestuia în fisierul de configurare a sistemului de gestiune a librăriilor proiectului Apache Maven.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.7]{img/spring-boot-starter.png}
+\caption{pom.xml - SpringBoot }
+\label{fig:arhi_componente}
+\end{figure}
+
+Se poate observa din extrasul de mai sus modul de împachetare al aterfactului este \texttt{.jar} și nu \texttt{.war} așa cum ar fi de asteptat în cazul unei aplicații de tip web. Aceasta datorită faptului că pentru rula aplicația vom putea pur și simplu să rulăm aplicația precum orice altă aplicație banală java folosind comanda \texttt{java -jar}. În momentul în care această comandă va fi lansată serverul Tomcat va fi lansat cu aplicația rulând. 
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.4]{img/spring-boot-start.png}
+\caption{Lansare instanță microserviciu}
+\label{fig:arhi_componente}
+\end{figure}
+
+Se poate observa din imaginea de mai sus că folosim versiune \texttt{1.4.0.RELEASE} a SpringBoot, care la rândul său folosește Apache Tomcat versiunea \texttt{8.5.4}. Pentru lansarea în modul acesta a oricărei aplicații ce folosește SpringBoot este necesar un minim de configurare. Acesta se rezumă la folosirea unei anotări asupra unei clase \texttt{@SpringBootApplication} și aplearea metodei static \texttt{run} din clasa \texttt{SpringApplication} în punctul de intare al oricărui program Java \texttt{public static void main()}.
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.5]{img/spring-boot-min-config.png}
+\caption{Lansare instanță microserviciu}
+\label{fig:arhi_componente}
+\end{figure}
+
+
+
+
 \section{Funcționarea unui caz de utilizare}
 
 Pentru a putea întelege mai bine funcționarea aplicației și avantajele folosirii acestui tip de arhitectură, cel puțin teoretic este necesară exemplificarea unui caz de utilizare ce folosește mai multe microservicii.

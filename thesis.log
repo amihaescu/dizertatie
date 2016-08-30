@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.7.26)  29 AUG 2016 22:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.7.26)  30 AUG 2016 21:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -275,6 +275,15 @@ LaTeX Warning: Label `fig:arhi_componente' multiply defined.
 
 LaTeX Warning: Label `fig:arhi_componente' multiply defined.
 
+
+LaTeX Warning: Label `fig:arhi_componente' multiply defined.
+
+
+LaTeX Warning: Label `fig:arhi_componente' multiply defined.
+
+
+LaTeX Warning: Label `fig:arhi_componente' multiply defined.
+
 )
 \openout1 = `thesis.aux'.
 
@@ -441,7 +450,7 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 94.
  [3]
 Capitolul 2.
-<img/IC351032.png, id=449, 510.90875pt x 528.97626pt>
+<img/IC351032.png, id=465, 510.90875pt x 528.97626pt>
 File: img/IC351032.png Graphic file (type png)
  <use img/IC351032.png>
 Package pdftex.def Info: img/IC351032.png used on input line 107.
@@ -502,7 +511,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 215--215
 \OT1/cmr/m/n/12 orien-tat^^Ua pe
  []
 
-[9] <img/clientserver.png, id=479, 422.7795pt x 257.46187pt>
+[9] <img/clientserver.png, id=496, 422.7795pt x 257.46187pt>
 File: img/clientserver.png Graphic file (type png)
 
 <use img/clientserver.png>
@@ -513,7 +522,7 @@ Package pdftex.def Info: img/clientserver.png used on input line 237.
 Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\u' on input line 265.
 
-[11] <img/component-based.png, id=491, 514.92375pt x 302.12875pt>
+[11] <img/component-based.png, id=507, 514.92375pt x 302.12875pt>
 File: img/component-based.png Graphic file (type png)
 
 <use img/component-based.png>
@@ -524,7 +533,7 @@ Package pdftex.def Info: img/component-based.png used on input line 280.
 Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\u' on input line 301.
 
-<img/layered-arch.PNG, id=500, 398.48875pt x 303.1325pt>
+<img/layered-arch.PNG, id=516, 398.48875pt x 303.1325pt>
 File: img/layered-arch.PNG Graphic file (type png)
 
 <use img/layered-arch.PNG>
@@ -546,7 +555,7 @@ i-li-ta-tea se-par^^Uarii sar-ci-ni-lor de con-ce-pere a interfe[]ei
 Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\u' on input line 350.
 
-[15] <img/message-bus.png, id=513, 362.35374pt x 163.61125pt>
+[15] <img/message-bus.png, id=529, 362.35374pt x 163.61125pt>
 File: img/message-bus.png Graphic file (type png)
 
 <use img/message-bus.png>
@@ -574,28 +583,28 @@ i obiect mo-del care re-a-li-zeaz^^Ua ope-ra-tii []tiin[]ifice
 Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\u' on input line 410.
 
-<img/soa.png, id=523, 419.5675pt x 251.94125pt>
+<img/soa.png, id=539, 419.5675pt x 251.94125pt>
 File: img/soa.png Graphic file (type png)
  <use img/soa.png>
 Package pdftex.def Info: img/soa.png used on input line 417.
 (pdftex.def)             Requested size: 293.69524pt x 176.35767pt.
  [18 <./img/soa.png (PNG copy)>] [19]
 Capitolul 4.
-<img/sketch.png, id=533, 853.1875pt x 521.95pt>
+<img/sketch.png, id=549, 853.1875pt x 521.95pt>
 File: img/sketch.png Graphic file (type png)
  <use img/sketch.png>
 Package pdftex.def Info: img/sketch.png used on input line 456.
 (pdftex.def)             Requested size: 255.95822pt x 156.5862pt.
  [20
 
- <./img/sketch.png>] [21] <img/conways-law.png, id=543, 562.1pt x 464.73625pt>
+ <./img/sketch.png>] [21] <img/conways-law.png, id=559, 562.1pt x 464.73625pt>
 File: img/conways-law.png Graphic file (type png)
 
 <use img/conways-law.png>
 Package pdftex.def Info: img/conways-law.png used on input line 489.
 (pdftex.def)             Requested size: 281.04932pt x 232.36755pt.
 
-<img/cross-functional-team.png, id=544, 750.805pt x 431.6125pt>
+<img/cross-functional-team.png, id=560, 750.805pt x 431.6125pt>
 File: img/cross-functional-team.png Graphic file (type png)
 
 <use img/cross-functional-team.png>
@@ -611,21 +620,21 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\u' on input line 527.
 
-[24] <img/decentralised-data.png, id=560, 760.8425pt x 445.665pt>
+[24] <img/decentralised-data.png, id=576, 760.8425pt x 445.665pt>
 File: img/decentralised-data.png Graphic file (type png)
 
 <use img/decentralised-data.png>
 Package pdftex.def Info: img/decentralised-data.png used on input line 549.
 (pdftex.def)             Requested size: 380.42032pt x 222.83195pt.
 
-<img/basic-pipeline.png, id=561, 669.50125pt x 200.75pt>
+<img/basic-pipeline.png, id=577, 669.50125pt x 200.75pt>
 File: img/basic-pipeline.png Graphic file (type png)
 
 <use img/basic-pipeline.png>
 Package pdftex.def Info: img/basic-pipeline.png used on input line 568.
 (pdftex.def)             Requested size: 401.70384pt x 120.45091pt.
  [25 <./img/decentralised-data.png>]
-<img/micro-deployment.png, id=567, 780.9175pt x 364.36125pt>
+<img/micro-deployment.png, id=583, 780.9175pt x 364.36125pt>
 File: img/micro-deployment.png Graphic file (type png)
 
 <use img/micro-deployment.png>
@@ -637,7 +646,7 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\textcommabelow' on input line 613.
 
 [29] [30]
-<img/Richardson-microservices-part2-2_microservices-client.png, id=591, 485.815
+<img/Richardson-microservices-part2-2_microservices-client.png, id=608, 485.815
 pt x 481.8pt>
 File: img/Richardson-microservices-part2-2_microservices-client.png Graphic fil
 e (type png)
@@ -656,7 +665,7 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\textcommabelow' on input line 671.
 
 
-<img/Richardson-microservices-part2-3_api-gateway.png, id=599, 485.815pt x 481.
+<img/Richardson-microservices-part2-3_api-gateway.png, id=615, 485.815pt x 481.
 8pt>
 File: img/Richardson-microservices-part2-3_api-gateway.png Graphic file (type p
 ng)
@@ -686,7 +695,7 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\textcommabelow' on input line 731.
 
-[34] [35] <img/ipc-1.png, id=617, 1027.84pt x 519.9425pt>
+[34] [35] <img/ipc-1.png, id=633, 1027.84pt x 519.9425pt>
 File: img/ipc-1.png Graphic file (type png)
  <use img/ipc-1.png>
 Package pdftex.def Info: img/ipc-1.png used on input line 748.
@@ -697,7 +706,7 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\textcommabelow' on input line 756.
 
 [36 <./img/ipc-1.png>]
-<img/Richardson-microservices-part3-taxi-service.png, id=624, 2499.3375pt x 148
+<img/Richardson-microservices-part3-taxi-service.png, id=640, 2499.3375pt x 148
 7.5575pt>
 File: img/Richardson-microservices-part3-taxi-service.png Graphic file (type pn
 g)
@@ -711,7 +720,7 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\textcommabelow' on input line 823.
 
 [38]
-<img/Richardson-microservices-part3-threads-blocked.png, id=634, 2511.3825pt x 
+<img/Richardson-microservices-part3-threads-blocked.png, id=650, 2511.3825pt x 
 938.50626pt>
 File: img/Richardson-microservices-part3-threads-blocked.png Graphic file (type
  png)
@@ -729,7 +738,7 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\u' on input line 851.
 
 [39 <./img/Richardson-microservices-part3-threads-blocked.png>] [40]
-<img/Richardson-microservices-part4-1_difficult-service-discovery.png, id=644, 
+<img/Richardson-microservices-part4-1_difficult-service-discovery.png, id=660, 
 1027.84pt x 1047.915pt>
 File: img/Richardson-microservices-part4-1_difficult-service-discovery.png Grap
 hic file (type png)
@@ -744,7 +753,7 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\u' on input line 899.
 
 [41]
-<img/Richardson-microservices-part4-2_client-side-pattern.png, id=649, 1027.84p
+<img/Richardson-microservices-part4-2_client-side-pattern.png, id=665, 1027.84p
 t x 970.62625pt>
 File: img/Richardson-microservices-part4-2_client-side-pattern.png Graphic file
  (type png)
@@ -759,7 +768,7 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\u' on input line 916.
 
 
-<img/Richardson-microservices-part4-3_server-side-pattern.png, id=650, 1027.84p
+<img/Richardson-microservices-part4-3_server-side-pattern.png, id=666, 1027.84p
 t x 633.36626pt>
 File: img/Richardson-microservices-part4-3_server-side-pattern.png Graphic file
  (type png)
@@ -771,7 +780,7 @@ rn.png used on input line 922.
  [42 <./img/Richardson-microservices-part4-1_difficult-service-discovery.png>] 
 [43 <./img/Richardson-microservices-part4-2_client-side-pattern.png> <./img/Ric
 hardson-microservices-part4-3_server-side-pattern.png>]
-<img/Richardson-microservices-part4-4_self-registration-pattern.png, id=663, 10
+<img/Richardson-microservices-part4-4_self-registration-pattern.png, id=679, 10
 27.84pt x 896.34875pt>
 File: img/Richardson-microservices-part4-4_self-registration-pattern.png Graphi
 c file (type png)
@@ -798,78 +807,106 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 
 [46
 
-] <img/arhitectura.png, id=677, 617.30624pt x 309.155pt>
+] <img/arhitectura.png, id=693, 617.30624pt x 309.155pt>
 File: img/arhitectura.png Graphic file (type png)
 
 <use img/arhitectura.png>
 Package pdftex.def Info: img/arhitectura.png used on input line 1001.
 (pdftex.def)             Requested size: 432.11142pt x 216.40701pt.
  [47 <./img/arhitectura.png>]
+<img/spring-boot-starter.png, id=699, 439.6425pt x 233.87375pt>
+File: img/spring-boot-starter.png Graphic file (type png)
 
-Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\textcommabelow' on input line 1011.
+<use img/spring-boot-starter.png>
+Package pdftex.def Info: img/spring-boot-starter.png used on input line 1035.
+(pdftex.def)             Requested size: 307.74765pt x 163.71048pt.
+ [48]
+<img/spring-boot-start.png, id=705, 1234.6125pt x 444.66125pt>
+File: img/spring-boot-start.png Graphic file (type png)
 
-<img/user_case.png, id=683, 1034.86626pt x 605.26125pt>
-File: img/user_case.png Graphic file (type png)
+<use img/spring-boot-start.png>
+Package pdftex.def Info: img/spring-boot-start.png used on input line 1044.
+(pdftex.def)             Requested size: 493.83626pt x 177.86134pt.
 
-<use img/user_case.png>
-Package pdftex.def Info: img/user_case.png used on input line 1019.
-(pdftex.def)             Requested size: 517.43185pt x 302.62987pt.
-
-Overfull \hbox (33.73502pt too wide) in paragraph at lines 1019--1020
+Overfull \hbox (10.13942pt too wide) in paragraph at lines 1044--1045
  [][] 
  []
 
-[48 <./img/user_case.png>]
-<img/login_screen.png, id=690, 701.62125pt x 625.33624pt>
+<img/spring-boot-min-config.png, id=706, 584.1825pt x 129.48375pt>
+File: img/spring-boot-min-config.png Graphic file (type png)
+
+<use img/spring-boot-min-config.png>
+Package pdftex.def Info: img/spring-boot-min-config.png used on input line 1054
+.
+(pdftex.def)             Requested size: 292.09053pt x 64.7417pt.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\textcommabelow' on input line 1062.
+
+[49 <./img/spring-boot-starter.png (PNG copy)> <./img/spring-boot-start.png (PN
+G copy)> <./img/spring-boot-min-config.png (PNG copy)>]
+<img/user_case.png, id=712, 1034.86626pt x 605.26125pt>
+File: img/user_case.png Graphic file (type png)
+
+<use img/user_case.png>
+Package pdftex.def Info: img/user_case.png used on input line 1070.
+(pdftex.def)             Requested size: 517.43185pt x 302.62987pt.
+
+Overfull \hbox (33.73502pt too wide) in paragraph at lines 1070--1071
+ [][] 
+ []
+
+[50 <./img/user_case.png>]
+<img/login_screen.png, id=718, 701.62125pt x 625.33624pt>
 File: img/login_screen.png Graphic file (type png)
 
 <use img/login_screen.png>
-Package pdftex.def Info: img/login_screen.png used on input line 1032.
+Package pdftex.def Info: img/login_screen.png used on input line 1083.
 (pdftex.def)             Requested size: 350.80975pt x 312.66736pt.
- [49 <./img/login_screen.png (PNG copy)>]
+ [51 <./img/login_screen.png (PNG copy)>]
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\textcommabelow' on input line 1042.
+(hyperref)                removing `\textcommabelow' on input line 1093.
 
-<img/comments-working.png, id=695, 1806.75pt x 982.67125pt>
+<img/comments-working.png, id=723, 1806.75pt x 982.67125pt>
 File: img/comments-working.png Graphic file (type png)
 
 <use img/comments-working.png>
-Package pdftex.def Info: img/comments-working.png used on input line 1047.
+Package pdftex.def Info: img/comments-working.png used on input line 1098.
 (pdftex.def)             Requested size: 451.6864pt x 245.6672pt.
 
-<img/comments-not-working.png, id=696, 1438.37375pt x 930.47626pt>
+<img/comments-not-working.png, id=724, 1438.37375pt x 930.47626pt>
 File: img/comments-not-working.png Graphic file (type png)
 
 <use img/comments-not-working.png>
-Package pdftex.def Info: img/comments-not-working.png used on input line 1055.
+Package pdftex.def Info: img/comments-not-working.png used on input line 1106.
 (pdftex.def)             Requested size: 359.59256pt x 232.61848pt.
- [50 <./img/comments-working.png (PNG copy)> <./img/comments-not-working.png (P
+ [52 <./img/comments-working.png (PNG copy)> <./img/comments-not-working.png (P
 NG copy)>]
 Capitolul 6.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1071.
-[51
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1122.
+[53
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1071.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1122.
  (./thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1071.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1071.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1122.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1122.
 
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 4E5A196433E73020E02953DFCC0AD299;5552.
+(rerunfilecheck)             Checksum: E04682C2A4A1A3E9D089A5E94673F872;5715.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1071.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1122.
  ) 
 Here is how much of TeX's memory you used:
- 8024 strings out of 494374
- 114039 string characters out of 6164954
- 201278 words of memory out of 5000000
- 11076 multiletter control sequences out of 15000+600000
+ 8048 strings out of 494374
+ 114596 string characters out of 6164954
+ 201693 words of memory out of 5000000
+ 11090 multiletter control sequences out of 15000+600000
  11922 words of font info for 41 fonts, out of 8000000 for 9000
  350 hyphenation exceptions out of 8191
  30i,16n,38p,1287b,545s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -885,10 +922,10 @@ fonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
 i7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb
 >
-Output written on thesis.pdf (58 pages, 1862411 bytes).
+Output written on thesis.pdf (60 pages, 2204115 bytes).
 PDF statistics:
- 782 PDF objects out of 1000 (max. 8388607)
- 654 compressed objects within 7 object streams
- 153 named destinations out of 1000 (max. 500000)
- 685 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 810 PDF objects out of 1000 (max. 8388607)
+ 677 compressed objects within 7 object streams
+ 160 named destinations out of 1000 (max. 500000)
+ 716 words of extra memory for PDF output out of 10000 (max. 10000000)
 
