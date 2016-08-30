@@ -64,6 +64,8 @@
 \BOOKMARK [0][]{chapter.5}{5 Implementare practica}{}% 64
 \BOOKMARK [1][]{section.5.1}{5.1 Descrierea componentelor}{chapter.5}% 65
 \BOOKMARK [2][]{subsection.5.1.1}{5.1.1 Microserviciile de tip depozit}{section.5.1}% 66
-\BOOKMARK [1][]{section.5.2}{5.2 Functionarea unui caz de utilizare}{chapter.5}% 67
-\BOOKMARK [1][]{section.5.3}{5.3 Sablonul circuit breaker}{chapter.5}% 68
-\BOOKMARK [0][]{chapter.6}{6 Bibliografie}{}% 69
+\BOOKMARK [2][]{subsection.5.1.2}{5.1.2 Service Registry}{section.5.1}% 67
+\BOOKMARK [2][]{subsection.5.1.3}{5.1.3 API Gateway}{section.5.1}% 68
+\BOOKMARK [1][]{section.5.2}{5.2 Functionarea unui caz de utilizare}{chapter.5}% 69
+\BOOKMARK [1][]{section.5.3}{5.3 Sablonul circuit breaker}{chapter.5}% 70
+\BOOKMARK [0][]{chapter.6}{6 Bibliografie}{}% 71

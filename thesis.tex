@@ -1136,6 +1136,34 @@ Ultima componentă a microserviciul este controller-ul, cel care va expune infor
 \label{fig:arhi_componente}
 \end{figure}
 
+\subsection{Service Registry}
+
+Un punct cheie al microserviciilor este funcționalitatea de înregistrarea și de obținere a informațiilor legate de instanțe de serviciu active. Acestea se realizează prin intermediul protocolului de \textit{Service Discovery}. Spre deosebire de protocoalele de rețea acesta nu cuprinde o specificație formală clară. El este implementat de către compania Netflix in cadrul unei componente open-source denumită \texttt{Eureka} care a fost integrată cu Spring. 
+
+Această componentă cuprinde două parți : server și client. Partea de server va asculta pentru cereri de înregistrare și va răspunde cererilor de interogare pentru instanțele unui anumit serviciu. Partea de client presupune doar acțiunea de înregistrare și de reactualizare a acesteia. 
+
+Datorită bunei integrări dintre Spring și proiectul Eureka partea de server se realizează foarte simplu prin folosirea unei simple anotări \texttt{@EnableEurekaServer}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.5]{img/spring-boot-eureka-server.png}
+\caption{Cod pentru server Eureka}
+\label{fig:arhi_componente}
+\end{figure}
+
+Folosind doar această anotare și lansând aplicația se crează toată funcționalitatea necesară. În plus aceasta este expusă prin intermediul unui portal web.
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.25]{img/spring-boot-eureka-ui.png}
+\caption{Intefață web pentru server Eureka}
+\label{fig:arhi_componente}
+\end{figure}
+
+\subsection{API Gateway}
+
+
 \section{Funcționarea unui caz de utilizare}
 
 Pentru a putea întelege mai bine funcționarea aplicației și avantajele folosirii acestui tip de arhitectură, cel puțin teoretic este necesară exemplificarea unui caz de utilizare ce folosește mai multe microservicii.
