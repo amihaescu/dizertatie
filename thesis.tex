@@ -1189,7 +1189,29 @@ Intefața grafică este concepută ca Single Page Application - SPA. Aceasta pre
 \label{fig:arhi_componente}
 \end{figure}
 
-Se poate observa că în urma primului apel serverul răspunde cu pagina setată ca index care conține o serie de dependințe către alte fisiere. Ulterior acestea sunt încărcate astfel încât aplicația va rula în browser-ul utilizatorului. 
+Se poate observa că în urma primului apel serverul răspunde cu pagina setată ca index care conține o serie de dependințe către alte fisiere. Ulterior acestea sunt încărcate astfel încât aplicația va rula în browser-ul utilizatorului. 	
+
+
+\newpage
+În ceea ce privește partea de back-end, API Gateway-ul este construit similar cu celălalte microservicii ca și organizare a pachetelor. Una dintre diferențele notabile este faptul că aceasta nu mai dispune de clase de tip depozit apelurile către serviciile distante făcându-se direct de la nivelul de servicii prin injectare obiectului de tip \texttt{RestTemplate}.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.5]{img/spring-boot-service-resttemplate.png}
+\caption{Injectare RestTemplate}
+\label{fig:arhi_componente}
+\end{figure}
+
+\subsection{Baza de date}
+
+O ultimă componentă extrem de importantă în cadrul oricărei aplicații este baza de date. În cadrul microserviciilor ce folosesc acest mod de stocare a datelor ele dispun de instanțe individuale. Fiecare componentă se conectează la o instanță de Postgresql ce rulează ca în cadrul unui container Docker. Pentru rularea acestor s-a folosit un utilizator Docker și anumne \texttt{docker-compose}. Aceasta permitre rularea mai multor containere în același timp prin creeare unui fisier de configurare.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.5]{img/docker-compose.png}
+\caption{Fișier configurare docker-compose}
+\label{fig:arhi_componente}
+\end{figure}
 
 \newpage
 \section{Funcționarea unui caz de utilizare}
@@ -1210,7 +1232,7 @@ Cazul de utilizare presupune ca aplicația a pornit cu succes și că cele două
 
 Utilizatorul prin intermediul interfeței grafice completează câmpurile necesare pentru creare unui cont, după care la apăsarea pe buton o cerere de tip POST este lansată către gateway. Gateway-ul interceptează cererea și caută să obțină, în primă fază instanțe ale seriviciului de gestiune a utilizatorilor de la service registry. Odată obținută lista de instanțe, apelează algoritmul de load-balancing și lansează mai departe cererea către microserviciu. În momentul în care scrierea în baza de date s-a efectuat cu succes, microserviciul răspunde cu identificatorul utilizatorului. Plecând de la această informație, gateway-ul cere mai departe service registry-ului instanțele de serviciu pentru gestiunea rolurilor. Se aplică din nou algoritmul de load-balancing după care, la obținerea confirmării scrierii în baza de date gateway-ul răspunde utilizatorului cu un mesaj HTTP 200 OK, iar acesta este redirectat către pagina principală. 
 
-\newpage
+
 \begin{figure}[ht]
 \centering
 \includegraphics[scale=0.5]{img/login_screen.png}
@@ -1234,12 +1256,28 @@ Odata creat contul, utilizatorul poate naviga și vizualiza video clipurile la c
 \end{figure}
 
 Dacă din anumite motive serivciul de gestiune a comentariilor devine indisponibil, atunci este nevoie ca după un anumit număr de cereri, declanșare de noi apeluri către serviciul respectiv să fie scurt-circuitate astfel încât timpul de așteptare să fie redus la minim. În cazul de față, dacă serviciul devine indisponibil singurul comentariu care va fi afișat va fi unul de informare din partea sistemului. 
+
+La nivel de implementare acesta se implementează facil folosind un alt proiect open-source al companiei Netflix și anume Hystrix. Prin intermediul unei anotări, \texttt{@HystrixCommand}, plasate deasupra metodei care va apela serivicul, aceasta este marcată ca fiind supusă aplicării șablonului. Această anotare mai primește ca și argumente \texttt{fallbackMethod} prin intermediul căreia putem specifica metoda ce va fi apelată în caz de pană a 
+serviciului.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.5]{img/springboot-fallback.png}
+\caption{Configurare Hystrix}
+\label{fig:arhi_componente}
+\end{figure}
+\newpage
+În urma folosirii acestor anotări se poate observa comportamentul de mai jos:
+
+
 \begin{figure}[ht]
 \centering
 \includegraphics[scale=0.25]{img/comments-not-working.png}
 \caption{Pagină comentarii - serviciu în pană}
 \label{fig:arhi_componente}
 \end{figure}
+
+
 
 
 \chapter{Bibliografie}

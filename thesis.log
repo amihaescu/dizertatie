@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.7.26)  30 AUG 2016 23:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.7.26)  1 SEP 2016 20:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -320,6 +320,15 @@ LaTeX Warning: Label `fig:arhi_componente' multiply defined.
 
 LaTeX Warning: Label `fig:arhi_componente' multiply defined.
 
+
+LaTeX Warning: Label `fig:arhi_componente' multiply defined.
+
+
+LaTeX Warning: Label `fig:arhi_componente' multiply defined.
+
+
+LaTeX Warning: Label `fig:arhi_componente' multiply defined.
+
 )
 \openout1 = `thesis.aux'.
 
@@ -438,22 +447,23 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.ii}) has
 <to be read again> 
                    \relax 
 l.33 \listoffigures
-                    [2] (./thesis.lof)
+                    [2] (./thesis.lofpdfTeX warning (ext4): destination with th
+e same identifier (name{page.iii}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.43 ...textcommabelow t}}ional}}{58}{figure.5.21}
+                                                   [3
+
+])
 \tf@lof=\write5
 \openout5 = `thesis.lof'.
 
-pdfTeX warning (ext4): destination with the same identifier (name{page.iii}) ha
-s been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.34 \listoftables
-                   [3
-
-] [4] (./thesis.lot)
+ [4] (./thesis.lot)
 \tf@lot=\write6
 \openout6 = `thesis.lot'.
 
- [5
+
+[5
 
 ]
 
@@ -486,7 +496,7 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 94.
  [3]
 Capitolul 2.
-<img/IC351032.png, id=503, 510.90875pt x 528.97626pt>
+<img/IC351032.png, id=515, 510.90875pt x 528.97626pt>
 File: img/IC351032.png Graphic file (type png)
  <use img/IC351032.png>
 Package pdftex.def Info: img/IC351032.png used on input line 107.
@@ -547,7 +557,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 215--215
 \OT1/cmr/m/n/12 orien-tat^^Ua pe
  []
 
-[9] <img/clientserver.png, id=534, 422.7795pt x 257.46187pt>
+[9] <img/clientserver.png, id=545, 422.7795pt x 257.46187pt>
 File: img/clientserver.png Graphic file (type png)
 
 <use img/clientserver.png>
@@ -558,7 +568,7 @@ Package pdftex.def Info: img/clientserver.png used on input line 237.
 Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\u' on input line 265.
 
-[11] <img/component-based.png, id=546, 514.92375pt x 302.12875pt>
+[11] <img/component-based.png, id=557, 514.92375pt x 302.12875pt>
 File: img/component-based.png Graphic file (type png)
 
 <use img/component-based.png>
@@ -569,7 +579,7 @@ Package pdftex.def Info: img/component-based.png used on input line 280.
 Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\u' on input line 301.
 
-<img/layered-arch.PNG, id=554, 398.48875pt x 303.1325pt>
+<img/layered-arch.PNG, id=565, 398.48875pt x 303.1325pt>
 File: img/layered-arch.PNG Graphic file (type png)
 
 <use img/layered-arch.PNG>
@@ -591,7 +601,7 @@ i-li-ta-tea se-par^^Uarii sar-ci-ni-lor de con-ce-pere a interfe[]ei
 Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\u' on input line 350.
 
-[15] <img/message-bus.png, id=567, 362.35374pt x 163.61125pt>
+[15] <img/message-bus.png, id=578, 362.35374pt x 163.61125pt>
 File: img/message-bus.png Graphic file (type png)
 
 <use img/message-bus.png>
@@ -619,28 +629,28 @@ i obiect mo-del care re-a-li-zeaz^^Ua ope-ra-tii []tiin[]ifice
 Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\u' on input line 410.
 
-<img/soa.png, id=578, 419.5675pt x 251.94125pt>
+<img/soa.png, id=589, 419.5675pt x 251.94125pt>
 File: img/soa.png Graphic file (type png)
  <use img/soa.png>
 Package pdftex.def Info: img/soa.png used on input line 417.
 (pdftex.def)             Requested size: 293.69524pt x 176.35767pt.
  [18 <./img/soa.png (PNG copy)>] [19]
 Capitolul 4.
-<img/sketch.png, id=587, 853.1875pt x 521.95pt>
+<img/sketch.png, id=598, 853.1875pt x 521.95pt>
 File: img/sketch.png Graphic file (type png)
  <use img/sketch.png>
 Package pdftex.def Info: img/sketch.png used on input line 456.
 (pdftex.def)             Requested size: 255.95822pt x 156.5862pt.
  [20
 
- <./img/sketch.png>] [21] <img/conways-law.png, id=597, 562.1pt x 464.73625pt>
+ <./img/sketch.png>] [21] <img/conways-law.png, id=608, 562.1pt x 464.73625pt>
 File: img/conways-law.png Graphic file (type png)
 
 <use img/conways-law.png>
 Package pdftex.def Info: img/conways-law.png used on input line 489.
 (pdftex.def)             Requested size: 281.04932pt x 232.36755pt.
 
-<img/cross-functional-team.png, id=598, 750.805pt x 431.6125pt>
+<img/cross-functional-team.png, id=609, 750.805pt x 431.6125pt>
 File: img/cross-functional-team.png Graphic file (type png)
 
 <use img/cross-functional-team.png>
@@ -656,21 +666,21 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\u' on input line 527.
 
-[24] <img/decentralised-data.png, id=614, 760.8425pt x 445.665pt>
+[24] <img/decentralised-data.png, id=626, 760.8425pt x 445.665pt>
 File: img/decentralised-data.png Graphic file (type png)
 
 <use img/decentralised-data.png>
 Package pdftex.def Info: img/decentralised-data.png used on input line 549.
 (pdftex.def)             Requested size: 380.42032pt x 222.83195pt.
 
-<img/basic-pipeline.png, id=615, 669.50125pt x 200.75pt>
+<img/basic-pipeline.png, id=627, 669.50125pt x 200.75pt>
 File: img/basic-pipeline.png Graphic file (type png)
 
 <use img/basic-pipeline.png>
 Package pdftex.def Info: img/basic-pipeline.png used on input line 568.
 (pdftex.def)             Requested size: 401.70384pt x 120.45091pt.
  [25 <./img/decentralised-data.png>]
-<img/micro-deployment.png, id=622, 780.9175pt x 364.36125pt>
+<img/micro-deployment.png, id=633, 780.9175pt x 364.36125pt>
 File: img/micro-deployment.png Graphic file (type png)
 
 <use img/micro-deployment.png>
@@ -682,7 +692,7 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\textcommabelow' on input line 613.
 
 [29] [30]
-<img/Richardson-microservices-part2-2_microservices-client.png, id=646, 485.815
+<img/Richardson-microservices-part2-2_microservices-client.png, id=657, 485.815
 pt x 481.8pt>
 File: img/Richardson-microservices-part2-2_microservices-client.png Graphic fil
 e (type png)
@@ -701,7 +711,7 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\textcommabelow' on input line 671.
 
 
-<img/Richardson-microservices-part2-3_api-gateway.png, id=653, 485.815pt x 481.
+<img/Richardson-microservices-part2-3_api-gateway.png, id=664, 485.815pt x 481.
 8pt>
 File: img/Richardson-microservices-part2-3_api-gateway.png Graphic file (type p
 ng)
@@ -731,7 +741,7 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\textcommabelow' on input line 731.
 
-[34] [35] <img/ipc-1.png, id=672, 1027.84pt x 519.9425pt>
+[34] [35] <img/ipc-1.png, id=683, 1027.84pt x 519.9425pt>
 File: img/ipc-1.png Graphic file (type png)
  <use img/ipc-1.png>
 Package pdftex.def Info: img/ipc-1.png used on input line 748.
@@ -742,7 +752,7 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\textcommabelow' on input line 756.
 
 [36 <./img/ipc-1.png>]
-<img/Richardson-microservices-part3-taxi-service.png, id=678, 2499.3375pt x 148
+<img/Richardson-microservices-part3-taxi-service.png, id=689, 2499.3375pt x 148
 7.5575pt>
 File: img/Richardson-microservices-part3-taxi-service.png Graphic file (type pn
 g)
@@ -756,7 +766,7 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\textcommabelow' on input line 823.
 
 [38]
-<img/Richardson-microservices-part3-threads-blocked.png, id=688, 2511.3825pt x 
+<img/Richardson-microservices-part3-threads-blocked.png, id=699, 2511.3825pt x 
 938.50626pt>
 File: img/Richardson-microservices-part3-threads-blocked.png Graphic file (type
  png)
@@ -774,7 +784,7 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\u' on input line 851.
 
 [39 <./img/Richardson-microservices-part3-threads-blocked.png>] [40]
-<img/Richardson-microservices-part4-1_difficult-service-discovery.png, id=698, 
+<img/Richardson-microservices-part4-1_difficult-service-discovery.png, id=709, 
 1027.84pt x 1047.915pt>
 File: img/Richardson-microservices-part4-1_difficult-service-discovery.png Grap
 hic file (type png)
@@ -789,7 +799,7 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\u' on input line 899.
 
 [41]
-<img/Richardson-microservices-part4-2_client-side-pattern.png, id=704, 1027.84p
+<img/Richardson-microservices-part4-2_client-side-pattern.png, id=715, 1027.84p
 t x 970.62625pt>
 File: img/Richardson-microservices-part4-2_client-side-pattern.png Graphic file
  (type png)
@@ -804,7 +814,7 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\u' on input line 916.
 
 
-<img/Richardson-microservices-part4-3_server-side-pattern.png, id=705, 1027.84p
+<img/Richardson-microservices-part4-3_server-side-pattern.png, id=716, 1027.84p
 t x 633.36626pt>
 File: img/Richardson-microservices-part4-3_server-side-pattern.png Graphic file
  (type png)
@@ -816,7 +826,7 @@ rn.png used on input line 922.
  [42 <./img/Richardson-microservices-part4-1_difficult-service-discovery.png>] 
 [43 <./img/Richardson-microservices-part4-2_client-side-pattern.png> <./img/Ric
 hardson-microservices-part4-3_server-side-pattern.png>]
-<img/Richardson-microservices-part4-4_self-registration-pattern.png, id=717, 10
+<img/Richardson-microservices-part4-4_self-registration-pattern.png, id=729, 10
 27.84pt x 896.34875pt>
 File: img/Richardson-microservices-part4-4_self-registration-pattern.png Graphi
 c file (type png)
@@ -843,21 +853,21 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 
 [46
 
-] <img/arhitectura.png, id=732, 617.30624pt x 309.155pt>
+] <img/arhitectura.png, id=743, 617.30624pt x 309.155pt>
 File: img/arhitectura.png Graphic file (type png)
 
 <use img/arhitectura.png>
 Package pdftex.def Info: img/arhitectura.png used on input line 1001.
 (pdftex.def)             Requested size: 432.11142pt x 216.40701pt.
  [47 <./img/arhitectura.png>]
-<img/spring-boot-starter.png, id=739, 439.6425pt x 233.87375pt>
+<img/spring-boot-starter.png, id=750, 439.6425pt x 233.87375pt>
 File: img/spring-boot-starter.png Graphic file (type png)
 
 <use img/spring-boot-starter.png>
 Package pdftex.def Info: img/spring-boot-starter.png used on input line 1035.
 (pdftex.def)             Requested size: 307.74765pt x 163.71048pt.
  [48]
-<img/spring-boot-start.png, id=744, 1234.6125pt x 444.66125pt>
+<img/spring-boot-start.png, id=755, 1234.6125pt x 444.66125pt>
 File: img/spring-boot-start.png Graphic file (type png)
 
 <use img/spring-boot-start.png>
@@ -868,7 +878,7 @@ Overfull \hbox (10.13942pt too wide) in paragraph at lines 1044--1045
  [][] 
  []
 
-<img/spring-boot-min-config.png, id=745, 584.1825pt x 129.48375pt>
+<img/spring-boot-min-config.png, id=756, 584.1825pt x 129.48375pt>
 File: img/spring-boot-min-config.png Graphic file (type png)
 
 <use img/spring-boot-min-config.png>
@@ -877,7 +887,7 @@ Package pdftex.def Info: img/spring-boot-min-config.png used on input line 1053
 (pdftex.def)             Requested size: 292.09053pt x 64.7417pt.
  [49 <./img/spring-boot-starter.png (PNG copy)> <./img/spring-boot-start.png (P
 NG copy)> <./img/spring-boot-min-config.png (PNG copy)>]
-<img/spring-boot-data-dependencies.png, id=750, 476.78125pt x 136.51pt>
+<img/spring-boot-data-dependencies.png, id=761, 476.78125pt x 136.51pt>
 File: img/spring-boot-data-dependencies.png Graphic file (type png)
 
 <use img/spring-boot-data-dependencies.png>
@@ -885,7 +895,7 @@ Package pdftex.def Info: img/spring-boot-data-dependencies.png used on input li
 ne 1062.
 (pdftex.def)             Requested size: 286.07095pt x 81.90662pt.
 
-<img/spring-boot-connexion-details.png, id=751, 608.2725pt x 60.225pt>
+<img/spring-boot-connexion-details.png, id=762, 608.2725pt x 60.225pt>
 File: img/spring-boot-connexion-details.png Graphic file (type png)
 
 <use img/spring-boot-connexion-details.png>
@@ -893,7 +903,7 @@ Package pdftex.def Info: img/spring-boot-connexion-details.png used on input li
 ne 1071.
 (pdftex.def)             Requested size: 364.96632pt x 36.13527pt.
 
-<img/spring-boot-entity.png, id=752, 780.9175pt x 427.5975pt>
+<img/spring-boot-entity.png, id=763, 780.9175pt x 427.5975pt>
 File: img/spring-boot-entity.png Graphic file (type png)
 
 <use img/spring-boot-entity.png>
@@ -901,14 +911,14 @@ Package pdftex.def Info: img/spring-boot-entity.png used on input line 1083.
 (pdftex.def)             Requested size: 390.4578pt x 213.79822pt.
  [50 <./img/spring-boot-data-dependencies.png (PNG copy)> <./img/spring-boot-co
 nnexion-details.png (PNG copy)> <./img/spring-boot-entity.png (PNG copy)>]
-<img/spring-boot-ddl-auto.png, id=757, 343.2825pt x 27.10126pt>
+<img/spring-boot-ddl-auto.png, id=768, 343.2825pt x 27.10126pt>
 File: img/spring-boot-ddl-auto.png Graphic file (type png)
 
 <use img/spring-boot-ddl-auto.png>
 Package pdftex.def Info: img/spring-boot-ddl-auto.png used on input line 1094.
 (pdftex.def)             Requested size: 205.97107pt x 16.26086pt.
 
-<img/spring-boot-jpa-repository.png, id=758, 642.4pt x 147.55125pt>
+<img/spring-boot-jpa-repository.png, id=769, 642.4pt x 147.55125pt>
 File: img/spring-boot-jpa-repository.png Graphic file (type png)
 
 <use img/spring-boot-jpa-repository.png>
@@ -916,7 +926,7 @@ Package pdftex.def Info: img/spring-boot-jpa-repository.png used on input line
 1103.
 (pdftex.def)             Requested size: 385.44298pt x 88.53142pt.
 
-<img/spring-boot-repo-custom.png, id=759, 421.575pt x 157.58875pt>
+<img/spring-boot-repo-custom.png, id=770, 421.575pt x 157.58875pt>
 File: img/spring-boot-repo-custom.png Graphic file (type png)
 
 <use img/spring-boot-repo-custom.png>
@@ -924,7 +934,7 @@ Package pdftex.def Info: img/spring-boot-repo-custom.png used on input line 111
 2.
 (pdftex.def)             Requested size: 252.94695pt x 94.55397pt.
 
-<img/spring-boot-repo-injection.png, id=760, 623.32875pt x 353.32pt>
+<img/spring-boot-repo-injection.png, id=771, 623.32875pt x 353.32pt>
 File: img/spring-boot-repo-injection.png Graphic file (type png)
 
 <use img/spring-boot-repo-injection.png>
@@ -933,7 +943,7 @@ Package pdftex.def Info: img/spring-boot-repo-injection.png used on input line
 (pdftex.def)             Requested size: 249.32707pt x 141.32549pt.
  [51 <./img/spring-boot-ddl-auto.png (PNG copy)> <./img/spring-boot-jpa-reposit
 ory.png (PNG copy)> <./img/spring-boot-repo-custom.png (PNG copy)>]
-<img/spring-boot-controller.png, id=765, 997.7275pt x 458.71375pt>
+<img/spring-boot-controller.png, id=776, 997.7275pt x 458.71375pt>
 File: img/spring-boot-controller.png Graphic file (type png)
 
 <use img/spring-boot-controller.png>
@@ -951,7 +961,7 @@ Overfull \hbox (14.95076pt too wide) in paragraph at lines 1141--1142
  de ^^^Pnregistrarea []i de ob[]inere a informa[]iilor
  []
 
-<img/spring-boot-eureka-server.png, id=766, 876.27374pt x 204.765pt>
+<img/spring-boot-eureka-server.png, id=777, 876.27374pt x 204.765pt>
 File: img/spring-boot-eureka-server.png Graphic file (type png)
 
 <use img/spring-boot-eureka-server.png>
@@ -959,7 +969,7 @@ Package pdftex.def Info: img/spring-boot-eureka-server.png used on input line 1
 149.
 (pdftex.def)             Requested size: 438.13579pt x 102.38223pt.
 
-<img/spring-boot-eureka-ui.png, id=767, 1917.1625pt x 787.94376pt>
+<img/spring-boot-eureka-ui.png, id=778, 1917.1625pt x 787.94376pt>
 File: img/spring-boot-eureka-ui.png Graphic file (type png)
 
 <use img/spring-boot-eureka-ui.png>
@@ -969,7 +979,7 @@ Package pdftex.def Info: img/spring-boot-eureka-ui.png used on input line 1159.
  [52 <./img/spring-boot-repo-injection.png (PNG copy)> <./img/spring-boot-contr
 oller.png (PNG copy)>] [53 <./img/spring-boot-eureka-server.png (PNG copy)> <./
 img/spring-boot-eureka-ui.png (PNG copy)>]
-<img/spring-boot-repo-remote-call.png, id=777, 925.4575pt x 362.35374pt>
+<img/spring-boot-repo-remote-call.png, id=788, 925.4575pt x 362.35374pt>
 File: img/spring-boot-repo-remote-call.png Graphic file (type png)
 
 <use img/spring-boot-repo-remote-call.png>
@@ -977,7 +987,7 @@ Package pdftex.def Info: img/spring-boot-repo-remote-call.png used on input lin
 e 1174.
 (pdftex.def)             Requested size: 462.72762pt x 181.17642pt.
 
-<img/spring-boot-spa-network.png, id=778, 980.66376pt x 633.36626pt>
+<img/spring-boot-spa-network.png, id=789, 980.66376pt x 633.36626pt>
 File: img/spring-boot-spa-network.png Graphic file (type png)
 
 <use img/spring-boot-spa-network.png>
@@ -990,72 +1000,99 @@ Overfull \hbox (6.63383pt too wide) in paragraph at lines 1187--1188
  []
 
 [54 <./img/spring-boot-repo-remote-call.png (PNG copy)>]
+<img/spring-boot-service-resttemplate.png, id=794, 324.21124pt x 97.36375pt>
+File: img/spring-boot-service-resttemplate.png Graphic file (type png)
+
+<use img/spring-boot-service-resttemplate.png>
+Package pdftex.def Info: img/spring-boot-service-resttemplate.png used on input
+ line 1200.
+(pdftex.def)             Requested size: 162.10522pt x 48.68175pt.
+
+<img/docker-compose.png, id=795, 301.125pt x 369.38pt>
+File: img/docker-compose.png Graphic file (type png)
+
+<use img/docker-compose.png>
+Package pdftex.def Info: img/docker-compose.png used on input line 1211.
+(pdftex.def)             Requested size: 150.56212pt x 184.68954pt.
+ [55 <./img/spring-boot-spa-network.png (PNG copy)> <./img/spring-boot-service-
+resttemplate.png (PNG copy)>]
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\textcommabelow' on input line 1195.
+(hyperref)                removing `\textcommabelow' on input line 1217.
 
-<img/user_case.png, id=783, 1034.86626pt x 605.26125pt>
+<img/user_case.png, id=800, 1034.86626pt x 605.26125pt>
 File: img/user_case.png Graphic file (type png)
 
 <use img/user_case.png>
-Package pdftex.def Info: img/user_case.png used on input line 1203.
+Package pdftex.def Info: img/user_case.png used on input line 1225.
 (pdftex.def)             Requested size: 517.43185pt x 302.62987pt.
 
-Overfull \hbox (33.73502pt too wide) in paragraph at lines 1203--1204
+Overfull \hbox (33.73502pt too wide) in paragraph at lines 1225--1226
  [][] 
  []
 
-[55 <./img/spring-boot-spa-network.png (PNG copy)>]
-<img/login_screen.png, id=788, 701.62125pt x 625.33624pt>
+[56 <./img/docker-compose.png (PNG copy)> <./img/user_case.png>]
+<img/login_screen.png, id=806, 701.62125pt x 625.33624pt>
 File: img/login_screen.png Graphic file (type png)
 
 <use img/login_screen.png>
-Package pdftex.def Info: img/login_screen.png used on input line 1216.
+Package pdftex.def Info: img/login_screen.png used on input line 1238.
 (pdftex.def)             Requested size: 350.80975pt x 312.66736pt.
- [56 <./img/user_case.png>]
+ [57 <./img/login_screen.png (PNG copy)>]
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\textcommabelow' on input line 1226.
+(hyperref)                removing `\textcommabelow' on input line 1248.
 
-<img/comments-working.png, id=794, 1806.75pt x 982.67125pt>
+<img/comments-working.png, id=811, 1806.75pt x 982.67125pt>
 File: img/comments-working.png Graphic file (type png)
 
 <use img/comments-working.png>
-Package pdftex.def Info: img/comments-working.png used on input line 1231.
+Package pdftex.def Info: img/comments-working.png used on input line 1253.
 (pdftex.def)             Requested size: 451.6864pt x 245.6672pt.
 
-<img/comments-not-working.png, id=795, 1438.37375pt x 930.47626pt>
+<img/springboot-fallback.png, id=812, 983.675pt x 436.63126pt>
+File: img/springboot-fallback.png Graphic file (type png)
+
+<use img/springboot-fallback.png>
+Package pdftex.def Info: img/springboot-fallback.png used on input line 1265.
+(pdftex.def)             Requested size: 491.8363pt x 218.3151pt.
+
+Overfull \hbox (8.13947pt too wide) in paragraph at lines 1265--1266
+ [][] 
+ []
+
+[58 <./img/comments-working.png (PNG copy)>]
+<img/comments-not-working.png, id=817, 1438.37375pt x 930.47626pt>
 File: img/comments-not-working.png Graphic file (type png)
 
 <use img/comments-not-working.png>
-Package pdftex.def Info: img/comments-not-working.png used on input line 1239.
+Package pdftex.def Info: img/comments-not-working.png used on input line 1275.
 (pdftex.def)             Requested size: 359.59256pt x 232.61848pt.
- [57 <./img/login_screen.png (PNG copy)>]
-[58 <./img/comments-working.png (PNG copy)> <./img/comments-not-working.png (PN
-G copy)>]
+ [59 <./img/springboot-fallback.png (PNG copy)> <./img/comments-not-working.png
+ (PNG copy)>]
 Capitolul 6.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1255.
-[59
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1293.
+[60
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1255.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1293.
  (./thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1255.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1255.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1293.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1293.
 
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 04E7A95B9AC2A86F62A3020872016B9C;5860.
+(rerunfilecheck)             Checksum: 9A9B460F5368219E0F7890D1EB130A56;5931.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1255.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1293.
  ) 
 Here is how much of TeX's memory you used:
- 8131 strings out of 494374
- 116954 string characters out of 6164954
+ 8152 strings out of 494374
+ 117518 string characters out of 6164954
  201695 words of memory out of 5000000
- 11140 multiletter control sequences out of 15000+600000
+ 11153 multiletter control sequences out of 15000+600000
  11922 words of font info for 41 fonts, out of 8000000 for 9000
  350 hyphenation exceptions out of 8191
  30i,16n,38p,1287b,545s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1071,10 +1108,10 @@ fonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
 i7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb
 >
-Output written on thesis.pdf (67 pages, 2780366 bytes).
+Output written on thesis.pdf (68 pages, 2919722 bytes).
 PDF statistics:
- 892 PDF objects out of 1000 (max. 8388607)
- 739 compressed objects within 8 object streams
- 181 named destinations out of 1000 (max. 500000)
- 792 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 910 PDF objects out of 1000 (max. 8388607)
+ 753 compressed objects within 8 object streams
+ 186 named destinations out of 1000 (max. 500000)
+ 815 words of extra memory for PDF output out of 10000 (max. 10000000)
 
