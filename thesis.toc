@@ -70,4 +70,6 @@
 \contentsline {subsection}{\numberline {5.1.4}Baza de date}{55}{subsection.5.1.4}
 \contentsline {section}{\numberline {5.2}Func\IeC {{\textcommabelow t}}ionarea unui caz de utilizare}{56}{section.5.2}
 \contentsline {section}{\numberline {5.3}\IeC {{\textcommabelow S}}ablonul circuit breaker}{58}{section.5.3}
-\contentsline {chapter}{\numberline {6}Bibliografie}{60}{chapter.6}
+\contentsline {section}{\numberline {5.4}Infrastructur\IeC {\u a}}{60}{section.5.4}
+\contentsline {chapter}{\numberline {6}Concluzii}{65}{chapter.6}
+\contentsline {chapter}{\numberline {7}Bibliografie}{66}{chapter.7}

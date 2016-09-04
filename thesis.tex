@@ -1269,7 +1269,6 @@ serviciului.
 \newpage
 În urma folosirii acestor anotări se poate observa comportamentul de mai jos:
 
-
 \begin{figure}[ht]
 \centering
 \includegraphics[scale=0.25]{img/comments-not-working.png}
@@ -1277,7 +1276,115 @@ serviciului.
 \label{fig:arhi_componente}
 \end{figure}
 
+\newpage
+\section{Infrastructură}
 
+Pentru a putea vorbi de sisteme capabile să se auto-scaleze este nevoie de o infrastructură care să permită acest lucru. Din punct de vedere al aplicației această trebuie împachetată în așa fel încât să poată fii instalaltă și dezinstalată cât mai ușor. Deja modul de împachetare al modulelelor aplicație a eliminat una din dependențele care ar putea îngreuna procesul de instalare, și anume serverul. 
+
+Pentru a simplifica și mai mult procesul, următorul pas ar fi eliminare incertitudinii legate de sistemul de operare pe care rulează aplicația. Adesea este cazul să existe inconsistențe ceea ce nu ar permite instalarea automată a aplicațiilor. Eliminare acestei probleme s-ar putea face prin folosirea unei soluții de virtualizare, astfel artrefactul livrabil devenind imagina virtuală a unui disc de la care pot fii create instanțe de imagini virtuale. 
+
+Principalul dezavantaj al virtualizării este scăderea performanței datorită duplicării funcționalităților de bază cum ar fi kernelul sistemului de operare și stiva de protocoale. Pentru a păstra flexibilitate oferită de virtualizare și a nu afecta prea mult performanța se poate folosi o soluție de para-virtualizare. 
+
+Para-virtualizarea este similară cu virtualizarea clasică, însă este mai eficientă datorită faptului că aceasta se realizează la un nivel mai înalt, ceea ce permite reutilizarea kernelului sistemului de operare. 
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.8]{img/para-vs-virtualization.jpg}
+\caption{Paravirtualizare vs virtualizare}
+\label{fig:arhi_componente}
+\end{figure}
+
+În cazul para-virtualizării sistemul de operare care este virtualizat este conștient de acest fapt. După cum se poate observa în imaginea de mai sus folosirea funcționalităților kernelului se face prin crearea unei legăturii software cu driverul platformei. Astfel mai multe mașini virtuale vor folosi același driver, spre deosebire de cazul clasic când fiecare își va crea propriul driver.
+
+O soluție populară de para-virtualizare este platforma Docker. Aceasta este un produs care rulează exclusiv pe Linux, deoarece folosește anumite funcționalități care se găsesc doar în cadrul acestui sistem de operare. 
+
+Modul în care acesta funcționează permite crearea de imagini virtuale într-un format propriu care apoi pot fii instanțiate de nenumărare ori. Astfel toate microserviciile prezentate mai sus au fost împachetate într-o astfel de imagine. 
+
+Împachetarea se face prin intermediul unui fișier de configurare ce conține câteva cuvinte cheie.
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.8]{img/docker-file.png}
+\caption{Fișier configurarea imagine Docker}
+\label{fig:arhi_componente}
+\end{figure}
+\newpage
+\begin{itemize}
+ \item \textbf{FROM} - permite specificarea imaginii de bază care va fi folosită pe crearea imaginii curente. Acesta permite specificarea inclusiv a versiunii de imagine. În cazul în care aceasta lipsește valorea implicită este \textit{latest}.
+ \item \textbf{COPY} - cuvânt cheie ce specifică fisierele de pe mașina locală ce vor fi incluse în imagine.
+ \item \textbf{EXPOSE} - este folosit adesea când în interiorul imaginii va rula un server. Acesta indică faptul că acest port va fi disponibil altor containere ce rulează în cadrul Docker.
+ \item \textbf{ENTRYPOINT} - reprezintă punctul de intrare, comanda ce va fi lansată în momentul în care imaginea pornește. În cazul de față imaginea curentă va rula comanda \texttt{java} cu argumentul \texttt{jar} a cărui valoare este artrefactul produs în urma compilării codului. 
+ \end{itemize}
+ 
+ Există mai multe cuvinte cheie, dar aceastea a fost suficiente pentru crearea imaginilor necesare. Lista completă a acestora se poate găsi pe site-ul Docker.
+ Plecând de la acest fișier se poate crea imaginea care va rula aplicația folosind comanda: \texttt{docker build}
+  \begin{figure}[ht]
+\centering
+\includegraphics[scale=0.8]{img/docker-build-output.png}
+\caption{Compilarea unei imagini Docker}
+\label{fig:arhi_componente}
+\end{figure}
+
+Lasând comanda se poate observa executarea pașilor din cadrul fisierului. În cazul în care comanda se execută cu succes, rezultatul acesteia va fi o imagine stocată pe mediul local, care mai târziu poate fi publicată pe un repozitor central de unde va putea fi descărcată și folosită ca un produs.
+
+  \begin{figure}[ht]
+\centering
+\includegraphics[scale=0.8]{img/docker-images.png}
+\caption{Imagini Docker}
+\label{fig:arhi_componente}
+\end{figure}
+\newpage
+
+Următorul pas este lansarea imaginii folosind \texttt{docker run}.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.5]{img/docker-run-cmd.png}
+\caption{Comandă lansare imagine Docker}
+\label{fig:arhi_componente}
+\end{figure}
+Se poate observa că aceasta comandă permite pasarea unor parametri. În cazul de mai sus a fost specificată o variabilă de mediu care specifică adresa serverului care va fi folosit pentru înregistrare. În urma acestei comenzi, aplicația va porni în mod similar cu exemplele precedente, singura diferență fiind că de aceasta data va rula într-un mediu virtualizat.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.5]{img/docker-network.png}
+\caption{Comandă lansare imagine Docker}
+\label{fig:arhi_componente}
+\end{figure}
+\newpage
+În momentul în care imaginea este lansată aceasta este atașată unei rețele virtuale ceea ce nu permite aplicației să fie contactate doar de alte containere sau de către terminalul pe care este instalată platforma Docker.
+
+Datorită faptului că aplicația dispune de mai multe module lansarea individuală a acestora ar fi dificilă. De aceea, pentru centralizarea configurărilor s-a folosit utilitarul \texttt{docker-compose}. Acesta este configurat prin intermediul unui fisier de configurare ce permite specificarea parametrilor precum numele imaginii, a variabilelor de mediu și a rețelei folosite. 
+
+Pentru aplicația de față fișierul de configurare este destul de voluminos, însă o parte din acesta pot fi vazut mai jos. 
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.4]{img/docker-compose-config-1.png}
+\includegraphics[scale=0.4]{img/docker-compose-config-2.png}
+\caption{Configurare docker-compose}
+\label{fig:arhi_componente}
+\end{figure}
+
+În cadrul fișierului a fost declarată o nouă rețea denumită \texttt{app-network} al cărei plajă de adrese se regăsește în \texttt{172.25.0.0/24}. Printe nodurile aplicației se numără și instanțe al bazei de date \texttt{postgresql}, cărora le-au fost specificate în cadrul variabilelor de mediu utilizatorul și parola de conectare. Baza de date expune portul 5432 în cadrul containerului Docker,care poate fi translatat către alt port prin instrucțiunea \texttt{ports}. Apoi acest nod este atașat rețelei. La nodurile de serviciu se poate observa că acestora le-a fost specificată o depedință, nodul bazei de date. Toate nodurile pot fi lansate folosind comanda \texttt{docker-compose up}
+
+\chapter{Concluzii}
+
+Modul în care se realizează dezvoltarea s-a schimbat foarte mult, la acest proces contribuind adeseara echipe localizate în arii georgrafice diferite. În acest caz este nevoie ca o aplicație să fie alcătuită din componente foarte bine decuplate cu interfețe de comunicare simple și clar definite. 
+
+Microserviciile propun o astfel de arhitectură bazându-se intens pe folosirea protocoalelor bine definite precum HTTP, expunând funcționalitățile prin intermediul serviciilor REST. Tehnologia actuală permite eliminarea anumitor dependințe astfel încât instalarea aplicațiilor să se poată face în mod automat. O primă depdendiță care este eliminată este serverul pe care rulează aplicația. Acesta este inclus în aplicație. 
+
+Următoarea dependență care este eliminată este sistemul de operare pe care rulează aplicația. Aceasta este realizată prin intermediul folosirii unei soluții de para-virtualizare, care prezintă în mare aceleași avantaje ca și virtualizarea clasică și oferă și o performanță îmbunătățită, datorită refolosirii unor funcționalități disponibile deja în kernelul sistemului gazdă. 
+
+Deși prin folosirea microserviciilor se dorește obtinerea unei simplificări acestea introduc componente adiționale nelegate de logica implementată de aplicație cum ar fi service-registry-ul. Datorită nivelului înalt de distribuire al arhitecturii propuse anumite șabloane a fost inventate pentru inventate pentru gestionarea cazurilor în care serviciile devin indisponibile. 
+
+Tehnologiile actuale precum Docker, ca soluție de para-virtualizare și Spring-Boot, ca ansamblu de librării pentru dezvoltarea de aplicații baza pe microservicii pun la dispoziție uneltele necesare pentru implementarea unui astfel de sistem. 
+
+Deși stadiul actual al tehnologiilor este avansat ceea ce lipsește pentru crearea sistemelor auto-scalabile este un sistem de gestiune a instanțelor Docker - numite și container. Tendința actuală este spre integrarea între infrastructură și aplicații. Spre deosebire de începuturile tehnologice când software-ul și hardware-ul era strâns legate una de cealaltă, acum se dorește integrarea acestora, dar într-un mod decuplat, pentru a putea permite evoluții viitoare.
+
+Elementul lispă este așadar o componentă software capabilă de a monitoriza starea aplicațiilor, de a obține metrici, a le agrega și lua decizii legate de infrastructură. Aceestă componentă trebuie să fie acesibilă atât la nivelul aplicațiilor pentru ca acestea să poată comunică, dar să aibă și acces la infrastructură pentru a putea crea noi instanțe și a configura rețeaua. 
 
 
 \chapter{Bibliografie}
