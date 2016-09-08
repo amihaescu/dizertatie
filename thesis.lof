@@ -1,52 +1,52 @@
 \select@language {romanian}
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Organizarea pe "arii de responsabilitate"}}{4}{figure.2.1}
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Client/server}}{10}{figure.3.1}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Arhitectur\IeC {\u a} bazat\IeC {\u a} pe componente}}{12}{figure.3.2}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Arhitectur\IeC {\u a} stratificat\IeC {\u a}}}{13}{figure.3.3}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Arhitectur\IeC {\u a} bazat\IeC {\u a} pe bus de mesaje}}{16}{figure.3.4}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Arhitectur\IeC {\u a} orientat\IeC {\u a} pe servicii}}{18}{figure.3.5}
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Arhitecturii monolit si microservicii}}{20}{figure.4.1}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Legea lui Conway}}{22}{figure.4.2}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Echipe responsabile de servicii}}{22}{figure.4.3}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Model distribuit al datelor}}{25}{figure.4.4}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Pipeline}}{26}{figure.4.5}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Instalarea modulelor difer\IeC {\u a}}}{26}{figure.4.6}
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Diagram\IeC {\u a} a serviciilor}}{31}{figure.4.7}
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Folosirea unui API gateway}}{32}{figure.4.8}
-\contentsline {figure}{\numberline {4.9}{\ignorespaces Comunicare inter-process}}{36}{figure.4.9}
-\contentsline {figure}{\numberline {4.10}{\ignorespaces Exemplu de interac\IeC {{\textcommabelow t}}iune servicii}}{37}{figure.4.10}
-\contentsline {figure}{\numberline {4.11}{\ignorespaces Consumarea resurselor unei aplica\IeC {{\textcommabelow t}}ii}}{39}{figure.4.11}
-\contentsline {figure}{\numberline {4.12}{\ignorespaces Identificarea serviciilor \IeC {\^\i }n cloud}}{42}{figure.4.12}
-\contentsline {figure}{\numberline {4.13}{\ignorespaces Identificarea serviciilor de c\IeC {\u a}tre client}}{43}{figure.4.13}
-\contentsline {figure}{\numberline {4.14}{\ignorespaces Identificarea serviciilor de c\IeC {\u a}tre server}}{43}{figure.4.14}
-\contentsline {figure}{\numberline {4.15}{\ignorespaces Auto-\IeC {\^\i }nregistrare}}{45}{figure.4.15}
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Arhitectura aplica\IeC {{\textcommabelow t}}iei}}{47}{figure.5.1}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces pom.xml - SpringBoot }}{49}{figure.5.2}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Lansare instan\IeC {{\textcommabelow t}}\IeC {\u a} microserviciu}}{49}{figure.5.3}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Lansare instan\IeC {{\textcommabelow t}}\IeC {\u a} microserviciu}}{49}{figure.5.4}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Lansare instan\IeC {{\textcommabelow t}}\IeC {\u a} microserviciu}}{50}{figure.5.5}
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Lansare instan\IeC {{\textcommabelow t}}\IeC {\u a} microserviciu}}{50}{figure.5.6}
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Clas\IeC {\u a} de tip entitate}}{50}{figure.5.7}
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Configurarea DDL}}{51}{figure.5.8}
-\contentsline {figure}{\numberline {5.9}{\ignorespaces Configurarea DDL}}{51}{figure.5.9}
-\contentsline {figure}{\numberline {5.10}{\ignorespaces Configurarea DDL}}{51}{figure.5.10}
-\contentsline {figure}{\numberline {5.11}{\ignorespaces Opera\IeC {{\textcommabelow t}}iuni legate de baza de date}}{52}{figure.5.11}
-\contentsline {figure}{\numberline {5.12}{\ignorespaces Expunerea serviciilor prin intermediul unui REST API}}{52}{figure.5.12}
-\contentsline {figure}{\numberline {5.13}{\ignorespaces Cod pentru server Eureka}}{53}{figure.5.13}
-\contentsline {figure}{\numberline {5.14}{\ignorespaces Intefa\IeC {{\textcommabelow t}}\IeC {\u a} web pentru server Eureka}}{53}{figure.5.14}
-\contentsline {figure}{\numberline {5.15}{\ignorespaces API Gateway - clasa depozit}}{54}{figure.5.15}
-\contentsline {figure}{\numberline {5.16}{\ignorespaces Livrarea aplica\IeC {{\textcommabelow t}}iei front-end}}{55}{figure.5.16}
-\contentsline {figure}{\numberline {5.17}{\ignorespaces Injectare RestTemplate}}{55}{figure.5.17}
-\contentsline {figure}{\numberline {5.18}{\ignorespaces Fi\IeC {{\textcommabelow s}}ier configurare docker-compose}}{56}{figure.5.18}
-\contentsline {figure}{\numberline {5.19}{\ignorespaces Caz de utilizare: crearea unui utilizator}}{56}{figure.5.19}
-\contentsline {figure}{\numberline {5.20}{\ignorespaces Pagin\IeC {\u a} creare utilizator}}{57}{figure.5.20}
-\contentsline {figure}{\numberline {5.21}{\ignorespaces Pagin\IeC {\u a} comentarii - serviciu func\IeC {{\textcommabelow t}}ional}}{58}{figure.5.21}
-\contentsline {figure}{\numberline {5.22}{\ignorespaces Configurare Hystrix}}{59}{figure.5.22}
-\contentsline {figure}{\numberline {5.23}{\ignorespaces Pagin\IeC {\u a} comentarii - serviciu \IeC {\^\i }n pan\IeC {\u a}}}{59}{figure.5.23}
-\contentsline {figure}{\numberline {5.24}{\ignorespaces Paravirtualizare vs virtualizare}}{60}{figure.5.24}
-\contentsline {figure}{\numberline {5.25}{\ignorespaces Fi\IeC {{\textcommabelow s}}ier configurarea imagine Docker}}{61}{figure.5.25}
-\contentsline {figure}{\numberline {5.26}{\ignorespaces Compilarea unei imagini Docker}}{61}{figure.5.26}
-\contentsline {figure}{\numberline {5.27}{\ignorespaces Imagini Docker}}{62}{figure.5.27}
-\contentsline {figure}{\numberline {5.28}{\ignorespaces Comand\IeC {\u a} lansare imagine Docker}}{62}{figure.5.28}
-\contentsline {figure}{\numberline {5.29}{\ignorespaces Comand\IeC {\u a} lansare imagine Docker}}{63}{figure.5.29}
-\contentsline {figure}{\numberline {5.30}{\ignorespaces Configurare docker-compose}}{63}{figure.5.30}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Organizarea pe "arii de responsabilitate"}}{5}{figure.2.1}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Client/server}}{11}{figure.3.1}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Arhitectur\IeC {\u a} bazat\IeC {\u a} pe componente}}{13}{figure.3.2}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Arhitectur\IeC {\u a} stratificat\IeC {\u a}}}{14}{figure.3.3}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Arhitectur\IeC {\u a} bazat\IeC {\u a} pe bus de mesaje}}{17}{figure.3.4}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Arhitectur\IeC {\u a} orientat\IeC {\u a} pe servicii}}{19}{figure.3.5}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Arhitecturii monolit si microservicii}}{21}{figure.4.1}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Legea lui Conway}}{23}{figure.4.2}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Echipe responsabile de servicii}}{23}{figure.4.3}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Model distribuit al datelor}}{26}{figure.4.4}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Pipeline}}{27}{figure.4.5}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Instalarea modulelor difer\IeC {\u a}}}{27}{figure.4.6}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Diagram\IeC {\u a} a serviciilor}}{32}{figure.4.7}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Folosirea unui API gateway}}{33}{figure.4.8}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Comunicare inter-process}}{37}{figure.4.9}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Exemplu de interac\IeC {{\textcommabelow t}}iune servicii}}{38}{figure.4.10}
+\contentsline {figure}{\numberline {4.11}{\ignorespaces Consumarea resurselor unei aplica\IeC {{\textcommabelow t}}ii}}{40}{figure.4.11}
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Identificarea serviciilor \IeC {\^\i }n cloud}}{43}{figure.4.12}
+\contentsline {figure}{\numberline {4.13}{\ignorespaces Identificarea serviciilor de c\IeC {\u a}tre client}}{44}{figure.4.13}
+\contentsline {figure}{\numberline {4.14}{\ignorespaces Identificarea serviciilor de c\IeC {\u a}tre server}}{44}{figure.4.14}
+\contentsline {figure}{\numberline {4.15}{\ignorespaces Auto-\IeC {\^\i }nregistrare}}{46}{figure.4.15}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Arhitectura aplica\IeC {{\textcommabelow t}}iei}}{48}{figure.5.1}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces pom.xml - SpringBoot }}{50}{figure.5.2}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Lansare instan\IeC {{\textcommabelow t}}\IeC {\u a} microserviciu}}{50}{figure.5.3}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Lansare instan\IeC {{\textcommabelow t}}\IeC {\u a} microserviciu}}{50}{figure.5.4}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Lansare instan\IeC {{\textcommabelow t}}\IeC {\u a} microserviciu}}{51}{figure.5.5}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Lansare instan\IeC {{\textcommabelow t}}\IeC {\u a} microserviciu}}{51}{figure.5.6}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Clas\IeC {\u a} de tip entitate}}{51}{figure.5.7}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Configurarea DDL}}{52}{figure.5.8}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Configurarea DDL}}{52}{figure.5.9}
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Configurarea DDL}}{52}{figure.5.10}
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Opera\IeC {{\textcommabelow t}}iuni legate de baza de date}}{53}{figure.5.11}
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Expunerea serviciilor prin intermediul unui REST API}}{53}{figure.5.12}
+\contentsline {figure}{\numberline {5.13}{\ignorespaces Cod pentru server Eureka}}{54}{figure.5.13}
+\contentsline {figure}{\numberline {5.14}{\ignorespaces Intefa\IeC {{\textcommabelow t}}\IeC {\u a} web pentru server Eureka}}{54}{figure.5.14}
+\contentsline {figure}{\numberline {5.15}{\ignorespaces API Gateway - clasa depozit}}{55}{figure.5.15}
+\contentsline {figure}{\numberline {5.16}{\ignorespaces Livrarea aplica\IeC {{\textcommabelow t}}iei front-end}}{56}{figure.5.16}
+\contentsline {figure}{\numberline {5.17}{\ignorespaces Injectare RestTemplate}}{56}{figure.5.17}
+\contentsline {figure}{\numberline {5.18}{\ignorespaces Fi\IeC {{\textcommabelow s}}ier configurare docker-compose}}{57}{figure.5.18}
+\contentsline {figure}{\numberline {5.19}{\ignorespaces Caz de utilizare: crearea unui utilizator}}{57}{figure.5.19}
+\contentsline {figure}{\numberline {5.20}{\ignorespaces Pagin\IeC {\u a} creare utilizator}}{58}{figure.5.20}
+\contentsline {figure}{\numberline {5.21}{\ignorespaces Pagin\IeC {\u a} comentarii - serviciu func\IeC {{\textcommabelow t}}ional}}{59}{figure.5.21}
+\contentsline {figure}{\numberline {5.22}{\ignorespaces Configurare Hystrix}}{60}{figure.5.22}
+\contentsline {figure}{\numberline {5.23}{\ignorespaces Pagin\IeC {\u a} comentarii - serviciu \IeC {\^\i }n pan\IeC {\u a}}}{60}{figure.5.23}
+\contentsline {figure}{\numberline {5.24}{\ignorespaces Paravirtualizare vs virtualizare}}{61}{figure.5.24}
+\contentsline {figure}{\numberline {5.25}{\ignorespaces Fi\IeC {{\textcommabelow s}}ier configurarea imagine Docker}}{62}{figure.5.25}
+\contentsline {figure}{\numberline {5.26}{\ignorespaces Compilarea unei imagini Docker}}{62}{figure.5.26}
+\contentsline {figure}{\numberline {5.27}{\ignorespaces Imagini Docker}}{63}{figure.5.27}
+\contentsline {figure}{\numberline {5.28}{\ignorespaces Comand\IeC {\u a} lansare imagine Docker}}{63}{figure.5.28}
+\contentsline {figure}{\numberline {5.29}{\ignorespaces Comand\IeC {\u a} lansare imagine Docker}}{64}{figure.5.29}
+\contentsline {figure}{\numberline {5.30}{\ignorespaces Configurare docker-compose}}{64}{figure.5.30}

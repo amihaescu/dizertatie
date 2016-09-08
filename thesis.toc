@@ -2,74 +2,74 @@
 \contentsline {chapter}{Lista figurilor}{iii}{chapter*.2}
 \contentsline {chapter}{Lista tabelelor}{v}{chapter*.3}
 \contentsline {unnumberedsection}{Lista acronimelor}{vi}{chapter*.4}
-\contentsline {chapter}{\numberline {1}Introducere}{1}{chapter.1}
-\contentsline {section}{\numberline {1.1}Ce este o arhitectura software?}{1}{section.1.1}
-\contentsline {section}{\numberline {1.2}De ce este arhitectura important\IeC {\u a} ?}{2}{section.1.2}
-\contentsline {section}{\numberline {1.3}Obiectivele arhitecturii software}{2}{section.1.3}
-\contentsline {section}{\numberline {1.4}Principii arhitecturale cheie}{3}{section.1.4}
-\contentsline {chapter}{\numberline {2}Principii fundamentale ale arhitecturii software}{4}{chapter.2}
-\contentsline {section}{\numberline {2.1}Principii de proiectare}{5}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}Standarde de proiectare}{6}{subsection.2.1.1}
-\contentsline {subsection}{\numberline {2.1.2}Nivelele aplica\IeC {{\textcommabelow t}}iei}{6}{subsection.2.1.2}
-\contentsline {subsection}{\numberline {2.1.3}Componente, module \IeC {{\textcommabelow s}}i func\IeC {{\textcommabelow t}}ii}{7}{subsection.2.1.3}
-\contentsline {chapter}{\numberline {3}Tipare \IeC {{\textcommabelow s}}i stiluri arhitecturale}{8}{chapter.3}
-\contentsline {section}{\numberline {3.1}Ce este un stil arhitectural?}{8}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}Sumar al stilurilor arhitecturale}{9}{subsection.3.1.1}
-\contentsline {subsection}{\numberline {3.1.2}Combinarea stilurilor arhitecturale}{9}{subsection.3.1.2}
-\contentsline {section}{\numberline {3.2}Arhitectura client/server}{10}{section.3.2}
-\contentsline {section}{\numberline {3.3}Arhitectura bazat\IeC {\u a} pe componente}{11}{section.3.3}
-\contentsline {section}{\numberline {3.4}Arhitectura stratificat\IeC {\u a}}{13}{section.3.4}
-\contentsline {section}{\numberline {3.5}Arhitectura bazat\IeC {\u a} pe bus de mesaje}{15}{section.3.5}
-\contentsline {section}{\numberline {3.6}Arhitectura orientat\IeC {\u a} pe obiecte}{17}{section.3.6}
-\contentsline {section}{\numberline {3.7}Arhitectura orientat\IeC {\u a} pe servicii}{18}{section.3.7}
-\contentsline {chapter}{\numberline {4}Microservicii}{20}{chapter.4}
-\contentsline {section}{\numberline {4.1}Caracteristici ale arhitecturii microservicii}{21}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Separarea prin intermediul serviciilor}{21}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}Organizare \IeC {\^\i }n jurul nevoilor de business}{22}{subsection.4.1.2}
-\contentsline {subsection}{\numberline {4.1.3}Produse, nu proiecte}{23}{subsection.4.1.3}
-\contentsline {subsection}{\numberline {4.1.4}Puncte termnale inteligente \IeC {{\textcommabelow s}}i bus-uri simple}{23}{subsection.4.1.4}
-\contentsline {subsection}{\numberline {4.1.5}Guvernare distribuit\IeC {\u a}}{24}{subsection.4.1.5}
-\contentsline {subsection}{\numberline {4.1.6}Managementul distribuit al datelor}{24}{subsection.4.1.6}
-\contentsline {subsection}{\numberline {4.1.7}Automatizarea infrastructurii}{25}{subsection.4.1.7}
-\contentsline {subsection}{\numberline {4.1.8}Proiectare pentru dezastru}{26}{subsection.4.1.8}
-\contentsline {subsection}{\numberline {4.1.9}Design evolutiv}{27}{subsection.4.1.9}
-\contentsline {section}{\numberline {4.2}Avatanje \IeC {{\textcommabelow s}}i dezavantaje ale microserviciilor}{29}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Avantaje}{29}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Dezavantaje}{29}{subsection.4.2.2}
-\contentsline {section}{\numberline {4.3}Construirea microserviciilor: folosirea unui API gateway}{31}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Introducere}{31}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Comunicare direct\IeC {\u a} \IeC {\^\i }ntre client \IeC {{\textcommabelow s}}i microservicii}{32}{subsection.4.3.2}
-\contentsline {subsection}{\numberline {4.3.3}Folosirea unui API Gateway}{32}{subsection.4.3.3}
-\contentsline {subsection}{\numberline {4.3.4}Avantaje \IeC {{\textcommabelow s}}i dezavantaje ale folosirii unui API Gateway}{33}{subsection.4.3.4}
-\contentsline {subsection}{\numberline {4.3.5}Implementarea unui API Gateway}{33}{subsection.4.3.5}
-\contentsline {subsubsection}{\numberline {4.3.5.1}Perfoman\IeC {{\textcommabelow t}}\IeC {\u a} \IeC {{\textcommabelow s}}i scalabilitate}{33}{subsubsection.4.3.5.1}
-\contentsline {subsection}{\numberline {4.3.6}Folosirea unui model de programare reactiv}{34}{subsection.4.3.6}
-\contentsline {subsection}{\numberline {4.3.7}Invocarea serviciilor}{34}{subsection.4.3.7}
-\contentsline {subsection}{\numberline {4.3.8}Descoperire serviciilor}{34}{subsection.4.3.8}
-\contentsline {subsection}{\numberline {4.3.9}Tratarea penelor par\IeC {{\textcommabelow t}}iale}{34}{subsection.4.3.9}
-\contentsline {section}{\numberline {4.4}Construirea microserviciilor: Comunicarea inter-process \IeC {\^\i }n cadrul microserviciilor}{36}{section.4.4}
-\contentsline {subsection}{\numberline {4.4.1}Introducere}{36}{subsection.4.4.1}
-\contentsline {subsection}{\numberline {4.4.2}Stiluri de interac\IeC {{\textcommabelow t}}iune}{36}{subsection.4.4.2}
-\contentsline {subsection}{\numberline {4.4.3}Definirea API-urilor}{38}{subsection.4.4.3}
-\contentsline {subsection}{\numberline {4.4.4}API-uri evolutive}{38}{subsection.4.4.4}
-\contentsline {subsection}{\numberline {4.4.5}Gestionarea penelor par\IeC {{\textcommabelow t}}iale de serviciu}{38}{subsection.4.4.5}
-\contentsline {subsection}{\numberline {4.4.6}Tehnologii IPC}{39}{subsection.4.4.6}
-\contentsline {subsection}{\numberline {4.4.7}Comunicarea asincron\IeC {\u a} bazat\IeC {\u a} pe mesaje}{40}{subsection.4.4.7}
-\contentsline {section}{\numberline {4.5}Identificarea serviciilor}{41}{section.4.5}
-\contentsline {subsection}{\numberline {4.5.1}Identificarea serviciilor de c\IeC {\u a}tre client}{41}{subsection.4.5.1}
-\contentsline {subsection}{\numberline {4.5.2}Identificarea serviciilor de c\IeC {\u a}tre server}{42}{subsection.4.5.2}
-\contentsline {subsection}{\numberline {4.5.3}Registrul serviciilor}{43}{subsection.4.5.3}
-\contentsline {subsection}{\numberline {4.5.4}Metode de \IeC {\^\i }nregistrare a serviciilor}{44}{subsection.4.5.4}
-\contentsline {subsubsection}{\numberline {4.5.4.1}Auto-\IeC {\^\i }nregistrarea}{44}{subsubsection.4.5.4.1}
-\contentsline {subsubsection}{\numberline {4.5.4.2}\IeC {\^I}nregistrarea ter\IeC {{\textcommabelow t}}\IeC {\u a}}{45}{subsubsection.4.5.4.2}
-\contentsline {chapter}{\numberline {5}Implementare practic\IeC {\u a}}{46}{chapter.5}
-\contentsline {section}{\numberline {5.1}Descrierea componentelor}{47}{section.5.1}
-\contentsline {subsection}{\numberline {5.1.1}Microserviciile de tip depozit}{48}{subsection.5.1.1}
-\contentsline {subsection}{\numberline {5.1.2}Service Registry}{52}{subsection.5.1.2}
-\contentsline {subsection}{\numberline {5.1.3}API Gateway}{54}{subsection.5.1.3}
-\contentsline {subsection}{\numberline {5.1.4}Baza de date}{55}{subsection.5.1.4}
-\contentsline {section}{\numberline {5.2}Func\IeC {{\textcommabelow t}}ionarea unui caz de utilizare}{56}{section.5.2}
-\contentsline {section}{\numberline {5.3}\IeC {{\textcommabelow S}}ablonul circuit breaker}{58}{section.5.3}
-\contentsline {section}{\numberline {5.4}Infrastructur\IeC {\u a}}{60}{section.5.4}
-\contentsline {chapter}{\numberline {6}Concluzii}{65}{chapter.6}
-\contentsline {chapter}{\numberline {7}Bibliografie}{66}{chapter.7}
+\contentsline {chapter}{\numberline {1}Introducere}{2}{chapter.1}
+\contentsline {section}{\numberline {1.1}Ce este o arhitectura software?}{2}{section.1.1}
+\contentsline {section}{\numberline {1.2}De ce este arhitectura important\IeC {\u a} ?}{3}{section.1.2}
+\contentsline {section}{\numberline {1.3}Obiectivele arhitecturii software}{3}{section.1.3}
+\contentsline {section}{\numberline {1.4}Principii arhitecturale cheie}{4}{section.1.4}
+\contentsline {chapter}{\numberline {2}Principii fundamentale ale arhitecturii software}{5}{chapter.2}
+\contentsline {section}{\numberline {2.1}Principii de proiectare}{6}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Standarde de proiectare}{7}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Nivelele aplica\IeC {{\textcommabelow t}}iei}{7}{subsection.2.1.2}
+\contentsline {subsection}{\numberline {2.1.3}Componente, module \IeC {{\textcommabelow s}}i func\IeC {{\textcommabelow t}}ii}{8}{subsection.2.1.3}
+\contentsline {chapter}{\numberline {3}Tipare \IeC {{\textcommabelow s}}i stiluri arhitecturale}{9}{chapter.3}
+\contentsline {section}{\numberline {3.1}Ce este un stil arhitectural?}{9}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Sumar al stilurilor arhitecturale}{10}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Combinarea stilurilor arhitecturale}{10}{subsection.3.1.2}
+\contentsline {section}{\numberline {3.2}Arhitectura client/server}{11}{section.3.2}
+\contentsline {section}{\numberline {3.3}Arhitectura bazat\IeC {\u a} pe componente}{12}{section.3.3}
+\contentsline {section}{\numberline {3.4}Arhitectura stratificat\IeC {\u a}}{14}{section.3.4}
+\contentsline {section}{\numberline {3.5}Arhitectura bazat\IeC {\u a} pe bus de mesaje}{16}{section.3.5}
+\contentsline {section}{\numberline {3.6}Arhitectura orientat\IeC {\u a} pe obiecte}{18}{section.3.6}
+\contentsline {section}{\numberline {3.7}Arhitectura orientat\IeC {\u a} pe servicii}{19}{section.3.7}
+\contentsline {chapter}{\numberline {4}Microservicii}{21}{chapter.4}
+\contentsline {section}{\numberline {4.1}Caracteristici ale arhitecturii microservicii}{22}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Separarea prin intermediul serviciilor}{22}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Organizare \IeC {\^\i }n jurul nevoilor de business}{23}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.3}Produse, nu proiecte}{24}{subsection.4.1.3}
+\contentsline {subsection}{\numberline {4.1.4}Puncte termnale inteligente \IeC {{\textcommabelow s}}i bus-uri simple}{24}{subsection.4.1.4}
+\contentsline {subsection}{\numberline {4.1.5}Guvernare distribuit\IeC {\u a}}{25}{subsection.4.1.5}
+\contentsline {subsection}{\numberline {4.1.6}Managementul distribuit al datelor}{25}{subsection.4.1.6}
+\contentsline {subsection}{\numberline {4.1.7}Automatizarea infrastructurii}{26}{subsection.4.1.7}
+\contentsline {subsection}{\numberline {4.1.8}Proiectare pentru dezastru}{27}{subsection.4.1.8}
+\contentsline {subsection}{\numberline {4.1.9}Design evolutiv}{28}{subsection.4.1.9}
+\contentsline {section}{\numberline {4.2}Avatanje \IeC {{\textcommabelow s}}i dezavantaje ale microserviciilor}{30}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Avantaje}{30}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Dezavantaje}{30}{subsection.4.2.2}
+\contentsline {section}{\numberline {4.3}Construirea microserviciilor: folosirea unui API gateway}{32}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Introducere}{32}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Comunicare direct\IeC {\u a} \IeC {\^\i }ntre client \IeC {{\textcommabelow s}}i microservicii}{33}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Folosirea unui API Gateway}{33}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.4}Avantaje \IeC {{\textcommabelow s}}i dezavantaje ale folosirii unui API Gateway}{34}{subsection.4.3.4}
+\contentsline {subsection}{\numberline {4.3.5}Implementarea unui API Gateway}{34}{subsection.4.3.5}
+\contentsline {subsubsection}{\numberline {4.3.5.1}Perfoman\IeC {{\textcommabelow t}}\IeC {\u a} \IeC {{\textcommabelow s}}i scalabilitate}{34}{subsubsection.4.3.5.1}
+\contentsline {subsection}{\numberline {4.3.6}Folosirea unui model de programare reactiv}{35}{subsection.4.3.6}
+\contentsline {subsection}{\numberline {4.3.7}Invocarea serviciilor}{35}{subsection.4.3.7}
+\contentsline {subsection}{\numberline {4.3.8}Descoperire serviciilor}{35}{subsection.4.3.8}
+\contentsline {subsection}{\numberline {4.3.9}Tratarea penelor par\IeC {{\textcommabelow t}}iale}{35}{subsection.4.3.9}
+\contentsline {section}{\numberline {4.4}Construirea microserviciilor: Comunicarea inter-process \IeC {\^\i }n cadrul microserviciilor}{37}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Introducere}{37}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}Stiluri de interac\IeC {{\textcommabelow t}}iune}{37}{subsection.4.4.2}
+\contentsline {subsection}{\numberline {4.4.3}Definirea API-urilor}{39}{subsection.4.4.3}
+\contentsline {subsection}{\numberline {4.4.4}API-uri evolutive}{39}{subsection.4.4.4}
+\contentsline {subsection}{\numberline {4.4.5}Gestionarea penelor par\IeC {{\textcommabelow t}}iale de serviciu}{39}{subsection.4.4.5}
+\contentsline {subsection}{\numberline {4.4.6}Tehnologii IPC}{40}{subsection.4.4.6}
+\contentsline {subsection}{\numberline {4.4.7}Comunicarea asincron\IeC {\u a} bazat\IeC {\u a} pe mesaje}{41}{subsection.4.4.7}
+\contentsline {section}{\numberline {4.5}Identificarea serviciilor}{42}{section.4.5}
+\contentsline {subsection}{\numberline {4.5.1}Identificarea serviciilor de c\IeC {\u a}tre client}{42}{subsection.4.5.1}
+\contentsline {subsection}{\numberline {4.5.2}Identificarea serviciilor de c\IeC {\u a}tre server}{43}{subsection.4.5.2}
+\contentsline {subsection}{\numberline {4.5.3}Registrul serviciilor}{44}{subsection.4.5.3}
+\contentsline {subsection}{\numberline {4.5.4}Metode de \IeC {\^\i }nregistrare a serviciilor}{45}{subsection.4.5.4}
+\contentsline {subsubsection}{\numberline {4.5.4.1}Auto-\IeC {\^\i }nregistrarea}{45}{subsubsection.4.5.4.1}
+\contentsline {subsubsection}{\numberline {4.5.4.2}\IeC {\^I}nregistrarea ter\IeC {{\textcommabelow t}}\IeC {\u a}}{46}{subsubsection.4.5.4.2}
+\contentsline {chapter}{\numberline {5}Implementare practic\IeC {\u a}}{47}{chapter.5}
+\contentsline {section}{\numberline {5.1}Descrierea componentelor}{48}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Microserviciile de tip depozit}{49}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}Service Registry}{53}{subsection.5.1.2}
+\contentsline {subsection}{\numberline {5.1.3}API Gateway}{55}{subsection.5.1.3}
+\contentsline {subsection}{\numberline {5.1.4}Baza de date}{56}{subsection.5.1.4}
+\contentsline {section}{\numberline {5.2}Func\IeC {{\textcommabelow t}}ionarea unui caz de utilizare}{57}{section.5.2}
+\contentsline {section}{\numberline {5.3}\IeC {{\textcommabelow S}}ablonul circuit breaker}{59}{section.5.3}
+\contentsline {section}{\numberline {5.4}Infrastructur\IeC {\u a}}{61}{section.5.4}
+\contentsline {chapter}{\numberline {6}Concluzii}{66}{chapter.6}
+\contentsline {chapter}{\numberline {7}Bibliografie}{67}{chapter.7}
