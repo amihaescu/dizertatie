@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.7.26)  8 SEP 2016 20:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.7.26)  8 SEP 2016 21:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1216,14 +1216,14 @@ Overfull \hbox (8.13298pt too wide) in paragraph at lines 1393--1394
 
 ]
 Capitolul 7.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1406.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1408.
 [67
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1406.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1408.
  (./thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1406.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1406.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1408.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1408.
 
 Package rerunfilecheck Info: File `thesis.out' has not changed.
 (rerunfilecheck)             Checksum: A85B96AB534767F80083D35788EB8D48;6041.
@@ -1231,7 +1231,7 @@ Package rerunfilecheck Info: File `thesis.out' has not changed.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1406.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1408.
  ) 
 Here is how much of TeX's memory you used:
  8216 strings out of 494374
@@ -1253,7 +1253,7 @@ fonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
 i7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb
 >
-Output written on thesis.pdf (75 pages, 19994961 bytes).
+Output written on thesis.pdf (75 pages, 19995040 bytes).
 PDF statistics:
  979 PDF objects out of 1000 (max. 8388607)
  804 compressed objects within 9 object streams
